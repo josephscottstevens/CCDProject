@@ -6,11 +6,11 @@ open FSharp.Data.Sql
 open FSharp.Data
 open System
 
-//let [<Literal>] ConnectionStringProd = "Data Source=10.8.100.4;Initial Catalog=NavcareDBProd;user id=USCareNet;password=BHI_US_2022_2022; "
-//type SqlProd = SqlDataProvider<ConnectionString = ConnectionStringProd, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>
-//let ctx = SqlProd.GetDataContext()
+//let [<Literal>] ConnectionString = "Data Source=localhost;Initial Catalog=NavcareDB_interface2;Integrated Security=True;"
+//type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>
 
-type CCD = XmlProvider<"""R:\IT\CCDS\sampleData.xml""">
+let [<Literal>] sampleProvider = """R:\IT\CCDS\sampleData.xml"""
+type CCD = XmlProvider<sampleProvider>
 
 //todo, map use property
 // mc = mobile
@@ -28,18 +28,23 @@ let dateFromInt(intDate:int) =
     intDate
 // end todo
 
+let ccd = CCD.Load("""R:\IT\CCDS\WILLIE_MAE_JONES_06222018093118_COMPLETE_CCDA.xml""")
+    
+let findColumnIndex (columnTh:string) (table:CCD.Table) : int =
+    table.Thead.Tr.Ths |> Array.findIndex (fun t -> t = columnTh)
+
+let findTable (sectionTitle:string) : CCD.Table =
+    ccd.Component.StructuredBody.Components
+    |> Array.filter (fun t -> t.Section.Title = sectionTitle)
+    |> Array.map (fun t -> t.Section.Text.Table)
+    |> Array.head
+
+let findRowByIndex (table:CCD.Table) (amt:int) : CCD.Tr2 =
+    table.Tbody.Trs |> Array.skip amt |> Array.head
+
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
-    let ccd = CCD.Load("""R:\IT\CCDS\WILLIE_MAE_JONES_06222018093118_COMPLETE_CCDA.xml""")
-        
-    let getInsurance (amt:int) =
-        ccd.Component.StructuredBody.Components
-        |> Array.filter (fun t -> t.Section.Title = "INSURANCE PROVIDERS")
-        |> Array.map (fun t -> t.Section.Text.Table.Tbody.Trs |> Array.skip amt |> Array.head)
-        |> Array.head
-        //|> (fun t -> t.Tds |> Array.map(fun tt -> tt)
-
     let ssn = ccd.RecordTarget.PatientRole.Ids 
               |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
               |> Array.map (fun t -> t.Extension)
@@ -64,8 +69,21 @@ let main _ =
         |> dateFromInt
     //todo
     //let emergencyContacts = ccd.RecordTarget.PatientRole.?
+    
+    let getInsurance (rowIndex:int) : string =
+        let primaryInsuranceTable = findTable "INSURANCE PROVIDERS"
+        let primaryInsuranceRow = findRowByIndex primaryInsuranceTable rowIndex
+        let primaryInsuranceColumnIndex = findColumnIndex "Payer Name" primaryInsuranceTable
+        primaryInsuranceRow.Tds.[primaryInsuranceColumnIndex].XElement.Value
+
     let primaryInsurance = getInsurance 0
     let secondaryInsurance = getInsurance 1
+    let y = 0
+    
+    //let xyz = primaryInsurance
+    //let secondaryInsurance = findTableRow 1
+    //let zz = getColumnIndex "Payer Order" primaryInsurance
+    //let yy = zz
 
     //
     //let maritalStatus =
