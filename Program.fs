@@ -29,7 +29,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let ``Address`` = ccd.RecordTarget.PatientRole.Addr.StreetAddressLine
         let ``City`` = ccd.RecordTarget.PatientRole.Addr.City
         let ``State`` = ccd.RecordTarget.PatientRole.Addr.State
-        let ``Zip Code`` = ccd.RecordTarget.PatientRole.Addr.XElement
+        let zipCodeElement = ccd.RecordTarget.PatientRole.Addr.XElement
             
             
         let phoneNumbers = 
@@ -97,7 +97,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             ; ``City`` = ``City``
             ; ``State`` = ``State``
             ; ``Zip Code`` = 
-                ``Zip Code``
+                zipCodeElement
                 |> getElementValueByTag "postalCode"
                 |> andAlso (between 5 9)
             ; ``Primary Insurance`` = ``Primary Insurance``
