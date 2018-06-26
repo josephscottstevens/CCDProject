@@ -85,6 +85,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         
         // Duplicates
         // todo, validate at least 1 phone number
+        let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
+        let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
         Ok  { ``Last Four of Social Security Number`` = 
                 ``Last Four of Social Security Number``
                 |> isNotNullOrEmpty 
@@ -102,6 +104,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> andAlso (between 5 9)
             ; ``Primary Insurance`` = ``Primary Insurance``
             ; ``Secondary Insurance`` = ``Secondary Insurance``
+            ; ``Gender`` = Some gender
+            ; ``Preferred Language`` = Some preferredLanguage
             }
     with ex ->
         Err ex.Message
