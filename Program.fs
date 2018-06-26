@@ -11,6 +11,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let ccd : CCD.ClinicalDocument = getCCd path
         let findTable = findTableWithCCd ccd
         
+        //todo, validate 10 characters long, then take last 4
         let ``Last Four of Social Security Number`` = 
             ccd.RecordTarget.PatientRole.Ids 
             |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
@@ -31,10 +32,18 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let ``State`` = ccd.RecordTarget.PatientRole.Addr.State
         let zipCodeElement = ccd.RecordTarget.PatientRole.Addr.XElement
             
-            
-        let phoneNumbers = 
+        let phoneNumber (phoneType : string) = 
             ccd.RecordTarget.PatientRole.Telecoms
-            |> Array.map (fun t -> cleanTel t.Value)
+            |> Array.where (fun t -> t.Use = phoneType)
+            |> Array.map( fun t -> t.Value)
+            |> Array.tryHead
+            |> Option.map cleanTel
+
+        let homePhone = phoneNumber "HP"
+        let workPhone = phoneNumber "WP"
+        let cellPhone = phoneNumber "MC"
+            
+            //|> Array.map (fun t -> cleanTel t.Value)
     
         //todo
         //let emergencyContacts = ccd.RecordTarget.PatientRole.?
@@ -88,11 +97,15 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         Ok  { ``Last Four of Social Security Number`` = 
                 ``Last Four of Social Security Number``
                 |> isNotNullOrEmpty 
-                |> andAlso (exactly 4)
+                |> andAlso (exactly 11)
+                |> andAlso (takeLast 4)
             ; ``8 digit Date of Birth`` =
                 ``8 digit Date of Birth``
                 |> dateFromString 
             ; ``Medical Record Number`` = ``Medical Record Number``
+            ; ``Home Phone`` = homePhone
+            ; ``Work Phone`` = workPhone
+            ; ``Cell Phone`` = cellPhone
             ; ``Address`` = ``Address``
             ; ``City`` = ``City``
             ; ``State`` = ``State``

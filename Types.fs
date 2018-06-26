@@ -23,9 +23,9 @@ module Types
         ; ``Zip Code`` : Result<string, string>                              // [Enrollment].[HomeZip]
         //; Contact Preferences (from discussion with patient)?
         ; ``Medical Record Number`` : string                // [Enrollment].[MedicalRecordNumber]
-        //; homePhone : string option                       // [Enrollment].
-        //; workPhone : string option                       // [Enrollment].
-        //; cellPhone : string option                       // [Enrollment].
+        ; ``Home Phone`` : string option                    // [Enrollment].
+        ; ``Work Phone`` : string option                    // [Enrollment].
+        ; ``Cell Phone`` : string option                    // [Enrollment].
         //maritalStatus : string                            // [Enrollment].
         //smokingStatus : string                            // [Enrollment].
         //alcoholStatus : string                            // [Enrollment].
