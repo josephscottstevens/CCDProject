@@ -28,6 +28,7 @@ let dateFromInt(intDate:int) =
     intDate
 // end todo
 
+// 21 required fields - 2 optional
 type CCDRecord = 
     { ssn : string
     ; mrn : string
@@ -36,7 +37,16 @@ type CCDRecord =
     ; stateLine : string
     ; postalCodeLine : int
     ; country : string
-    ; phoneNumbers : string array
+    ; phoneNumbers : string array // currently wrong
+    //maritalStatus : string
+    //smokingStatus : string
+    //alcoholStatus : string
+    //encounterNotes : string
+    //; homePhone : string option
+    //; workPhone : string option
+    //; cellPhone : string option
+                // at least 1?
+
     ; birthTime : int
     ; primaryInsurance : string
     ; secondaryInsurance : string
@@ -45,16 +55,6 @@ type CCDRecord =
 type CCDResult =
     | Success of CCDRecord
     | Error of string
-
-let getSuccess (ccdResult : CCDResult) : CCDRecord option =
-    match ccdResult with 
-    | Success ccdRecord -> Some ccdRecord
-    | Error _ -> None
-
-let getError (ccdResult : CCDResult) : string option =
-    match ccdResult with 
-    | Success _ -> None
-    | Error str -> Some str
 
 let findCCD (path:string) : CCDResult =
     try
@@ -167,13 +167,16 @@ let findCCD (path:string) : CCDResult =
 [<EntryPoint>]
 let main _ =
     
-    let ccds =
+    let ccds : CCDResult array =
         System.IO.Directory.GetFiles("R:\IT\CCDS")
         |> Array.filter (fun t -> t <> sampleProvider)
         |> Array.map (fun t -> findCCD t)
     
-    let readyToProcessCCDs = ccds |> Array.choose getSuccess
-    let failedCCDs = ccds |> Array.choose getError
-    readyToProcessCCDs
-    failedCCDs
+    ccds 
+    |> Array.map (fun t -> 
+                    match t with 
+                    | Success ccd -> printfn "Success - %s" (string ccd)
+                    | Error errStr -> printfn "Error - %s" errStr
+        )
+    |> ignore
     0
