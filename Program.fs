@@ -3,17 +3,22 @@ open System
 open Types
 open HelperFunctions
 open Validation
+open System.Xml.Linq
+open System.Runtime.InteropServices
 
 let findCCD (path:string) : Result<CCDRecord, string> =
     try
         let ccd : CCD.ClinicalDocument = getCCd path
         let findTable = findTableWithCCd ccd
         
-        let ssn = 
+        let ``Last Four of Social Security Number`` = 
             ccd.RecordTarget.PatientRole.Ids 
             |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
             |> Array.map (fun t -> t.Extension)
             |> Array.head
+
+        let ``8 digit Date of Birth`` =
+            ccd.RecordTarget.PatientRole.Patient.BirthTime.XElement.Value
 
         let ``Medical Record Number`` = 
             ccd.RecordTarget.PatientRole.Ids 
@@ -21,18 +26,16 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             |> Array.map (fun t -> t.Extension)
             |> Array.head
     
-        let streetAddressLine = ccd.RecordTarget.PatientRole.Addr.StreetAddressLine
-        let cityLine = ccd.RecordTarget.PatientRole.Addr.City
-        let stateLine = ccd.RecordTarget.PatientRole.Addr.State
-        let postalCodeLine = ccd.RecordTarget.PatientRole.Addr.PostalCode
-        let country = ccd.RecordTarget.PatientRole.Addr.Country
+        let ``Address`` = ccd.RecordTarget.PatientRole.Addr.StreetAddressLine
+        let ``City`` = ccd.RecordTarget.PatientRole.Addr.City
+        let ``State`` = ccd.RecordTarget.PatientRole.Addr.State
+        let ``Zip Code`` = ccd.RecordTarget.PatientRole.Addr.XElement
+            
+            
         let phoneNumbers = 
             ccd.RecordTarget.PatientRole.Telecoms
             |> Array.map (fun t -> cleanTel t.Value)
     
-        let birthTime = 
-            ccd.RecordTarget.PatientRole.Patient.BirthTime.Value 
-            |> dateFromInt
         //todo
         //let emergencyContacts = ccd.RecordTarget.PatientRole.?
     
@@ -42,20 +45,17 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let primaryInsuranceColumnIndex = findColumnIndex "Payer Name" primaryInsuranceTable
             primaryInsuranceRow.Tds.[primaryInsuranceColumnIndex].XElement.Value
 
-        let primaryInsurance = getInsurance 0
-        let secondaryInsurance = getInsurance 1
+        let ``Primary Insurance`` = getInsurance 0
+        let ``Secondary Insurance`` = getInsurance 1
     
-        //let xyz = primaryInsurance
-        //let secondaryInsurance = findTableRow 1
-        //let zz = getColumnIndex "Payer Order" primaryInsurance
-        //let yy = zz
-
         //
         //let maritalStatus =
 
         // todo
         //let smokingStatus =
-
+        // either in social history table or table is blank
+        // possible values [NonSmoker, ?]
+            
         // todo
         //let alcoholStatus =
 
@@ -84,18 +84,24 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         // Cannot parse (exception thrown)
         
         // Duplicates
-        Ok  { ssn = isNotNullOrEmpty ssn
-                   |> andThen exactlyFour
+        // todo, validate at least 1 phone number
+        Ok  { ``Last Four of Social Security Number`` = 
+                ``Last Four of Social Security Number``
+                |> isNotNullOrEmpty 
+                |> andAlso (exactly 4)
+            ; ``8 digit Date of Birth`` =
+                ``8 digit Date of Birth``
+                |> dateFromString 
             ; ``Medical Record Number`` = ``Medical Record Number``
-            ; streetAddressLine = streetAddressLine
-            ; cityLine = cityLine
-            ; stateLine = stateLine
-            ; postalCodeLine = postalCodeLine
-            ; country = country
-            ; phoneNumbers = phoneNumbers
-            ; birthTime = birthTime
-            ; primaryInsurance = primaryInsurance
-            ; secondaryInsurance = secondaryInsurance
+            ; ``Address`` = ``Address``
+            ; ``City`` = ``City``
+            ; ``State`` = ``State``
+            ; ``Zip Code`` = 
+                ``Zip Code``
+                |> getElementValueByTag "postalCode"
+                |> andAlso (between 5 9)
+            ; ``Primary Insurance`` = ``Primary Insurance``
+            ; ``Secondary Insurance`` = ``Secondary Insurance``
             }
     with ex ->
         Err ex.Message

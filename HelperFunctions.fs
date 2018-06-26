@@ -1,5 +1,6 @@
 ﻿module HelperFunctions
     open Types
+    open Validation
 
     let getCCd (path:string) : CCD.ClinicalDocument = 
         CCD.Load(path)
@@ -19,9 +20,11 @@
         |> Array.head
     let cleanTel(str:string) =
         str.Replace("tel: ", "")
-    
-    //todo, date int to SQL UTC date
-    let dateFromInt(intDate:int) =
-        intDate
-    // end todo
- 
+
+    let getElementValueByTag (name:string) (element:System.Xml.Linq.XElement) : Result<string,string> =
+        let maybeElement = 
+            element.Elements()
+            |> Seq.tryFind(fun t -> t.Name.LocalName = name)
+        match maybeElement with
+        | Some element -> Ok element.Value
+        | None -> Err "No Element found"

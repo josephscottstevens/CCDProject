@@ -13,35 +13,33 @@ module Types
     // end todo
 
     // 21 required fields - 2 optional
+    // Question: Always the home address\city\state\zip?
     type CCDRecord = 
-        { ssn : Result<string,string>
-        //; dob : Date
-        ; streetAddressLine : string
-        ; cityLine : string
-        ; stateLine : string
-        ; postalCodeLine : int
-        ; country : string
+        { ``Last Four of Social Security Number`` : Result<string,string>                   // [Enrollment].[SSNNumber]
+        ; ``8 digit Date of Birth`` : Result<System.DateTime,string>          // [Enrollment].[DoB]
+        ; ``Address`` : string                              // [Enrollment].[HomeAddress]
+        ; ``City`` : string                                 // [Enrollment].[HomeCity]
+        ; ``State`` : string                                // [Enrollment].[HomeState]
+        ; ``Zip Code`` : Result<string, string>                              // [Enrollment].[HomeZip]
         //; Contact Preferences (from discussion with patient)?
-        ; ``Medical Record Number`` : string
-        ; phoneNumbers : string array // currently wrong
-        //maritalStatus : string
-        //smokingStatus : string
-        //alcoholStatus : string
-        //encounterNotes : string
-        //; homePhone : string option
-        //; workPhone : string option
-        //; cellPhone : string option
-                    // at least 1?
+        ; ``Medical Record Number`` : string                // [Enrollment].[MedicalRecordNumber]
+        //; homePhone : string option                       // [Enrollment].
+        //; workPhone : string option                       // [Enrollment].
+        //; cellPhone : string option                       // [Enrollment].
+        //maritalStatus : string                            // [Enrollment].
+        //smokingStatus : string                            // [Enrollment].
+        //alcoholStatus : string                            // [Enrollment].
+        //encounterNotes : string                           // [Enrollment].
+        
 
-        ; birthTime : int
-        ; primaryInsurance : string
-        ; secondaryInsurance : string
+        ; ``Primary Insurance`` : string
+        ; ``Secondary Insurance`` : string
         //; ``Diagnoses & Active Problem List`` : ?
         //; ``Active Medications`` : ?
         //; ``Past Medical History`` : ?
         //; ``Immunizations/Screenings`` : ?
-        //; Allergies : ?
-        //; Vitals : ?
+        //; ``Allergies`` : ?
+        //; ``Vitals`` : ?
         //; ``Encounter Notes`` : ?
         //; ``Faxed Consent`` : ?
         }
