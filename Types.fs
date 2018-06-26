@@ -42,4 +42,7 @@ module Types
         //; ``Vitals`` : ?
         //; ``Encounter Notes`` : ?
         //; ``Faxed Consent`` : ?
+        ; ``Gender`` : string option
+        ; ``Preferred Language``:string option
+          //; ``Faxed Consent`` : ?
         }
