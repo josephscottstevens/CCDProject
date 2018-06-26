@@ -1,8 +1,10 @@
 ﻿open FSharp.Data.Sql
 open System
 open Types
+open HelperFunctions
+open Validation
 
-let findCCD (path:string) : CCDResult =
+let findCCD (path:string) : Result<CCDRecord, string> =
     try
         let ccd : CCD.ClinicalDocument = getCCd path
         let findTable = findTableWithCCd ccd
@@ -82,26 +84,27 @@ let findCCD (path:string) : CCDResult =
         // Cannot parse (exception thrown)
         
         // Duplicates
-        Success { ssn = ssn
-                ; ``Medical Record Number`` = ``Medical Record Number``
-                ; streetAddressLine = streetAddressLine
-                ; cityLine = cityLine
-                ; stateLine = stateLine
-                ; postalCodeLine = postalCodeLine
-                ; country = country
-                ; phoneNumbers = phoneNumbers
-                ; birthTime = birthTime
-                ; primaryInsurance = primaryInsurance
-                ; secondaryInsurance = secondaryInsurance
-                }
+        Ok  { ssn = isNotNullOrEmpty ssn
+                   |> andThen exactlyFour
+            ; ``Medical Record Number`` = ``Medical Record Number``
+            ; streetAddressLine = streetAddressLine
+            ; cityLine = cityLine
+            ; stateLine = stateLine
+            ; postalCodeLine = postalCodeLine
+            ; country = country
+            ; phoneNumbers = phoneNumbers
+            ; birthTime = birthTime
+            ; primaryInsurance = primaryInsurance
+            ; secondaryInsurance = secondaryInsurance
+            }
     with ex ->
-        Error ex.Message
+        Err ex.Message
 
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
     
-    let ccds : CCDResult array =
+    let ccds : Result<CCDRecord, string> array =
         System.IO.Directory.GetFiles("R:\IT\CCDS")
         |> Array.filter (fun t -> t <> sampleProvider)
         |> Array.map (fun t -> findCCD t)
@@ -109,8 +112,8 @@ let main _ =
     ccds 
     |> Array.map (fun t -> 
                     match t with 
-                    | Success ccd -> printfn "Success - %s" (string ccd)
-                    | Error errStr -> printfn "Error - %s" errStr
+                    | Ok ccd -> printfn "Success - %s" (string ccd)
+                    | Err errStr -> printfn "Error - %s" errStr
         )
     |> ignore
     0
