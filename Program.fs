@@ -1,85 +1,19 @@
-﻿open System.Xml
-open System.Xml.XPath
-open System.Linq
-open FSharp.Charting
-open FSharp.Data.Sql
-open FSharp.Data
+﻿open FSharp.Data.Sql
 open System
-
-//let [<Literal>] ConnectionString = "Data Source=localhost;Initial Catalog=NavcareDB_interface2;Integrated Security=True;"
-//type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>
-
-let [<Literal>] sampleProvider = """R:\IT\CCDS\sampleData.xml"""
-type CCD = XmlProvider<sampleProvider>
-
-//todo, map use property
-// mc = mobile
-// hp = home phone
-// wp = work phone
-
-let cleanTel(str:string) =
-    str.Replace("tel: ", "")
-// preferred?
-// end todo
-
-
-//todo, date int to SQL UTC date
-let dateFromInt(intDate:int) =
-    intDate
-// end todo
-
-// 21 required fields - 2 optional
-type CCDRecord = 
-    { ssn : string
-    ; mrn : string
-    ; streetAddressLine : string
-    ; cityLine : string
-    ; stateLine : string
-    ; postalCodeLine : int
-    ; country : string
-    ; phoneNumbers : string array // currently wrong
-    //maritalStatus : string
-    //smokingStatus : string
-    //alcoholStatus : string
-    //encounterNotes : string
-    //; homePhone : string option
-    //; workPhone : string option
-    //; cellPhone : string option
-                // at least 1?
-
-    ; birthTime : int
-    ; primaryInsurance : string
-    ; secondaryInsurance : string
-    }
-
-type CCDResult =
-    | Success of CCDRecord
-    | Error of string
+open Types
 
 let findCCD (path:string) : CCDResult =
     try
-        let ccd = CCD.Load(path)
-        // START HELPER FUNCTIONS
-        let findColumnIndex (columnTh:string) (table:CCD.Table) : int =
-            table.Thead.Tr.Ths |> Array.findIndex (fun t -> t = columnTh)
-
-        let findTable (sectionTitle:string) : CCD.Table =
-            ccd.Component.StructuredBody.Components
-            |> Array.filter (fun t -> t.Section.Title = sectionTitle)
-            |> Array.map (fun t -> t.Section.Text.Table)
-            |> Array.head
-
-        let findRowByIndex (table:CCD.Table) (amt:int) : CCD.Tr2 =
-            table.Tbody.Trs |> Array.skip amt |> Array.head
-        // END HELPER FUNCTIONS
-
+        let ccd : CCD.ClinicalDocument = getCCd path
+        let findTable = findTableWithCCd ccd
+        
         let ssn = 
             ccd.RecordTarget.PatientRole.Ids 
             |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
             |> Array.map (fun t -> t.Extension)
             |> Array.head
 
-        let mrn = 
+        let ``Medical Record Number`` = 
             ccd.RecordTarget.PatientRole.Ids 
             |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.19.5.99999.2") 
             |> Array.map (fun t -> t.Extension)
@@ -146,20 +80,20 @@ let findCCD (path:string) : CCDResult =
         // FINAL - three groups
         // Can Process
         // Cannot parse (exception thrown)
-
+        
         // Duplicates
         Success { ssn = ssn
-             ; mrn = mrn
-             ; streetAddressLine = streetAddressLine
-             ; cityLine = cityLine
-             ; stateLine = stateLine
-             ; postalCodeLine = postalCodeLine
-             ; country = country
-             ; phoneNumbers = phoneNumbers
-             ; birthTime = birthTime
-             ; primaryInsurance = primaryInsurance
-             ; secondaryInsurance = secondaryInsurance
-             }
+                ; ``Medical Record Number`` = ``Medical Record Number``
+                ; streetAddressLine = streetAddressLine
+                ; cityLine = cityLine
+                ; stateLine = stateLine
+                ; postalCodeLine = postalCodeLine
+                ; country = country
+                ; phoneNumbers = phoneNumbers
+                ; birthTime = birthTime
+                ; primaryInsurance = primaryInsurance
+                ; secondaryInsurance = secondaryInsurance
+                }
     with ex ->
         Error ex.Message
 
