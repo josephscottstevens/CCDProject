@@ -13,6 +13,10 @@ module Types
     // required: facilityid
     type CCDRecord = 
         { ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
+        ; ``First Name`` : string option                                    // [Enrollment].[FirstName]
+        ; ``Last Name`` : string option                                     // [Enrollment].[LastName]
+        ; ``Facility Name`` : string option                                 // [Enrollment].[FacilityID]
+        ; ``Middle Initial`` : string option                                // [Enrollment].
         ; ``8 digit Date of Birth`` : Result<System.DateTime,string>        // [Enrollment].[DoB]
         ; ``Address`` : string option                                       // [Enrollment].[HomeAddress]
         ; ``City`` : string option                                          // [Enrollment].[HomeCity]
@@ -40,6 +44,8 @@ module Types
         // Additional fields
         ; ``Gender`` : string option                                        // [Enrollment].[Gender]
         ; ``Preferred Language``: string option                             // [Enrollment].[PreferredLanguage]
-        ; ``Last Encounter Date``: string option 
-        ; ``Race``: string option  
+        ; ``Last Encounter Date``: string option                            // [Enrollment].
+        ; ``Race``: string option                                           //[Enrollment].[Ethnicity]
+        //; ``Race``: string option                                           //[Enrollment].[Ethnicity]
+
         }
