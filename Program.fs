@@ -138,10 +138,11 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                     |> Result.bind (between 5 9)
                 ; ``Primary Insurance`` = primaryInsurance
                 ; ``Secondary Insurance`` = secondaryInsurance
-
+                ; ``Last Encounter Date`` = lastEncounterDate
                 // Additional fields
                 ; ``Gender`` = Some gender
                 ; ``Preferred Language`` = Some preferredLanguage
+                ; ``Race`` = Some race
                 }
     with ex ->
         Error ex.Message
