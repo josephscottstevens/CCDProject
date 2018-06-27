@@ -4,7 +4,7 @@ module Types
     open Validation
     
     let [<Literal>] sampleProvider = """R:\IT\CCDS\sampleData.xml"""
-    type CCD = FSharp.Data.XmlProvider<sampleProvider>
+    type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>
     //todo, map use property
     // mc = mobile
     // hp = home phone
@@ -22,9 +22,9 @@ module Types
     type CCDRecord = 
         { ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
         ; ``8 digit Date of Birth`` : Result<System.DateTime,string>        // [Enrollment].[DoB]
-        ; ``Address`` : string                                              // [Enrollment].[HomeAddress]
-        ; ``City`` : string                                                 // [Enrollment].[HomeCity]
-        ; ``State`` : string                                                // [Enrollment].[HomeState]
+        ; ``Address`` : string option                                       // [Enrollment].[HomeAddress]
+        ; ``City`` : string option                                          // [Enrollment].[HomeCity]
+        ; ``State`` : string option                                         // [Enrollment].[HomeState]
         ; ``Zip Code`` : Result<string, string>                             // [Enrollment].[HomeZip]
         ; ``Medical Record Number`` : string                                // [Enrollment].[MedicalRecordNumber]
         ; ``Home Phone`` : string option                                    // [Enrollment].[HomePhone]

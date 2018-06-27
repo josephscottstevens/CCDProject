@@ -2,8 +2,13 @@
     open Types
     open Validation
 
-    let getCCd (path:string) : CCD.ClinicalDocument = 
-        CCD.Load(path)
+    let getCCd (path:string) : Result<CCD.ClinicalDocument,string> = 
+        if System.IO.File.Exists(path) = false then
+            Error (sprintf "No file found at: %s" path)
+        else if System.IO.FileInfo(path).Length <= 10L then
+            Error (sprintf "File empty at: %s" path)
+        else 
+            Ok (CCD.Load(path))
 
     let findColumnIndex (columnTh:string) (table:CCD.Table) : Result<int, string> =
         table.Thead.Tr.Ths 

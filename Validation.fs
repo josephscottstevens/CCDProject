@@ -1,15 +1,14 @@
 ﻿module Validation
-    //let andThen (callback : 'a -> Result<'Ok,'Error>) (result : Result<'Ok,'Error>) : Result<'Ok,'Error> =
-    let map func ra =
-        match ra with
-        | Ok a -> Ok (func a)
-        | Error e -> Error e
-    
-    let andThen callback result =
+    let toOption result = 
         match result with 
-            | Ok value -> callback value
-            | Error msg -> Error msg
+        | Ok t -> Some t
+        | Error _ -> None
 
+    let fromOption err result =
+        match result with
+        | Some t -> Ok t
+        | None -> Error err
+        
     let isNotNullOrEmpty (input:string) : Result<string,string> =
         if System.String.IsNullOrWhiteSpace input then
             Error "SSN cannot be null or empty"
@@ -39,14 +38,9 @@
         else 
             Error "String is not all digits"
 
-    let fromOption err maybe =
-        match maybe with
-        | Some t -> Ok t
-        | None -> Error err
-
     let dateFromString(str:string) : Result<System.DateTime,string> =
         isNotNullOrEmpty str
-        |> andThen (exactly 8)
+        |> Result.bind (exactly 8)
         |> (fun result -> 
             match result with 
             | Ok str ->
