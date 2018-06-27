@@ -35,8 +35,8 @@ module Types
         //smokingStatus : string                                            // [Enrollment].
         //-?-alcoholStatus : string                                         // [Enrollment].
 
-        ; ``Primary Insurance`` : string                                    // [Enrollment].[PrimaryInsurance]
-        ; ``Secondary Insurance`` : string                                  // [Enrollment].[SecondaryInsurance]
+        ; ``Primary Insurance`` : Result<string,string>                     // [Enrollment].[PrimaryInsurance]
+        ; ``Secondary Insurance`` : Result<string,string>                   // [Enrollment].[SecondaryInsurance]
         //; ``Diagnoses & Active Problem List`` : ?
         //; ``Active Medications`` : ? active medications
         //; ``Past Medical History`` : ?

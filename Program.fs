@@ -44,17 +44,24 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let cellPhone = phoneNumber "MC"
         let preferredPhoneTypeId = genderStringToGenderTypeId ccd.RecordTarget.PatientRole.Addr.Use 
             
-            
-    
-    
         //todo
         //let emergencyContacts = ccd.RecordTarget.PatientRole.?
     
-        let getInsurance (rowIndex:int) : string =
-            let primaryInsuranceTable = findTable "INSURANCE PROVIDERS"
-            let primaryInsuranceRow = findRowByIndex primaryInsuranceTable rowIndex
-            let primaryInsuranceColumnIndex = findColumnIndex "Payer Name" primaryInsuranceTable
-            primaryInsuranceRow.Tds.[primaryInsuranceColumnIndex].XElement.Value
+        let getInsurance (rowIndex:int) : Result<string,string> =
+            let tableResult = findTable "INSURANCE PROVIDERS"
+            let rowResult : Result<CCD.Tr2,string> =
+                tableResult
+                |> andThen (findRowByIndex rowIndex)
+            let indexResult : Result<int,string> =
+                tableResult
+                |> andThen (findColumnIndex "Payer Name")
+            match (rowResult, indexResult) with
+            | (Ok row, Ok index) ->
+                Ok row.Tds.[index].XElement.Value
+            | (Error t, _) ->
+                Error t
+            | (_, Error t) ->
+                Error t
 
         let primaryInsurance = getInsurance 0
         let secondaryInsurance = getInsurance 1
@@ -66,11 +73,11 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         //let smokingStatus =
         // either in social history table or table is blank
         // possible values [NonSmoker, ?]
-        let getSmokingStatus (rowIndex:int) : string =
-            let table = findTable "SOCIAL HISTORY"
-            let row = findRowByIndex table rowIndex
-            let columnIndex = findColumnIndex "Payer Name" table
-            row.Tds.[columnIndex].XElement.Value
+        //let getSmokingStatus (rowIndex:int) : string =
+        //    let table = findTable "SOCIAL HISTORY"
+        //    let row = findRowByIndex table rowIndex
+        //    let columnIndex = findColumnIndex "Payer Name" table
+        //    row.Tds.[columnIndex].XElement.Value
             
         // todo
         //let alcoholStatus =
@@ -106,8 +113,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         Ok  { ``Last Four of Social Security Number`` = 
                 ssn
                 |> isNotNullOrEmpty 
-                |> andAlso (exactly 11)
-                |> andAlso (takeLast 4)
+                |> andThen (exactly 11)
+                |> andThen (takeLast 4)
             ; ``8 digit Date of Birth`` =
                 dob
                 |> dateFromString 
@@ -122,7 +129,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             ; ``Zip Code`` = 
                 zipCodeElement
                 |> getElementValueByTag "postalCode"
-                |> andAlso (between 5 9)
+                |> andThen (between 5 9)
             ; ``Primary Insurance`` = primaryInsurance
             ; ``Secondary Insurance`` = secondaryInsurance
 
@@ -131,15 +138,20 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             ; ``Preferred Language`` = Some preferredLanguage
             }
     with ex ->
-        Err ex.Message
+        Error ex.Message
 
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
-    let ccds : Result<CCDRecord, string> array =
-        System.IO.Directory.GetFiles("R:\IT\CCDS")
-        |> Array.filter (fun t -> t <> sampleProvider)
-        |> Array.map (fun t -> findCCD t)
+    
+    let xyz = findCCD """R:\IT\CCDS\JAMES_COOLEY_06212018104058_COMPLETE_CCDA.xml"""
+    //let xyz = findCCD """R:\IT\CCDS\MARGARET_(PEGGY)_P_WILSON_06252018111540_COMPLETE_CCDA.xml"""
+    let z = xyz
+
+    //let ccds : Result<CCDRecord, string> array =
+    //    System.IO.Directory.GetFiles("R:\IT\CCDS")
+    //    |> Array.filter (fun t -> t <> sampleProvider)
+    //    |> Array.map (fun t -> findCCD t)
 
     // todo - filter duplicates
     // todo - check for existing enrollment
@@ -147,11 +159,12 @@ let main _ =
     // •	Medicare as primary insurance
     // •	At least 2 qualifying diagnoses
     //      This auto qualifies them
-    ccds 
-    |> Array.map (fun t -> 
-                    match t with 
-                    | Ok ccd -> printfn "Success - %s" (string ccd)
-                    | Err errStr -> printfn "Error - %s" errStr
-        )
-    |> ignore
+    
+    //ccds 
+    //|> Array.map (fun t -> 
+    //                match t with 
+    //                | Ok ccd -> printfn "Success - %s" (string ccd)
+    //                | Error errStr -> printfn "Error - %s" errStr
+    //    )
+    //|> ignore
     0

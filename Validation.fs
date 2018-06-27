@@ -1,16 +1,18 @@
 ﻿module Validation
-    type Result<'Ok,'Err> = 
-        | Ok of 'Ok
-        | Err of 'Err
+    //let andThen (callback : 'a -> Result<'Ok,'Error>) (result : Result<'Ok,'Error>) : Result<'Ok,'Error> =
+    let map func ra =
+        match ra with
+        | Ok a -> Ok (func a)
+        | Error e -> Error e
     
-    let andAlso (callback : 'Ok -> Result<'Ok,'Err>) (result : Result<'Ok,'Err>) : Result<'Ok,'Err> =
+    let andThen callback result =
         match result with 
             | Ok value -> callback value
-            | Err msg -> Err msg
+            | Error msg -> Error msg
 
     let isNotNullOrEmpty (input:string) : Result<string,string> =
         if System.String.IsNullOrWhiteSpace input then
-            Err "SSN cannot be null or empty"
+            Error "SSN cannot be null or empty"
         else
             Ok input
     // todo validate
@@ -19,15 +21,15 @@
 
     let exactly (amount:int) (str:string) : Result<string,string> = 
         if str.Length <> amount then 
-            Err (sprintf "SSN mus best exactly %d characters" amount)
+            Error (sprintf "SSN mus best exactly %d characters" amount)
         else
             Ok str
 
     let between (minimum:int) (maximum:int) (str:string) : Result<string,string> =
         if str.Length < minimum then
-            Err "string is too small"
+            Error "string is too small"
         else if str.Length > maximum then
-            Err "string is too long"
+            Error "string is too long"
         else
             Ok str
 
@@ -35,11 +37,16 @@
         if Seq.forall System.Char.IsDigit str then 
             Ok str
         else 
-            Err "String is not all digits"
+            Error "String is not all digits"
+
+    let fromOption err maybe =
+        match maybe with
+        | Some t -> Ok t
+        | None -> Error err
 
     let dateFromString(str:string) : Result<System.DateTime,string> =
         isNotNullOrEmpty str
-        |> andAlso (exactly 8)
+        |> andThen (exactly 8)
         |> (fun result -> 
             match result with 
             | Ok str ->
@@ -47,8 +54,8 @@
                 let monthPart = int (str.Substring(4, 2))
                 let dayPart = int (str.Substring(6, 2))
                 Ok (System.DateTime(yearPart, monthPart, dayPart, 0, 0, 0, System.DateTimeKind.Utc))
-            | Err t ->
-                Err t
+            | Error t ->
+                Error t
         )
                 
             
