@@ -11,7 +11,6 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         | Ok ccd ->
             let findTable = findTableWithCCd ccd
         
-            //todo, validate 10 characters long, then take last 4
             let ssn = 
                 ccd.RecordTarget.PatientRole.Ids 
                 |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
@@ -115,7 +114,9 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             // todo, validate at least 1 phone number
             let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
             let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
-            let lastEncounterDate = ccd.DocumentationOf.ServiceEvent.EffectiveTime.High.Value 
+            let lastEncounterDate = 
+                ccd.DocumentationOf.ServiceEvent.EffectiveTime.High
+                |> Option.map (fun t -> t.Value)
             let race = 
                 ccd.RecordTarget.PatientRole.Patient.EthnicGroupCode
                 |> Option.map (fun t -> t.DisplayName)
@@ -169,11 +170,4 @@ let main _ =
     // •	At least 2 qualifying diagnoses
     //      This auto qualifies them
     
-    ccds 
-    |> Array.map (fun t -> 
-                    match t with 
-                    | Ok ccd -> printfn "Success - %s" (string ccd)
-                    | Error errStr -> printfn "Error - %s" errStr
-        )
-    |> ignore
     0

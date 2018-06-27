@@ -4,9 +4,12 @@
             Error "SSN cannot be null or empty"
         else
             Ok input
-    // todo validate
+
     let takeLast (amount:int) (str:string) : Result<string,string> = 
-        Ok (str.Substring(str.Length - amount))
+        if amount > str.Length then
+            Error "Error out of range"
+        else
+            Ok (str.Substring(str.Length - amount))
 
     let exactly (amount:int) (str:string) : Result<string,string> = 
         if str.Length <> amount then 

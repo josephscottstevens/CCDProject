@@ -1,17 +1,9 @@
 ﻿//let [<Literal>] ConnectionString = "Data Source=localhost;Initial Catalog=NavcareDB_interface2;Integrated Security=True;"
 //type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>
 module Types
-    open Validation
     
     let [<Literal>] sampleProvider = """R:\IT\CCDS\sampleData.xml"""
     type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>
-    //todo, map use property
-    // mc = mobile
-    // hp = home phone
-    // wp = work phone
-    // preferred?
-    // end todo
-
     // 21 required fields - 2 optional
     // Question: Always the home address\city\state\zip?
 
@@ -48,6 +40,6 @@ module Types
         // Additional fields
         ; ``Gender`` : string option                                        // [Enrollment].[Gender]
         ; ``Preferred Language``: string option                             // [Enrollment].[PreferredLanguage]
-        ; ``Last Encounter Date``: string  
+        ; ``Last Encounter Date``: string option 
         ; ``Race``: string option  
         }
