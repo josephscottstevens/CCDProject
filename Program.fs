@@ -61,6 +61,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             
             //todo
             //let emergencyContacts = ccd.RecordTarget.PatientRole.?
+                //maybe it is the proxy fields?
     
             let getInsurance (rowIndex:int) : Result<string,string> =
                 let tableResult = findTable "INSURANCE PROVIDERS"
@@ -95,24 +96,16 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             //let alcoholStatus =
 
             // todo
-            let encounters =
-                //ENCOUNTER DIAGNOSIS
-                []
-    
-            // todo
-            let problems =
-        
-                []
             //<title>PROBLEMS</title>
             //<title>MEDICATIONS</title>
             //<title>ENCOUNTER DIAGNOSIS</title>
+                //Encounter notes? this thing?
             //<title>PROCEDURES</title>
             //<title>IMMUNIZATIONS</title>
             //<title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
                 // put mk-ma if no allergies
             //<title>VITAL SIGNS</title>
 
-            //Encounter notes?
 
             // FINAL - three groups
             // Can Process
@@ -156,12 +149,6 @@ let findCCD (path:string) : Result<CCDRecord, string> =
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
-    // Test code, delete me
-    let test1 = findCCD """R:\IT\CCDS\JAMES_COOLEY_06212018104058_COMPLETE_CCDA.xml"""
-    let test2 = findCCD """R:\IT\CCDS\MARGARET_(PEGGY)_P_WILSON_06252018111540_COMPLETE_CCDA.xml"""
-    test1;test2;
-    // End Test code
-
     let ccds : Result<CCDRecord, string> array =
         System.IO.Directory.GetFiles("R:\IT\CCDS")
         |> Array.filter (fun t -> t <> sampleProvider)
