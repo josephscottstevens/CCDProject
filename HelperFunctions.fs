@@ -1,6 +1,5 @@
 ﻿module HelperFunctions
     open Types
-    open Validation
 
     let getCCd (path:string) : Result<CCD.ClinicalDocument,string> = 
         if System.IO.File.Exists(path) = false then
@@ -13,7 +12,7 @@
     let findColumnIndex (columnTh:string) (table:CCD.Table) : Result<int, string> =
         table.Thead.Tr.Ths 
         |> Array.tryFindIndex (fun t -> t = columnTh)
-        |> fromOption ""
+        |> Result.fromOption ""
 
     let findTableWithCCd (ccd:CCD.ClinicalDocument) (sectionTitle:string) =
         if Array.isEmpty ccd.Component.StructuredBody.Components then
@@ -23,7 +22,7 @@
             |> Array.filter (fun t -> t.Section.Title = sectionTitle)
             |> Array.map (fun t -> t.Section.Text.Table)
             |> Array.tryHead
-            |> fromOption ""
+            |> Result.fromOption ""
             
     let findRowByIndex (amt:int) (table:CCD.Table) =
         if Array.isEmpty table.Tbody.Trs then
@@ -32,7 +31,7 @@
             table.Tbody.Trs 
             |> Array.skip amt 
             |> Array.tryHead
-            |> fromOption "Error no value"
+            |> Result.fromOption "Error no value"
 
     let cleanTel(str:string) =
         str.Replace("tel: ", "")

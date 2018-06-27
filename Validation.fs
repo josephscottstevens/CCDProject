@@ -1,14 +1,4 @@
 ﻿module Validation
-    let toOption result = 
-        match result with 
-        | Ok t -> Some t
-        | Error _ -> None
-
-    let fromOption err result =
-        match result with
-        | Some t -> Ok t
-        | None -> Error err
-        
     let isNotNullOrEmpty (input:string) : Result<string,string> =
         if System.String.IsNullOrWhiteSpace input then
             Error "SSN cannot be null or empty"

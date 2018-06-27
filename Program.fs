@@ -17,7 +17,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
                 |> Array.map (fun t -> t.Extension)
                 |> Array.tryHead
-                |> fromOption "SSN not found"
+                |> Result.fromOption "SSN not found"
 
             let dob =
                 ccd.RecordTarget.PatientRole.Patient.BirthTime.XElement.Value
@@ -70,13 +70,9 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 let indexResult : Result<int,string> =
                     tableResult
                     |> Result.bind (findColumnIndex "Payer Name")
-                match (rowResult, indexResult) with
-                | (Ok row, Ok index) ->
-                    Ok row.Tds.[index].XElement.Value
-                | (Error t, _) ->
-                    Error t
-                | (_, Error t) ->
-                    Error t
+                let getVal (row:CCD.Tr2) (index:int) =
+                    row.Tds.[index].XElement.Value
+                Result.bind2 getVal rowResult indexResult
 
             let primaryInsurance = getInsurance 0
             let secondaryInsurance = getInsurance 1
@@ -84,16 +80,16 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             //
             //let maritalStatus =
 
-        // todo
-        //let smokingStatus =
-        // either in social history table or table is blank
-        
-        let getSmokingStatus (rowIndex:int) : string =
-            let table = findTable "SOCIAL HISTORY"
-            let row = findRowByIndex table rowIndex
-            let columnIndex = findColumnIndex "Payer Name" table
-            row.Tds.[columnIndex].XElement.Value
-        // possible values [NonSmoker, Smoker]
+            // todo
+            //let smokingStatus =
+            // either in social history table or table is blank
+
+            // possible values [NonSmoker, Smoker]
+            //let getSmokingStatus (rowIndex:int) : string =
+            //    let table = findTable "SOCIAL HISTORY"
+            //    let row = findRowByIndex table rowIndex
+            //    let columnIndex = findColumnIndex "Payer Name" table
+            //    row.Tds.[columnIndex].XElement.Value
             
             // todo
             //let alcoholStatus =
@@ -144,7 +140,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 ; ``State`` = state
                 ; ``Zip Code`` = 
                     zipCodeElement
-                    |> fromOption "zip code not found"
+                    |> Result.fromOption "zip code not found"
                     |> Result.bind (getElementValueByTag "postalCode")
                     |> Result.bind (between 5 9)
                 ; ``Primary Insurance`` = primaryInsurance
