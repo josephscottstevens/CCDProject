@@ -65,12 +65,13 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         // todo
         //let smokingStatus =
         // either in social history table or table is blank
-        // possible values [NonSmoker, ?]
+        
         let getSmokingStatus (rowIndex:int) : string =
             let table = findTable "SOCIAL HISTORY"
             let row = findRowByIndex table rowIndex
             let columnIndex = findColumnIndex "Payer Name" table
             row.Tds.[columnIndex].XElement.Value
+        // possible values [NonSmoker, Smoker]
             
         // todo
         //let alcoholStatus =
