@@ -54,7 +54,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         // todo
         //let smokingStatus =
         // either in social history table or table is blank
-        // possible values [NonSmoker, ?]
+        // possible values [NonSmoker, Smoker]
             
         // todo
         //let alcoholStatus =
