@@ -2,7 +2,7 @@
 //type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>
 module Types
     
-    let [<Literal>] sampleProvider = """R:\IT\CCDS\sampleData.xml"""
+    let [<Literal>] sampleProvider = "sampleData.xml"
     type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>
     // 21 required fields - 2 optional
     // Question: Always the home address\city\state\zip?

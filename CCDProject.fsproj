@@ -63,6 +63,9 @@
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
+    <Content Include="sampleData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Charting">

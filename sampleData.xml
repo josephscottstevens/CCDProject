@@ -1,0 +1,5693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sample xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc">
+	<ClinicalDocument>
+	  <realmCode code="US" />
+	  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+	  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+	  <templateId root="2.16.840.1.113883.10.20.22.1.2" />
+	  <id extension="ac8a7982-439b-4466-ac89-1ec47f73afd5" root="2.16.840.1.113883.19.5.99999.1" />
+	  <code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Summarization of Episode Note" />
+	  <title>Patient Health Summary</title>
+	  <effectiveTime value="201806140944-0500" />
+	  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" />
+	  <languageCode code="en-US" />
+	  <setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19" />
+	  <versionNumber value="1" />
+	  <recordTarget>
+		<patientRole>
+		  <id extension="6F4B33809D" root="2.16.840.1.113883.19.5.99999.2" />
+		  <id extension="428-17-5094" root="2.16.840.1.113883.4.1" />
+		  <addr use="HP">
+			<streetAddressLine>32 CR 351</streetAddressLine>
+			<city>HEIDELBERG</city>
+			<state>MS</state>
+			<postalCode>39439</postalCode>
+			<country>US</country>
+		  </addr>
+		  <telecom value="tel: 601-479-0213" use="MC" />
+		  <telecom value="tel: " use="WP" />
+		  <patient>
+			<name use="L">
+			  <given>MAXINE</given>
+			  <family>ABNEY</family>
+			</name>
+			<administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" displayName="Female" />
+			<birthTime value="19590102" />
+			<raceCode code="2054-5" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="Black or African American" />
+			<ethnicGroupCode code="2186-5" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="African-American" />
+			<languageCommunication>
+			  <languageCode code="eng" />
+			</languageCommunication>
+		  </patient>
+		</patientRole>
+	  </recordTarget>
+	  <author>
+		<time value="201806140944-0500" />
+		<assignedAuthor>
+		  <id extension="1518075720" root="2.16.840.1.113883.4.6" />
+		  <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC" displayName="Bay Springs After Hours" />
+		  <addr use="WP">
+			<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+			<city>BAY SPRINGS</city>
+			<state>MS</state>
+			<postalCode>39422</postalCode>
+			<country>US</country>
+		  </addr>
+		  <telecom value="tel: 601-764-2155" use="WP" />
+		  <assignedPerson>
+			<name>
+			  <given>nav</given>
+			  <family>care1</family>
+			</name>
+		  </assignedPerson>
+		</assignedAuthor>
+	  </author>
+	  <custodian>
+		<assignedCustodian>
+		  <representedCustodianOrganization>
+			<id extension="1518075720" root="2.16.840.1.113883.4.6" />
+			<name>Bay Springs After Hours</name>
+			<telecom value="tel: 601-764-2155" use="WP" />
+			<addr use="WP">
+			  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+			  <city>BAY SPRINGS</city>
+			  <state>MS</state>
+			  <postalCode>39422</postalCode>
+			  <country>US</country>
+			</addr>
+		  </representedCustodianOrganization>
+		</assignedCustodian>
+	  </custodian>
+	  <documentationOf>
+		<serviceEvent classCode="PCPR">
+		  <code code="422735006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Summary clinical document (record artifact)" />
+		  <effectiveTime>
+			<low value="200902051649-0600" />
+			<high value="201805271338-0500" />
+		  </effectiveTime>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1467778423" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Leanne</given>
+				  <family>Bynum</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Janie</given>
+				  <family>Steamwinder</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1144338369" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>A</given>
+				  <family>Lay</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Kim</given>
+				  <family>Stringer</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1902997778" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Ngozi</given>
+				  <family>Onwubiko</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Ashley</given>
+				  <family>Holmbeck</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1578019808" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Rebecca</given>
+				  <family>Little</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Dustie</given>
+				  <family>Chisholm</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1679681894" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Mark</given>
+				  <family>DeLoach</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>madison</given>
+				  <family>powell</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1487071908" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Mark</given>
+				  <family>Hill</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Nicole</given>
+				  <family>Black</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1316984230" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Lesa</given>
+				  <family>Waters</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>catlin</given>
+				  <family>gray</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1225129992" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Donna</given>
+				  <family>Baucum</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1700977675" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Alison</given>
+				  <family>Holder</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Amber</given>
+				  <family>Grayson</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Physician">
+			  <originalText>Primary Care Physician</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id extension="1265534648" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Marlana</given>
+				  <family>Hedgepeth</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		  <performer typeCode="PRF">
+			<functionCode code="NASST" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Nurse Assistant">
+			  <originalText>Nurse Assistant</originalText>
+			</functionCode>
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Sandra</given>
+				  <family>Harper</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </performer>
+		</serviceEvent>
+	  </documentationOf>
+	  <componentOf>
+		<encompassingEncounter>
+		  <id extension="4035499b-7ec8-4329-807b-3ef4383af562" root="2.16.840.1.113883.19" />
+		  <effectiveTime>
+			<low value="200902051649-0600" />
+			<high value="201805271338-0500" />
+		  </effectiveTime>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1467778423" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Leanne</given>
+				  <family>Bynum</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Janie</given>
+				  <family>Steamwinder</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1144338369" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>A</given>
+				  <family>Lay</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Kim</given>
+				  <family>Stringer</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1902997778" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Ngozi</given>
+				  <family>Onwubiko</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Ashley</given>
+				  <family>Holmbeck</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1578019808" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Rebecca</given>
+				  <family>Little</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Dustie</given>
+				  <family>Chisholm</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1679681894" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Mark</given>
+				  <family>DeLoach</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>madison</given>
+				  <family>powell</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1487071908" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Mark</given>
+				  <family>Hill</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Nicole</given>
+				  <family>Black</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1316984230" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Lesa</given>
+				  <family>Waters</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>catlin</given>
+				  <family>gray</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1225129992" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Donna</given>
+				  <family>Baucum</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1700977675" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Alison</given>
+				  <family>Holder</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Amber</given>
+				  <family>Grayson</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1265534648" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Marlana</given>
+				  <family>Hedgepeth</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Sandra</given>
+				  <family>Harper</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <location>
+			<healthCareFacility>
+			  <location>
+				<name>Bay Springs After Hours</name>
+				<addr>
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </location>
+			</healthCareFacility>
+		  </location>
+		</encompassingEncounter>
+	  </componentOf>
+	  <component>
+		<structuredBody>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.6.1" />
+			  <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" />
+			  <title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.30" />
+				  <id root="a52be9a6-7e4c-4899-9dca-e4fa3b8d8163" />
+				  <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+					<high nullFlavor="UNK" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN" negationInd="true">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.7" />
+					  <id root="d3574edb-6fcf-4054-86e4-4f615f8c80fd" />
+					  <code nullFlavor="NI" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low nullFlavor="UNK" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="NI" />
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.22" />
+			  <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of encounters" />
+			  <title>ENCOUNTER DIAGNOSIS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Description</th>
+					  <th>Date</th>
+					  <th>Performer</th>
+					  <th>Status</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="problem_ed103399-e3ae-48eb-8ee6-c2ad202fbbb1">L50.1</content>
+					  </td>
+					  <td>
+						<content>ICD-10</content>
+					  </td>
+					  <td>
+						<content>L50.1 - Idiopathic urticaria</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					  <td>
+						<content>Leanne T Bynum, Bay Springs After Hours, 27 SOUTH 6TH STREET, BAY SPRINGS, MS  39422, ph. 601-764-2155</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<encounter classCode="ENC" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.49" />
+				  <id root="ec1eba3b-d05c-4426-9940-d6ddfc88151b" />
+				  <code code="99213" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" displayName="Expanded Problem Focused Visit">
+					<originalText>itchy rash</originalText>
+					<translation code="AMB" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActEncounterCode" displayName="Ambulatory" />
+				  </code>
+				  <effectiveTime>
+					<low value="201805271305-0500" />
+					<high value="201805271338-0500" />
+				  </effectiveTime>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1467778423" />
+					  <code code="270423004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Leanne T Bynum" />
+					</assignedEntity>
+				  </performer>
+				  <participant typeCode="LOC">
+					<participantRole classCode="SDLOC">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.32" />
+					  <code code="1141-1" codeSystem="2.16.840.1.113883.6.259" codeSystemName="HealthcareServiceLocation" displayName="Provider's office" />
+					  <addr>
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <playingEntity classCode="PLC">
+						<name>Bay Springs After Hours</name>
+					  </playingEntity>
+					</participantRole>
+				  </participant>
+				  <entryRelationship typeCode="SPRT">
+					<act classCode="ACT" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.80" />
+					  <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+					  <entryRelationship typeCode="SUBJ">
+						<observation classCode="OBS" moodCode="EVN" negationInd="false">
+						  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+						  <id root="cfebcb54-25ce-490f-b3c7-8986e9380157" />
+						  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Diagnosis" />
+						  <text>
+							<reference value="#problem_ed103399-e3ae-48eb-8ee6-c2ad202fbbb1" />
+						  </text>
+						  <statusCode code="completed" />
+						  <effectiveTime>
+							<low value="20180527" />
+						  </effectiveTime>
+						  <value xsi:type="CD" nullFlavor="OTH">
+							<translation code="L50.1" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="L50.1 - Idiopathic urticaria" />
+						  </value>
+						  <entryRelationship typeCode="SUBJ" inversionInd="true">
+							<observation classCode="OBS" moodCode="EVN">
+							  <templateId root="2.16.840.1.113883.10.20.22.4.31" />
+							  <code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+							  <statusCode code="completed" />
+							  <value xsi:type="PQ" value="59" unit="a" />
+							</observation>
+						  </entryRelationship>
+						  <entryRelationship typeCode="REFR">
+							<observation classCode="OBS" moodCode="EVN">
+							  <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+							  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+							  <statusCode code="completed" />
+							  <value xsi:type="CD" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+							</observation>
+						  </entryRelationship>
+						</observation>
+					  </entryRelationship>
+					</act>
+				  </entryRelationship>
+				</encounter>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.14" />
+			  <code code="47420-5" codeSystem="2.16.840.1.113883.6.1" />
+			  <title>COGNITIVE/FUNCTIONAL STATUS</title>
+			  <text>No records</text>
+			  <entry>
+				<observation classCode="OBS" moodCode="EVN" negationInd="true">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.68" />
+				  <id root="8db06c4d-b2c1-4278-bd1b-41d30b393331" />
+				  <code nullFlavor="NI" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" nullFlavor="NI" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+				  <methodCode nullFlavor="UNK" />
+				</observation>
+			  </entry>
+			  <entry>
+				<observation classCode="OBS" moodCode="EVN" negationInd="true">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.73" />
+				  <id root="712c52cb-4a98-460c-b185-54d409b86402" />
+				  <code nullFlavor="NI" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" nullFlavor="NI" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+				  <methodCode nullFlavor="UNK" />
+				</observation>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.2.1" />
+			  <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of immunizations" />
+			  <title>IMMUNIZATIONS</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="true">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.52" />
+				  <id root="de3d8c1f-9a1a-4038-8f47-79f40a8d59c2" />
+				  <text>NONE</text>
+				  <statusCode code="completed" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.54" />
+					  <id root="7b56dc1c-cdd7-405b-bfa7-bbb4e74feb62" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>NONE</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				</substanceAdministration>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.1.1" />
+			  <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF MEDICATION USE" />
+			  <title>MEDICATIONS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Name</th>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Strength</th>
+					  <th>Directions</th>
+					  <th>Start Date</th>
+					  <th>Status</th>
+					  <th>Prescriber</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="medication_39e0ef78-479f-4a95-8691-7123c0384bc0">potassium chloride</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>10 mEq</content>
+					  </td>
+					  <td>
+						<content>one po daily with lasix</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_56eec4a0-a0c9-4c5e-8583-0087917f7158">ProAir HFA</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>90 mcg/actuation</content>
+					  </td>
+					  <td>
+						<content>one puff qid prn wheezing</content>
+					  </td>
+					  <td>
+						<content>2/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Leanne T Bynum</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_ebbae831-8be9-4673-bb84-063074a429e1">lisinopril-hydrochlorothiazide</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>20-25 mg</content>
+					  </td>
+					  <td>
+						<content>1 tablet daily</content>
+					  </td>
+					  <td>
+						<content>5/14/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Dr. A Keith Lay Jr</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_906a7047-608c-404c-942e-59f0d0bb32a7">omeprazole</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>20 mg</content>
+					  </td>
+					  <td>
+						<content>one po daily</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_6702e35b-095e-43e6-93f4-4c8523c4d306">Ditropan XL</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>10 mg</content>
+					  </td>
+					  <td>
+						<content>1 tablet daily</content>
+					  </td>
+					  <td>
+						<content>5/14/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Dr. A Keith Lay Jr</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_f09525aa-6192-42d4-ab40-c1a9c603a3e6">cholecalciferol (vitamin D3)</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>50,000 unit</content>
+					  </td>
+					  <td>
+						<content>one pill every week</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_c291b252-d093-412e-9159-2ff7f77d4742">Mobic</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>15 mg</content>
+					  </td>
+					  <td>
+						<content>1 po qd prn</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_9884dd03-51e4-45e4-a561-efaeef8865d9">Lasix</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>40 mg</content>
+					  </td>
+					  <td>
+						<content>1 po qd</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_48de30a3-df40-452d-ae47-3a0a5006f9a8">Zyrtec</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>10 mg</content>
+					  </td>
+					  <td>
+						<content>two tablets in the morning and two tablets at night</content>
+					  </td>
+					  <td>
+						<content>5/14/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Dr. A Keith Lay Jr</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_c9dbdc8b-afc1-4dda-bed1-2625a69131a4">doxepin</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>10 mg</content>
+					  </td>
+					  <td>
+						<content>1 to 4 capsules po at night</content>
+					  </td>
+					  <td>
+						<content>5/14/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Kim  Stringer</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_cf658b76-0aed-431c-b549-ac5dcb7f9965">Adult Low Dose Aspirin</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>81 mg</content>
+					  </td>
+					  <td>
+						<content>one tablet daily</content>
+					  </td>
+					  <td>
+						<content>9/11/2016</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Janie  Steamwinder lpn</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_c3f2197d-f991-4ab3-aebd-010797a773bd">hydroxyzine HCl</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>25 mg</content>
+					  </td>
+					  <td>
+						<content>1 po tid prn</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_8fc591af-a4e5-4874-9310-337e8cf21691">albuterol sulfate</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>1.25 mg/3</content>
+					  </td>
+					  <td>
+						<content>1 neb every 4 to 6 hours as needed</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_f556dcfc-38fa-4600-a8db-bfa5f9fc0bfe">pravastatin</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>80 mg</content>
+					  </td>
+					  <td>
+						<content>one po daily</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_f53e031a-4807-46da-a27a-456dafe99c20">Mobic</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>15 mg</content>
+					  </td>
+					  <td>
+						<content>one po daily</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Leanne T Bynum</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_7c18846e-cb93-4c42-b35c-9e9b0a29dced">Singulair</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>10 mg</content>
+					  </td>
+					  <td>
+						<content>1 po qd</content>
+					  </td>
+					  <td>
+						<content>1/22/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_7419c83e-bbab-4d3a-a6d1-63dc8825f690">Anaprox DS</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>550 mg</content>
+					  </td>
+					  <td>
+						<content>1 po bid for knee pain</content>
+					  </td>
+					  <td>
+						<content>5/14/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Dr. A Keith Lay Jr</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="db98aba6-6b1a-4336-a5db-07096ea0da61" />
+				  <text>
+					<reference value="#medication_39e0ef78-479f-4a95-8691-7123c0384bc0" />one po daily with lasix</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high value="04222018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="10" unit="mEq" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="7652c2d3-abd4-4d10-8c30-3563a5a9f116" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>potassium chloride</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="19756135-327e-40ab-85f1-073b81f3f93c" />
+				  <text>
+					<reference value="#medication_56eec4a0-a0c9-4c5e-8583-0087917f7158" />one puff qid prn wheezing</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="02222018" />
+					<high value="08212018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38216" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="RESPIRATORY (INHALATION)" />
+				  <doseQuantity value="90" unit="mcg/actuation" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="3003eb4f-ad42-4d47-8c34-d04a8b17c3c2" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>ProAir HFA</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1467778423" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Leanne</given>
+						  <family>Bynum</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="325637ae-cb8d-496a-a95e-0cd1e6a37f4c" />
+				  <text>
+					<reference value="#medication_ebbae831-8be9-4673-bb84-063074a429e1" />1 tablet daily</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="05142018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity nullFlavor="UNK" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="895ee618-54dc-40a5-90a8-02d7596c0ff4" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>lisinopril-hydrochlorothiazide</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1144338369" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>A</given>
+						  <family>Lay</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="d59fc86e-f92c-4eec-9e1d-27407b304e10" />
+				  <text>
+					<reference value="#medication_906a7047-608c-404c-942e-59f0d0bb32a7" />one po daily</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high value="04222018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="20" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="deb26b10-9d2d-4d3d-ab54-6e9a59dba0dd" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>omeprazole</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="528439f0-a7be-4504-a0b7-345b226b611c" />
+				  <text>
+					<reference value="#medication_6702e35b-095e-43e6-93f4-4c8523c4d306" />1 tablet daily</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="05142018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="10" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="9e22172b-078a-47de-9a27-a2890c3ef2d6" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Ditropan XL</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1144338369" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>A</given>
+						  <family>Lay</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="aedc6211-d11a-4724-878f-3831feb44ff4" />
+				  <text>
+					<reference value="#medication_f09525aa-6192-42d4-ab40-c1a9c603a3e6" />one pill every week</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high value="07212018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="50000" unit="unit" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="9c8741fc-826f-4f61-a1b1-734ad1616249" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>cholecalciferol (vitamin D3)</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="d086659c-32d9-4873-8b08-3f0047cf1b39" />
+				  <text>
+					<reference value="#medication_c291b252-d093-412e-9159-2ff7f77d4742" />1 po qd prn</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high value="04222018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="15" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="845795a6-117d-4632-b07b-52b33b832ca3" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Mobic</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="5f49aa6f-b120-400d-8dbe-449c313a3903" />
+				  <text>
+					<reference value="#medication_9884dd03-51e4-45e4-a561-efaeef8865d9" />1 po qd</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="40" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="310bc323-835f-48b7-a344-8437572f4dd3" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Lasix</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="6c742a96-aaa6-4926-ba0a-819097b8101f" />
+				  <text>
+					<reference value="#medication_48de30a3-df40-452d-ae47-3a0a5006f9a8" />two tablets in the morning and two tablets at night</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="05142018" />
+					<high value="06132018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="10" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="1131d489-f4d8-4168-9688-2d92331d47a6" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Zyrtec</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1144338369" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>A</given>
+						  <family>Lay</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="0e5cfe54-b0ea-412f-94f4-8391cfcf6409" />
+				  <text>
+					<reference value="#medication_c9dbdc8b-afc1-4dda-bed1-2625a69131a4" />1 to 4 capsules po at night</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="05142018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="10" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="bfec3b0a-009a-496b-adaf-ebf6d7f458d0" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>doxepin</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id nullFlavor="NI" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Kim</given>
+						  <family>Stringer</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="52ca7470-5d40-430b-b547-89477ee60a1c" />
+				  <text>
+					<reference value="#medication_cf658b76-0aed-431c-b549-ac5dcb7f9965" />one tablet daily</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="09112016" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="81" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="2d879fe8-091b-4f9d-9994-dee3c89cda9a" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Adult Low Dose Aspirin</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id nullFlavor="NI" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Janie</given>
+						  <family>Steamwinder</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="ed7604cf-4b1a-4e7d-a4f3-95f6fddb20a8" />
+				  <text>
+					<reference value="#medication_c3f2197d-f991-4ab3-aebd-010797a773bd" />1 po tid prn</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="25" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="4eb9f12c-9975-4108-9963-30436f238c8b" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>hydroxyzine HCl</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="e1e0cf59-9b6b-4475-a739-9f18fb291a52" />
+				  <text>
+					<reference value="#medication_8fc591af-a4e5-4874-9310-337e8cf21691" />1 neb every 4 to 6 hours as needed</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38216" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="RESPIRATORY (INHALATION)" />
+				  <doseQuantity value="1.25" unit="mg/3" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="7a515c57-408a-4e67-9ed7-a7d2240655f7" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>albuterol sulfate</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="21d83227-2303-44f0-b745-a2775d16b89e" />
+				  <text>
+					<reference value="#medication_f556dcfc-38fa-4600-a8db-bfa5f9fc0bfe" />one po daily</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="80" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="51b77d1d-b62e-4752-9747-dadd13463ef9" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>pravastatin</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="a356baf2-00da-48a5-8633-a7cb505d0826" />
+				  <text>
+					<reference value="#medication_f53e031a-4807-46da-a27a-456dafe99c20" />one po daily</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="05272018" />
+					<high value="08252018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="15" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="b2737714-8fba-4445-99ce-2a42903db4ac" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Mobic</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1467778423" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Leanne</given>
+						  <family>Bynum</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="0a0e1b0d-fb75-400b-8f8d-aec3bfe8f2ef" />
+				  <text>
+					<reference value="#medication_7c18846e-cb93-4c42-b35c-9e9b0a29dced" />1 po qd</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="01222018" />
+					<high value="01222018" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38633" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ELECTRO-OSMOSIS" />
+				  <doseQuantity value="10" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="cce872cf-a58d-4ae5-9a2b-f4797c74a7ab" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Singulair</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="4a60fbef-4f0e-4aea-ae9b-b39a9d2c2bae" />
+				  <text>
+					<reference value="#medication_7419c83e-bbab-4d3a-a6d1-63dc8825f690" />1 po bid for knee pain</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="05142018" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="ORAL" />
+				  <doseQuantity value="550" unit="mg" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="8bf940f6-6918-410f-8e89-5dd5f8409421" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Anaprox DS</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1144338369" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>A</given>
+						  <family>Lay</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.18" />
+			  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payer" />
+			  <title>INSURANCE PROVIDERS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Payer Name</th>
+					  <th>Payer Order</th>
+					  <th>Policy Type</th>
+					  <th>Policy Number</th>
+					  <th>Subscriber</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content>MISSISSIPPI MEDICARE</content>
+					  </td>
+					  <td>
+						<content>1</content>
+					  </td>
+					  <td>
+						<content>MA</content>
+					  </td>
+					  <td>
+						<content>428175094A</content>
+					  </td>
+					  <td>
+						<content>MAXINE ABNEY</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>MISSISSIPPI MEDICAID</content>
+					  </td>
+					  <td>
+						<content>2</content>
+					  </td>
+					  <td>
+						<content>MC</content>
+					  </td>
+					  <td>
+						<content>603453972</content>
+					  </td>
+					  <td>
+						<content>MAXINE ABNEY</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.60" />
+				  <id root="36bcf3be-5d2f-4397-9788-a1760ab0124e" />
+				  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment sources" />
+				  <statusCode code="completed" />
+				  <entryRelationship typeCode="COMP">
+					<sequenceNumber value="1" />
+					<act classCode="ACT" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.61" />
+					  <id root="f347fede-ae8d-47a9-b75f-3db0761066a2" />
+					  <code nullFlavor="UNK" />
+					  <statusCode code="completed" />
+					  <performer typeCode="PRF">
+						<templateId root="2.16.840.1.113883.10.20.22.4.87" />
+						<time>
+						  <low nullFlavor="UNK" />
+						  <high nullFlavor="UNK" />
+						</time>
+						<assignedEntity>
+						  <id root="2.16.840.1.113883.19" />
+						  <code code="PAYOR" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="MISSISSIPPI MEDICARE" />
+						  <addr use="WP">
+							<streetAddressLine>Medicare</streetAddressLine>
+							<city>Jackson</city>
+							<state>Mississippi</state>
+							<postalCode>39205</postalCode>
+							<country>US</country>
+						  </addr>
+						  <representedOrganization>
+							<name>MISSISSIPPI MEDICARE</name>
+						  </representedOrganization>
+						</assignedEntity>
+					  </performer>
+					  <participant typeCode="COV">
+						<templateId root="2.16.840.1.113883.10.20.22.4.89" />
+						<time>
+						  <low nullFlavor="UNK" />
+						  <high nullFlavor="UNK" />
+						</time>
+						<participantRole classCode="PAT">
+						  <id root="21e4dab1-266e-409f-994d-ff6f4b33809d" extension="428175094A" />
+						  <code code="SELF" codeSystem="2.16.840.1.113883.5.111" displayName="Self" />
+						  <addr use="HP">
+							<streetAddressLine>32 CR 351</streetAddressLine>
+							<city>HEIDELBERG</city>
+							<state>MS</state>
+							<postalCode>39439</postalCode>
+							<country>US</country>
+						  </addr>
+						  <playingEntity>
+							<name>
+							  <given>MAXINE</given>
+							  <family>ABNEY</family>
+							</name>
+						  </playingEntity>
+						</participantRole>
+					  </participant>
+					  <entryRelationship typeCode="REFR">
+						<act classCode="ACT" moodCode="EVN">
+						  <templateId root="2.16.840.1.113883.10.20.1.19" />
+						  <id root="6d54020e-ee6d-4a3f-9b05-8e0b48c1114c" />
+						  <code nullFlavor="NA" />
+						  <entryRelationship typeCode="SUBJ">
+							<procedure classCode="PROC" moodCode="PRMS">
+							  <code nullFlavor="NA" />
+							</procedure>
+						  </entryRelationship>
+						</act>
+					  </entryRelationship>
+					</act>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.60" />
+				  <id root="9bb60158-2889-4850-95f5-96d987d67d54" />
+				  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment sources" />
+				  <statusCode code="completed" />
+				  <entryRelationship typeCode="COMP">
+					<sequenceNumber value="2" />
+					<act classCode="ACT" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.61" />
+					  <id root="f462203d-5636-4870-97a9-8a5a92a216e1" />
+					  <code nullFlavor="UNK" />
+					  <statusCode code="completed" />
+					  <performer typeCode="PRF">
+						<templateId root="2.16.840.1.113883.10.20.22.4.87" />
+						<time>
+						  <low nullFlavor="UNK" />
+						  <high nullFlavor="UNK" />
+						</time>
+						<assignedEntity>
+						  <id root="2.16.840.1.113883.19" />
+						  <code code="PAYOR" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="MISSISSIPPI MEDICAID" />
+						  <addr use="WP">
+							<streetAddressLine>P.O. Box 23076</streetAddressLine>
+							<city>Jackson</city>
+							<state>Mississippi</state>
+							<postalCode>39205</postalCode>
+							<country>US</country>
+						  </addr>
+						  <representedOrganization>
+							<name>MISSISSIPPI MEDICAID</name>
+						  </representedOrganization>
+						</assignedEntity>
+					  </performer>
+					  <participant typeCode="COV">
+						<templateId root="2.16.840.1.113883.10.20.22.4.89" />
+						<time>
+						  <low nullFlavor="UNK" />
+						  <high nullFlavor="UNK" />
+						</time>
+						<participantRole classCode="PAT">
+						  <id root="21e4dab1-266e-409f-994d-ff6f4b33809d" extension="603453972" />
+						  <code code="SELF" codeSystem="2.16.840.1.113883.5.111" displayName="Self" />
+						  <addr use="HP">
+							<streetAddressLine>32 CR 351</streetAddressLine>
+							<city>HEIDELBERG</city>
+							<state>MS</state>
+							<postalCode>39439</postalCode>
+							<country>US</country>
+						  </addr>
+						  <playingEntity>
+							<name>
+							  <given>MAXINE</given>
+							  <family>ABNEY</family>
+							</name>
+						  </playingEntity>
+						</participantRole>
+					  </participant>
+					  <entryRelationship typeCode="REFR">
+						<act classCode="ACT" moodCode="EVN">
+						  <templateId root="2.16.840.1.113883.10.20.1.19" />
+						  <id root="ea81f461-eca3-42af-abb6-4f2406d50ef2" />
+						  <code nullFlavor="NA" />
+						  <entryRelationship typeCode="SUBJ">
+							<procedure classCode="PROC" moodCode="PRMS">
+							  <code nullFlavor="NA" />
+							</procedure>
+						  </entryRelationship>
+						</act>
+					  </entryRelationship>
+					</act>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.10" />
+			  <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan" />
+			  <title>PLAN OF CARE</title>
+			  <text>No records</text>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.5.1" />
+			  <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST" />
+			  <title>PROBLEMS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Name</th>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Effective Date</th>
+					  <th>Status</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="problem_8375eac9-fe94-4e31-ba0f-bc535678576b">History of total knee arthroplasty</content>
+					  </td>
+					  <td>
+						<content>1211000119105</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content>3/4/2011</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_971b07b9-7ae5-45b3-a651-d2dfe8adfddd">Pain in right knee</content>
+					  </td>
+					  <td>
+						<content>M25.561</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>6/22/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_537e8310-d782-4651-9f3a-a061e8a3167c">Gastroesophageal reflux disease (disorder)</content>
+					  </td>
+					  <td>
+						<content>235595009</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content>8/2/2012</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_9bf06c67-5753-4bce-9257-1cfa2dba40a7">Morbid (severe) obesity due to excess calories</content>
+					  </td>
+					  <td>
+						<content>E66.01</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>6/22/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_33587e7e-2c4a-4b01-a9d2-d5f9864ad4ed">Anemia, unspecified</content>
+					  </td>
+					  <td>
+						<content>D64.9</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>6/22/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_d6ff6d82-e4e7-4030-bba6-e42162b66fc0">Idiopathic urticaria</content>
+					  </td>
+					  <td>
+						<content>L50.1</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_70d7c85b-9734-4e9c-9d27-e10432916720">Edema, unspecified</content>
+					  </td>
+					  <td>
+						<content>R60.9</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>2/1/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_223f9b62-d998-478e-853a-acf8b71aa303">Generalized edema</content>
+					  </td>
+					  <td>
+						<content>R60.1</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>11/4/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_953cdc3a-92f6-4478-b40e-11f952d2ef62">Urticaria, unspecified</content>
+					  </td>
+					  <td>
+						<content>L50.9</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>11/4/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_2f0e598a-b9f1-4efe-b610-7a5a67125556">Essential (primary) hypertension</content>
+					  </td>
+					  <td>
+						<content>I10</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>2/1/2018</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_0fde4f43-d6e4-4b06-8967-a79cb1bcd53f">Rash and other nonspecific skin eruption</content>
+					  </td>
+					  <td>
+						<content>R21</content>
+					  </td>
+					  <td>
+						<content>ICD-9</content>
+					  </td>
+					  <td>
+						<content>1/23/2016</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_b480c785-91f9-4ca3-b778-8e02e9b55e7d">Degenerative polyarthritis (disorder)</content>
+					  </td>
+					  <td>
+						<content>225655006</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content>2/5/2009</content>
+					  </td>
+					  <td>
+						<content>Chronic</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_9430a1e2-8e38-461c-839a-c2de47fc748d">Childhood asthma (disorder)</content>
+					  </td>
+					  <td>
+						<content>233678006</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content>2/5/2009</content>
+					  </td>
+					  <td>
+						<content>Chronic</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="b1e21dd0-ad52-4607-9a31-0806be04b4d9" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20110304" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="e81dbb54-c670-4aa6-8436-9c40bd5216ed" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_8375eac9-fe94-4e31-ba0f-bc535678576b" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20110304" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="1211000119105" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="History of total knee arthroplasty" />
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="e5c52d3f-3b70-421d-914d-8236b4de64a5" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20170622" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="c908066e-8f2e-4050-9547-3747232ca9f7" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_971b07b9-7ae5-45b3-a651-d2dfe8adfddd" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20170622" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="M25.561" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Pain in right knee" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="304a45db-3651-4e4a-9b2d-de29d1e27b4b" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20120802" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="6ce8936f-2b0a-4eec-b30f-88f8b4c98c93" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_537e8310-d782-4651-9f3a-a061e8a3167c" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20120802" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="235595009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Gastroesophageal reflux disease (disorder)" />
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="52ecc5ad-76f4-4d0b-a6be-0b8d225d3873" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20170622" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="aaa2533e-3343-47c9-a3a1-c529c6056dfa" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_9bf06c67-5753-4bce-9257-1cfa2dba40a7" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20170622" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="E66.01" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Morbid (severe) obesity due to excess calories" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="a5de9d29-5e3b-4f1b-9109-b39aa49af41e" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20170622" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="4416d798-7054-4ff4-a10f-cf9850fc2158" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_33587e7e-2c4a-4b01-a9d2-d5f9864ad4ed" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20170622" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="D64.9" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Anemia, unspecified" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="18158608-73b6-47e0-af35-3c80c76ef778" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20180527" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="10deb5ef-4dcc-4982-b7a3-119b71d8f3cf" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_d6ff6d82-e4e7-4030-bba6-e42162b66fc0" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20180527" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="L50.1" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Idiopathic urticaria" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="6dc261e9-c239-4c07-9e5e-4bdb02109192" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20180201" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="5a145963-349a-4f3f-9a9c-b29066091fdd" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_70d7c85b-9734-4e9c-9d27-e10432916720" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20180201" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="R60.9" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Edema, unspecified" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="96db1cea-1b38-43c9-b8cf-f14e56eba01a" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20171104" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="99afc30a-4323-440c-a428-f4b1211fa311" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_223f9b62-d998-478e-853a-acf8b71aa303" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20171104" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="R60.1" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Generalized edema" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="43cd869d-334b-4fe0-9ff1-9383da4a99f2" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20171104" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="a60b9c09-8bd3-4e53-94e9-5e03f0c223d1" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_953cdc3a-92f6-4478-b40e-11f952d2ef62" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20171104" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="L50.9" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Urticaria, unspecified" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="608849bb-d1f3-48a7-a869-1dbb0ec02bd9" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20180201" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="7733a153-8669-4bd1-8341-f11606dc7a62" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_2f0e598a-b9f1-4efe-b610-7a5a67125556" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20180201" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="I10" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Essential (primary) hypertension" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="9624cec1-7623-40bc-b0ff-3444df596ce9" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20160123" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="b42140ca-4178-4829-9fd9-b6feba6e48de" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_0fde4f43-d6e4-4b06-8967-a79cb1bcd53f" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20160123" />
+					  </effectiveTime>
+					  <value xsi:type="CD" nullFlavor="OTH" code="">
+						<translation code="R21" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="Rash and other nonspecific skin eruption" />
+					  </value>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="137f76c8-2429-4eeb-8f6d-5ffdafc7f64a" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20090205" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="44534efe-0d94-4369-876d-0561df62a16c" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_b480c785-91f9-4ca3-b778-8e02e9b55e7d" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20090205" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="225655006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Degenerative polyarthritis (disorder)" />
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="7b61dee4-fa7a-4956-b29b-894f1636a49a" />
+				  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low value="20090205" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="4198f951-376b-405d-92b6-52529c9f13df" />
+					  <code code="409586006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Complaint" />
+					  <text>
+						<reference value="#problem_9430a1e2-8e38-461c-839a-c2de47fc748d" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20090205" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="233678006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Childhood asthma (disorder)" />
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.7.1" />
+			  <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PROCEDURES" />
+			  <title>PROCEDURES</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Procedure</th>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Date</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="procedure_1ce53df1-2422-4b9f-b112-17b887431caa">X-RAY EXAM OF KNEE, 1 OR 2</content>
+					  </td>
+					  <td>
+						<content>73560</content>
+					  </td>
+					  <td>
+						<content>CPT-4</content>
+					  </td>
+					  <td>
+						<content>9/18/2014</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry>
+				<procedure classCode="PROC" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+				  <id root="936ed288-ee16-4419-9053-ba07b142d377" />
+				  <code nullFlavor="OTH">
+					<originalText>
+					  <reference value="#procedure_1ce53df1-2422-4b9f-b112-17b887431caa" />
+					</originalText>
+					<translation code="73560" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" displayName="X-RAY EXAM OF KNEE, 1 OR 2" />
+				  </code>
+				  <statusCode code="completed" />
+				  <effectiveTime value="20140918" />
+				  <methodCode nullFlavor="UNK" />
+				  <targetSiteCode code="91723000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Anatomical structure (body structure)" />
+				  <performer>
+					<assignedEntity>
+					  <id nullFlavor="NI" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</procedure>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.3.1" />
+			  <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESULTS" />
+			  <title>RESULTS</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<organizer classCode="BATTERY" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.1" />
+				  <id root="870d2b45-410e-4175-9775-bfcf66b03687" />
+				  <code xsi:type="CE" nullFlavor="UNK" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+				  <statusCode code="completed" />
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.2" />
+					  <id root="41f4b76e-0e34-43f7-943b-7a3ee724b35a" />
+					  <code nullFlavor="UNK" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low nullFlavor="UNK" />
+					  </effectiveTime>
+					  <value xsi:type="PQ" nullFlavor="UNK" />
+					</observation>
+				  </component>
+				</organizer>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.17" />
+			  <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" displayName="Social History" />
+			  <title>SOCIAL HISTORY</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Element Description</th>
+					  <th>Description</th>
+					  <th>Effective Dates</th>
+					  <th>Code</th>
+					  <th>Code System</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content>Smoking Status</content>
+					  </td>
+					  <td>
+						<content>NonSmoker</content>
+					  </td>
+					  <td>
+						<content>1/21/2009</content>
+					  </td>
+					  <td>
+						<content>False</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.78" />
+				  <id root="2.16.840.1.113883.19" extension="123456789" />
+				  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+				  <statusCode code="completed" />
+				  <effectiveTime value="200901211734+0000" />
+				  <value xsi:type="CD" code="False" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="NonSmoker" />
+				</observation>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.17" />
+			  <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" displayName="Social History" />
+			  <title>SOCIAL HISTORY</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.78" />
+				  <id root="2.16.840.1.113883.19" extension="123456789" />
+				  <code nullFlavor="UNK" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" nullFlavor="UNK" />
+				</observation>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.4" />
+			  <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="VITAL SIGNS" />
+			  <title>VITAL SIGNS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Vital</th>
+					  <th>Value</th>
+					  <th>Effective Date</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="vital_aaab2060-7d68-4a57-993b-91b6950fbd6b">Height</content>
+					  </td>
+					  <td>
+						<content>69.00 inches</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_e1d3018f-4312-4e42-865e-81eb30ebc829">Weight</content>
+					  </td>
+					  <td>
+						<content>402.60 lbs</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_b1f95c70-a0a4-499a-bc68-939e1ddc9e92">Blood Pressure (Systolic)</content>
+					  </td>
+					  <td>
+						<content>138 mmHg</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_139ef855-76e2-4f38-8c6c-fd31ce10feac">Blood Pressure (Diastolic)</content>
+					  </td>
+					  <td>
+						<content>80 mmHg</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_46e1ae04-685d-474b-8c82-257349de1f2d">BMI</content>
+					  </td>
+					  <td>
+						<content>59.45 kg/m2</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_ed5a1608-45fd-42f8-9da3-fc15686906f6">Heart Rate</content>
+					  </td>
+					  <td>
+						<content>106 bpm</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_42694ae9-4d6a-4a67-b09a-2b630c62c836">Body Temperature</content>
+					  </td>
+					  <td>
+						<content>98.10 F</content>
+					  </td>
+					  <td>
+						<content>5/27/2018</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<organizer classCode="CLUSTER" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.26" />
+				  <id root="3ce077e0-aabe-458b-b5f1-b5c0d9d4f3ad" />
+				  <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Vital signs" />
+				  <statusCode code="completed" />
+				  <effectiveTime value="20180527" />
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="8fcbe8fa-4111-4ed4-9f7e-db598c5c2fee" />
+					  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height" />
+					  <text>
+						<reference value="#vital_aaab2060-7d68-4a57-993b-91b6950fbd6b" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="69.00" unit="[in_i]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="2cf774d0-374a-4b07-8855-5a07d4f2ae37" />
+					  <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Weight" />
+					  <text>
+						<reference value="#vital_e1d3018f-4312-4e42-865e-81eb30ebc829" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="402.60" unit="[lb_av]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="dc5823b6-f058-486e-a637-d28d2484b6fa" />
+					  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Blood Pressure (Systolic)" />
+					  <text>
+						<reference value="#vital_b1f95c70-a0a4-499a-bc68-939e1ddc9e92" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="138" unit="mm[Hg]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="2076c69e-008d-4794-9949-851acadcf090" />
+					  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Blood Pressure (Diastolic)" />
+					  <text>
+						<reference value="#vital_139ef855-76e2-4f38-8c6c-fd31ce10feac" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="80" unit="mm[Hg]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="9d89f139-bf4f-419b-97f2-7dd508022b39" />
+					  <code code="39156-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="BMI" />
+					  <text>
+						<reference value="#vital_46e1ae04-685d-474b-8c82-257349de1f2d" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="59.45" unit="kg/m2" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="978cb480-c9ad-4530-bfe7-e5fedb25fd80" />
+					  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Heart Rate" />
+					  <text>
+						<reference value="#vital_ed5a1608-45fd-42f8-9da3-fc15686906f6" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="106" unit="{beats}/min" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="27156d13-0452-47be-8129-e52d00a14f02" />
+					  <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body Temperature" />
+					  <text>
+						<reference value="#vital_42694ae9-4d6a-4a67-b09a-2b630c62c836" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20180527" />
+					  <value xsi:type="PQ" value="98.10" unit="[degF]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				</organizer>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.1" />
+			  <code code="42349-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="REASON FOR REFERRAL" />
+			  <title>REASON FOR REFERRAL</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Referral</th>
+					  <th>Reason</th>
+					  <th>Appointment Date</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content>SISK SISK</content>
+					  </td>
+					  <td>
+						<content>recurrent rash for 3-4  years</content>
+					  </td>
+					  <td>
+						<content>9/18/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>Surgery Hattiesburg clinic,, 415  S. 28TH Ave, hattiesburg, Mississippi  39401, ph. 601-268-5660</content>
+					  </td>
+					  <td>
+						<content>BARIATRIC SURGERY CONSULT</content>
+					  </td>
+					  <td>
+						<content>6/19/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>RUSTY STEVENS - EAR NOSE AND THROAT SURGICAL CLINIC LAUREL, MS, ph. 601-649-9706</content>
+					  </td>
+					  <td>
+						<content>occasional dermatatis</content>
+					  </td>
+					  <td>
+						<content>12/22/2014</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>ORTHO ORTHO - BONE AND JOINT, ph. 601-649-5990</content>
+					  </td>
+					  <td>
+						<content>Dr. Burgess at south central ortho-right knee pain-may need replacement</content>
+					  </td>
+					  <td>
+						<content>9/23/2014</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>DAVID ROY - SOUTH CENTRAL DEMERTOLOGY, ph. 601-425-4860</content>
+					  </td>
+					  <td>
+						<content>Hives, etiology undetermined</content>
+					  </td>
+					  <td>
+						<content>8/5/2011</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>GI GI</content>
+					  </td>
+					  <td>
+						<content>colonoscopy  (((pt needs to go by JMA and schedule appt)))</content>
+					  </td>
+					  <td>
+						<content>4/11/2011</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>MAMMOGRAM MAMMOGRAM</content>
+					  </td>
+					  <td>
+						<content>yearly mammogram</content>
+					  </td>
+					  <td>
+						<content>4/13/2011</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>JAMES HALTOM - MISSISSIPPI ALLERGY AND ASTHMA CLINIC</content>
+					  </td>
+					  <td>
+						<content>urticaria, asthma</content>
+					  </td>
+					  <td>
+						<content>1/26/2011</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>WILLIAM A MORRISON - LAUREL BONE AND JOINT, ph. 607-649-5990</content>
+					  </td>
+					  <td>
+						<content>wants another consult/has been seeing podiatrist and feet "are feeling worse'.  </content>
+					  </td>
+					  <td>
+						<content>8/12/2010</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>dr. blake</content>
+					  </td>
+					  <td>
+						<content>left knee popping</content>
+					  </td>
+					  <td>
+						<content>4/12/2010</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content>ALLERGIST ALLERGIST</content>
+					  </td>
+					  <td>
+						<content>APPT ASAP, SEVERE ALLERGY W/ HIVES</content>
+					  </td>
+					  <td>
+						<content>3/13/2009</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			</section>
+		  </component>
+		</structuredBody>
+	  </component>
+	</ClinicalDocument>
+	<ClinicalDocument>
+	  <realmCode code="US" />
+	  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+	  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+	  <templateId root="2.16.840.1.113883.10.20.22.1.2" />
+	  <id extension="925e4986-8af1-49b5-ac76-296720121d59" root="2.16.840.1.113883.19.5.99999.1" />
+	  <code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Summarization of Episode Note" />
+	  <title>Patient Health Summary</title>
+	  <effectiveTime value="201806221458-0500" />
+	  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" />
+	  <languageCode code="en-US" />
+	  <setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19" />
+	  <versionNumber value="1" />
+	  <recordTarget>
+		<patientRole>
+		  <id extension="FDAAA39E11" root="2.16.840.1.113883.19.5.99999.2" />
+		  <id extension="029-62-9341" root="2.16.840.1.113883.4.1" />
+		  <telecom value="tel: 601-764-2597" use="HP" />
+		  <patient>
+			<name use="L">
+			  <given>ANN</given>
+			  <family>RICHARDSON</family>
+			</name>
+			<administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" displayName="Female" />
+			<birthTime value="19700206" />
+			<maritalStatusCode code="S" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Single" />
+			<raceCode code="2054-5" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="Black or African American" />
+			<languageCommunication>
+			  <languageCode code="eng" />
+			</languageCommunication>
+		  </patient>
+		</patientRole>
+	  </recordTarget>
+	  <author>
+		<time value="201806221458-0500" />
+		<assignedAuthor>
+		  <id extension="1518075720" root="2.16.840.1.113883.4.6" />
+		  <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC" displayName="Bay Springs After Hours" />
+		  <addr use="WP">
+			<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+			<city>BAY SPRINGS</city>
+			<state>MS</state>
+			<postalCode>39422</postalCode>
+			<country>US</country>
+		  </addr>
+		  <telecom value="tel: 601-764-2155" use="WP" />
+		  <assignedPerson>
+			<name>
+			  <given>nav</given>
+			  <family>care1</family>
+			</name>
+		  </assignedPerson>
+		</assignedAuthor>
+	  </author>
+	  <custodian>
+		<assignedCustodian>
+		  <representedCustodianOrganization>
+			<id extension="1518075720" root="2.16.840.1.113883.4.6" />
+			<name>Bay Springs After Hours</name>
+			<telecom value="tel: 601-764-2155" use="WP" />
+			<addr use="WP">
+			  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+			  <city>BAY SPRINGS</city>
+			  <state>MS</state>
+			  <postalCode>39422</postalCode>
+			  <country>US</country>
+			</addr>
+		  </representedCustodianOrganization>
+		</assignedCustodian>
+	  </custodian>
+	  <documentationOf>
+		<serviceEvent classCode="PCPR">
+			  <code code="422735006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Summary clinical document (record artifact)" />
+			  <effectiveTime />
+		</serviceEvent>
+	  </documentationOf>
+	  <componentOf>
+		<encompassingEncounter>
+		  <id extension="dbf104c6-ec4f-4740-9ef3-1740a75b5602" root="2.16.840.1.113883.19" />
+		  <effectiveTime>
+			<low value="201711271703-0600" />
+			<high value="201711281430-0600" />
+		  </effectiveTime>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id extension="1902997778" root="2.16.840.1.113883.4.6" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Ngozi</given>
+				  <family>Onwubiko</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <encounterParticipant typeCode="ATND">
+			<assignedEntity>
+			  <id nullFlavor="NI" />
+			  <addr use="WP">
+				<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				<city>BAY SPRINGS</city>
+				<state>MS</state>
+				<postalCode>39422</postalCode>
+				<country>US</country>
+			  </addr>
+			  <telecom value="tel: 601-764-2155" use="WP" />
+			  <assignedPerson>
+				<name>
+				  <given>Emily</given>
+				  <family>Scott</family>
+				</name>
+			  </assignedPerson>
+			  <representedOrganization>
+				<id root="2.16.840.1.113883.19.5.9999.1393" />
+				<name>Bay Springs After Hours</name>
+				<telecom value="tel: 601-764-2155" use="WP" />
+				<addr use="WP">
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </representedOrganization>
+			</assignedEntity>
+		  </encounterParticipant>
+		  <location>
+			<healthCareFacility>
+			  <location>
+				<name>Bay Springs After Hours</name>
+				<addr>
+				  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+				  <city>BAY SPRINGS</city>
+				  <state>MS</state>
+				  <postalCode>39422</postalCode>
+				  <country>US</country>
+				</addr>
+			  </location>
+			</healthCareFacility>
+		  </location>
+		</encompassingEncounter>
+	  </componentOf>
+	  <component>
+		<structuredBody>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.6.1" />
+			  <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" />
+			  <title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Allergy</th>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Reaction</th>
+					  <th>Severity</th>
+					  <th>Status</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="allergy_participant_87d60920-d1bc-4ae5-a38a-5de9e576a91b">erythromycin</content>
+					  </td>
+					  <td>
+						<content>30427009</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="allergy_participant_3b9a7af9-5b98-42ac-ab2c-4b509ff5a0fe">bactrim</content>
+					  </td>
+					  <td>
+						<content>106190000</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="allergy_participant_34be8f4d-413b-463f-8c3e-4978ebf3f8b5">sulfa</content>
+					  </td>
+					  <td>
+						<content>101801005</content>
+					  </td>
+					  <td>
+						<content>SNOMED CT</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.30" />
+				  <id root="b97185b5-aeeb-4e50-b3e9-ddc4a66be139" />
+				  <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts" />
+				  <statusCode code="active" />
+				  <effectiveTime>
+					<low value="20171127" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.7" />
+					  <id root="31792eee-6546-4086-b93d-77d40efc2962" />
+					  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20171127" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="420134006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Propensity to adverse reactions (disorder)" />
+					  <participant typeCode="CSM">
+						<participantRole classCode="MANU">
+						  <playingEntity classCode="MMAT">
+							<code code="30427009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Erythromycin (product)">
+							  <originalText>
+								<reference value="#allergy_participant_87d60920-d1bc-4ae5-a38a-5de9e576a91b" />
+							  </originalText>
+							</code>
+							<name>erythromycin</name>
+						  </playingEntity>
+						</participantRole>
+					  </participant>
+					  <entryRelationship typeCode="SUBJ" inversionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+						  <templateId root="2.16.840.1.113883.10.20.22.4.28" />
+						  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+						  <statusCode code="completed" />
+						  <value xsi:type="CE" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Active" />
+						</observation>
+					  </entryRelationship>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.30" />
+				  <id root="e43f0998-8662-4c59-914a-50409b3a9b56" />
+				  <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts" />
+				  <statusCode code="active" />
+				  <effectiveTime>
+					<low value="20171127" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.7" />
+					  <id root="107e6931-4f67-4058-8a35-d64fe5c3f446" />
+					  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20171127" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="420134006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Propensity to adverse reactions (disorder)" />
+					  <participant typeCode="CSM">
+						<participantRole classCode="MANU">
+						  <playingEntity classCode="MMAT">
+							<code code="106190000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Allergic state (disorder)">
+							  <originalText>
+								<reference value="#allergy_participant_3b9a7af9-5b98-42ac-ab2c-4b509ff5a0fe" />
+							  </originalText>
+							</code>
+							<name>bactrim</name>
+						  </playingEntity>
+						</participantRole>
+					  </participant>
+					  <entryRelationship typeCode="SUBJ" inversionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+						  <templateId root="2.16.840.1.113883.10.20.22.4.28" />
+						  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+						  <statusCode code="completed" />
+						  <value xsi:type="CE" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Active" />
+						</observation>
+					  </entryRelationship>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.30" />
+				  <id root="b4b80361-0d66-42ac-9b85-d8fe37bc0acb" />
+				  <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts" />
+				  <statusCode code="active" />
+				  <effectiveTime>
+					<low value="20171127" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.7" />
+					  <id root="62a74ef1-84bd-4754-917e-de3faf14092c" />
+					  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low value="20171127" />
+					  </effectiveTime>
+					  <value xsi:type="CD" code="420134006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Propensity to adverse reactions (disorder)" />
+					  <participant typeCode="CSM">
+						<participantRole classCode="MANU">
+						  <playingEntity classCode="MMAT">
+							<code code="101801005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="SULFA-MAX (product)">
+							  <originalText>
+								<reference value="#allergy_participant_34be8f4d-413b-463f-8c3e-4978ebf3f8b5" />
+							  </originalText>
+							</code>
+							<name>sulfa</name>
+						  </playingEntity>
+						</participantRole>
+					  </participant>
+					  <entryRelationship typeCode="SUBJ" inversionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+						  <templateId root="2.16.840.1.113883.10.20.22.4.28" />
+						  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+						  <statusCode code="completed" />
+						  <value xsi:type="CE" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Active" />
+						</observation>
+					  </entryRelationship>
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.22" />
+			  <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of encounters" />
+			  <title>ENCOUNTER DIAGNOSIS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Description</th>
+					  <th>Date</th>
+					  <th>Performer</th>
+					  <th>Status</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="problem_851cc4cf-a9a7-4e1f-a528-a20f76b9bf18">L74.512</content>
+					  </td>
+					  <td>
+						<content>ICD-10</content>
+					  </td>
+					  <td>
+						<content>L74.512 - Primary focal hyperhidrosis, palms</content>
+					  </td>
+					  <td>
+						<content>11/28/2017</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko, Bay Springs After Hours, 27 SOUTH 6TH STREET, BAY SPRINGS, MS  39422, ph. 601-764-2155</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="problem_027ef615-eead-461d-b562-51923bc2e405">B35.9</content>
+					  </td>
+					  <td>
+						<content>ICD-10</content>
+					  </td>
+					  <td>
+						<content>B35.9 - Dermatophytosis, unspecified</content>
+					  </td>
+					  <td>
+						<content>11/28/2017</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko, Bay Springs After Hours, 27 SOUTH 6TH STREET, BAY SPRINGS, MS  39422, ph. 601-764-2155</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<encounter classCode="ENC" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.49" />
+				  <id root="dbf104c6-ec4f-4740-9ef3-1740a75b5602" />
+				  <code code="99213" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" displayName="Expanded Problem Focused Visit">
+					<originalText>hands peeling</originalText>
+					<translation code="AMB" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActEncounterCode" displayName="Ambulatory" />
+				  </code>
+				  <effectiveTime>
+					<low value="201711271703-0500" />
+					<high value="201711281430-0500" />
+				  </effectiveTime>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <code code="270423004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Ngozi  Onwubiko" />
+					</assignedEntity>
+				  </performer>
+				  <participant typeCode="LOC">
+					<participantRole classCode="SDLOC">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.32" />
+					  <code code="1141-1" codeSystem="2.16.840.1.113883.6.259" codeSystemName="HealthcareServiceLocation" displayName="Provider's office" />
+					  <addr>
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <playingEntity classCode="PLC">
+						<name>Bay Springs After Hours</name>
+					  </playingEntity>
+					</participantRole>
+				  </participant>
+				  <entryRelationship typeCode="SPRT">
+					<act classCode="ACT" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.80" />
+					  <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+					  <entryRelationship typeCode="SUBJ">
+						<observation classCode="OBS" moodCode="EVN" negationInd="false">
+						  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+						  <id root="0123e3d0-24f1-4e83-9e9f-4530c4bccd35" />
+						  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Diagnosis" />
+						  <text>
+							<reference value="#problem_851cc4cf-a9a7-4e1f-a528-a20f76b9bf18" />
+						  </text>
+						  <statusCode code="completed" />
+						  <effectiveTime>
+							<low value="20171127" />
+						  </effectiveTime>
+						  <value xsi:type="CD" nullFlavor="OTH">
+							<translation code="L74.512" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="L74.512 - Primary focal hyperhidrosis, palms" />
+						  </value>
+						  <entryRelationship typeCode="SUBJ" inversionInd="true">
+							<observation classCode="OBS" moodCode="EVN">
+							  <templateId root="2.16.840.1.113883.10.20.22.4.31" />
+							  <code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+							  <statusCode code="completed" />
+							  <value xsi:type="PQ" value="48" unit="a" />
+							</observation>
+						  </entryRelationship>
+						  <entryRelationship typeCode="REFR">
+							<observation classCode="OBS" moodCode="EVN">
+							  <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+							  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+							  <statusCode code="completed" />
+							  <value xsi:type="CD" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+							</observation>
+						  </entryRelationship>
+						</observation>
+					  </entryRelationship>
+					</act>
+				  </entryRelationship>
+				  <entryRelationship typeCode="SPRT">
+					<act classCode="ACT" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.80" />
+					  <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+					  <entryRelationship typeCode="SUBJ">
+						<observation classCode="OBS" moodCode="EVN" negationInd="false">
+						  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+						  <id root="039136b2-425f-4458-bc0c-1086773c5d52" />
+						  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Diagnosis" />
+						  <text>
+							<reference value="#problem_027ef615-eead-461d-b562-51923bc2e405" />
+						  </text>
+						  <statusCode code="completed" />
+						  <effectiveTime>
+							<low value="20171127" />
+						  </effectiveTime>
+						  <value xsi:type="CD" nullFlavor="OTH">
+							<translation code="B35.9" codeSystem="2.16.840.1.113883.6.3" codeSystemName="I10" displayName="B35.9 - Dermatophytosis, unspecified" />
+						  </value>
+						  <entryRelationship typeCode="SUBJ" inversionInd="true">
+							<observation classCode="OBS" moodCode="EVN">
+							  <templateId root="2.16.840.1.113883.10.20.22.4.31" />
+							  <code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+							  <statusCode code="completed" />
+							  <value xsi:type="PQ" value="48" unit="a" />
+							</observation>
+						  </entryRelationship>
+						  <entryRelationship typeCode="REFR">
+							<observation classCode="OBS" moodCode="EVN">
+							  <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+							  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+							  <statusCode code="completed" />
+							  <value xsi:type="CD" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+							</observation>
+						  </entryRelationship>
+						</observation>
+					  </entryRelationship>
+					</act>
+				  </entryRelationship>
+				</encounter>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.14" />
+			  <code code="47420-5" codeSystem="2.16.840.1.113883.6.1" />
+			  <title>COGNITIVE/FUNCTIONAL STATUS</title>
+			  <text>No records</text>
+			  <entry>
+				<observation classCode="OBS" moodCode="EVN" negationInd="true">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.68" />
+				  <id root="7fae053c-9390-41d7-b1ec-8c0433721179" />
+				  <code nullFlavor="NI" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" nullFlavor="NI" />
+				  <methodCode nullFlavor="UNK" />
+				</observation>
+			  </entry>
+			  <entry>
+				<observation classCode="OBS" moodCode="EVN" negationInd="true">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.73" />
+				  <id root="ceadd704-2739-48ab-8c04-6a288a94d394" />
+				  <code nullFlavor="NI" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" nullFlavor="NI" />
+				  <methodCode nullFlavor="UNK" />
+				</observation>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.2.1" />
+			  <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of immunizations" />
+			  <title>IMMUNIZATIONS</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="true">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.52" />
+				  <id root="8ca0b2fd-27fe-4e4d-a543-9fa1241823aa" />
+				  <text>NONE</text>
+				  <statusCode code="completed" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.54" />
+					  <id root="4c48e05d-c9b7-47b5-81a3-63a71c1bca44" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>NONE</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				</substanceAdministration>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.1.1" />
+			  <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF MEDICATION USE" />
+			  <title>MEDICATIONS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Name</th>
+					  <th>Code</th>
+					  <th>Code System</th>
+					  <th>Strength</th>
+					  <th>Directions</th>
+					  <th>Start Date</th>
+					  <th>Status</th>
+					  <th>Prescriber</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="medication_568c9e5e-b667-49fb-8974-8ed7f063f992">clotrimazole-betamethasone</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>1-0.05 %</content>
+					  </td>
+					  <td>
+						<content>apply to area bid till clear</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="medication_a57fa192-1dba-4da2-995d-5ab81e0bd556">Drysol</content>
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content />
+					  </td>
+					  <td>
+						<content>20 %</content>
+					  </td>
+					  <td>
+						<content>apply to area  bid</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					  <td>
+						<content>Active</content>
+					  </td>
+					  <td>
+						<content>Ngozi  Onwubiko</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="64289ecc-2055-4f78-8655-8b124b22be35" />
+				  <text>
+					<reference value="#medication_568c9e5e-b667-49fb-8974-8ed7f063f992" />apply to area bid till clear</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="11272017" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38304" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="TOPICAL" />
+				  <doseQuantity nullFlavor="UNK" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="d721f847-094e-485a-9e2e-74e1d3bd5d6c" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>clotrimazole-betamethasone</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			  <entry>
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+				  <id root="195c555d-24e6-4314-9f88-b86f42295c39" />
+				  <text>
+					<reference value="#medication_a57fa192-1dba-4da2-995d-5ab81e0bd556" />apply to area  bid</text>
+				  <statusCode code="Active" />
+				  <effectiveTime xsi:type="IVL_TS">
+					<low value="11272017" />
+					<high nullFlavor="NI" />
+				  </effectiveTime>
+				  <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A" />
+				  <repeatNumber value="1" />
+				  <routeCode code="C38304" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="TOPICAL" />
+				  <doseQuantity value="20" unit="%" />
+				  <maxDoseQuantity nullFlavor="UNK">
+					<numerator nullFlavor="UNK" />
+					<denominator nullFlavor="UNK" />
+				  </maxDoseQuantity>
+				  <consumable>
+					<manufacturedProduct classCode="MANU">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+					  <id root="277c18d0-807a-4d75-8c58-daf3649f9df0" />
+					  <manufacturedMaterial>
+						<code nullFlavor="UNK">
+						  <originalText>Drysol</originalText>
+						</code>
+					  </manufacturedMaterial>
+					</manufacturedProduct>
+				  </consumable>
+				  <performer>
+					<assignedEntity>
+					  <id root="2.16.840.1.113883.4.6" extension="1902997778" />
+					  <addr use="WP">
+						<streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						<city>BAY SPRINGS</city>
+						<state>MS</state>
+						<postalCode>39422</postalCode>
+						<country>US</country>
+					  </addr>
+					  <telecom value="tel: 601-764-2155" use="WP" />
+					  <assignedPerson>
+						<name>
+						  <given>Ngozi</given>
+						  <family>Onwubiko</family>
+						</name>
+					  </assignedPerson>
+					  <representedOrganization>
+						<id root="2.16.840.1.113883.19.5.9999.1393" />
+						<name>Bay Springs After Hours</name>
+						<telecom value="tel: 601-764-2155" use="WP" />
+						<addr use="WP">
+						  <streetAddressLine>27 SOUTH 6TH STREET</streetAddressLine>
+						  <city>BAY SPRINGS</city>
+						  <state>MS</state>
+						  <postalCode>39422</postalCode>
+						  <country>US</country>
+						</addr>
+					  </representedOrganization>
+					</assignedEntity>
+				  </performer>
+				</substanceAdministration>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.18" />
+			  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payer" />
+			  <title>INSURANCE PROVIDERS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Payer Name</th>
+					  <th>Payer Order</th>
+					  <th>Policy Type</th>
+					  <th>Policy Number</th>
+					  <th>Subscriber</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content>MISSISSIPPI MEDICARE</content>
+					  </td>
+					  <td>
+						<content>1</content>
+					  </td>
+					  <td>
+						<content>MA</content>
+					  </td>
+					  <td>
+						<content>028269225C1</content>
+					  </td>
+					  <td>
+						<content>ANN MARIE RICHARDSON</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.60" />
+				  <id root="26419cae-64d9-40ab-b5c0-9f6cc800120f" />
+				  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment sources" />
+				  <statusCode code="completed" />
+				  <entryRelationship typeCode="COMP">
+					<sequenceNumber value="1" />
+					<act classCode="ACT" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.61" />
+					  <id root="52db2629-792b-457d-909b-b03d6927755c" />
+					  <code nullFlavor="UNK" />
+					  <statusCode code="completed" />
+					  <performer typeCode="PRF">
+						<templateId root="2.16.840.1.113883.10.20.22.4.87" />
+						<time>
+						  <low nullFlavor="UNK" />
+						  <high nullFlavor="UNK" />
+						</time>
+						<assignedEntity>
+						  <id root="2.16.840.1.113883.19" />
+						  <code code="PAYOR" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="MISSISSIPPI MEDICARE" />
+						  <addr use="WP">
+							<streetAddressLine>Medicare</streetAddressLine>
+							<city>Jackson</city>
+							<state>Mississippi</state>
+							<postalCode>39205</postalCode>
+							<country>US</country>
+						  </addr>
+						  <representedOrganization>
+							<name>MISSISSIPPI MEDICARE</name>
+						  </representedOrganization>
+						</assignedEntity>
+					  </performer>
+					  <participant typeCode="COV">
+						<templateId root="2.16.840.1.113883.10.20.22.4.89" />
+						<time>
+						  <low nullFlavor="UNK" />
+						  <high nullFlavor="UNK" />
+						</time>
+						<participantRole classCode="PAT">
+						  <id root="f8c4dde2-28af-48fd-8f4a-73fdaaa39e11" extension="028269225C1" />
+						  <code code="SELF" codeSystem="2.16.840.1.113883.5.111" displayName="Self" />
+						  <playingEntity>
+							<name>
+							  <given>ANN</given>
+							  <family>RICHARDSON</family>
+							</name>
+						  </playingEntity>
+						</participantRole>
+					  </participant>
+					  <entryRelationship typeCode="REFR">
+						<act classCode="ACT" moodCode="EVN">
+						  <templateId root="2.16.840.1.113883.10.20.1.19" />
+						  <id root="6d56ce25-b2bf-44ca-b029-13e6e3d5105d" />
+						  <code nullFlavor="NA" />
+						  <entryRelationship typeCode="SUBJ">
+							<procedure classCode="PROC" moodCode="PRMS">
+							  <code nullFlavor="NA" />
+							</procedure>
+						  </entryRelationship>
+						</act>
+					  </entryRelationship>
+					</act>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.10" />
+			  <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan" />
+			  <title>PLAN OF CARE</title>
+			  <text>No records</text>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.5.1" />
+			  <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST" />
+			  <title>PROBLEMS</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+				  <id root="877e3187-efba-4b75-995e-ad67ddb2e879" />
+				  <code nullFlavor="UNK" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <entryRelationship typeCode="SUBJ">
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+					  <id root="cd1e4eb0-3d90-4060-969c-dee9c21b7462" />
+					  <code nullFlavor="UNK" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low nullFlavor="UNK" />
+					  </effectiveTime>
+					  <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" nullFlavor="UNK" />
+					</observation>
+				  </entryRelationship>
+				</act>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.7.1" />
+			  <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PROCEDURES" />
+			  <title>PROCEDURES</title>
+			  <text>No records</text>
+			  <entry>
+				<observation classCode="OBS" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.13" />
+				  <id root="101d05d5-c736-4fb4-8607-dda5aa41cdcb" />
+				  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="NI">
+					<originalText>NONE</originalText>
+				  </code>
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" />
+				  <methodCode nullFlavor="UNK" />
+				  <performer>
+					<assignedEntity>
+					  <id nullFlavor="NI" />
+					  <addr nullFlavor="UNK" />
+					  <telecom nullFlavor="UNK" />
+					</assignedEntity>
+				  </performer>
+				</observation>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.3.1" />
+			  <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESULTS" />
+			  <title>RESULTS</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<organizer classCode="BATTERY" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.1" />
+				  <id root="ca369b98-0406-4fd2-8d4a-cce4b2803a1b" />
+				  <code xsi:type="CE" nullFlavor="UNK" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+				  <statusCode code="completed" />
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.2" />
+					  <id root="6baaa23f-e08f-4f41-897f-faefa3a40202" />
+					  <code nullFlavor="UNK" />
+					  <statusCode code="completed" />
+					  <effectiveTime>
+						<low nullFlavor="UNK" />
+					  </effectiveTime>
+					  <value xsi:type="PQ" nullFlavor="UNK" />
+					</observation>
+				  </component>
+				</organizer>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.17" />
+			  <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" displayName="Social History" />
+			  <title>SOCIAL HISTORY</title>
+			  <text>No records</text>
+			  <entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.78" />
+				  <id root="2.16.840.1.113883.19" extension="123456789" />
+				  <code nullFlavor="UNK" />
+				  <statusCode code="completed" />
+				  <effectiveTime>
+					<low nullFlavor="UNK" />
+				  </effectiveTime>
+				  <value xsi:type="CD" nullFlavor="UNK" />
+				</observation>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="2.16.840.1.113883.10.20.22.2.4" />
+			  <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="VITAL SIGNS" />
+			  <title>VITAL SIGNS</title>
+			  <text>
+				<table>
+				  <thead>
+					<tr>
+					  <th>Vital</th>
+					  <th>Value</th>
+					  <th>Effective Date</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<content ID="vital_582b9b01-1407-4602-80e3-fcf9f2719be0">Height</content>
+					  </td>
+					  <td>
+						<content>58.00 inches</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_58dacb59-7078-4634-9b23-68f1366df0de">Weight</content>
+					  </td>
+					  <td>
+						<content>107.00 lbs</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_2fe61192-3aa0-4cc0-9ce9-3235d7c3951f">Blood Pressure (Systolic)</content>
+					  </td>
+					  <td>
+						<content>95 mmHg</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_5eb4983e-5ce5-4dfb-960f-dcdeb7344dcc">Blood Pressure (Diastolic)</content>
+					  </td>
+					  <td>
+						<content>68 mmHg</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_7e337616-b22d-4b2b-a7ed-61ff5332ca4c">BMI</content>
+					  </td>
+					  <td>
+						<content>22.36 kg/m2</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_aa76c2fd-dccf-4d91-bb08-cd0107676217">Heart Rate</content>
+					  </td>
+					  <td>
+						<content>75 bpm</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<content ID="vital_53e97fbe-5103-4ea0-bca6-fa6eaf7cffbb">Body Temperature</content>
+					  </td>
+					  <td>
+						<content>98.90 F</content>
+					  </td>
+					  <td>
+						<content>11/27/2017</content>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </text>
+			  <entry typeCode="DRIV">
+				<organizer classCode="CLUSTER" moodCode="EVN">
+				  <templateId root="2.16.840.1.113883.10.20.22.4.26" />
+				  <id root="a17aa229-fcb3-406d-ab95-e8551beb9e7b" />
+				  <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Vital signs" />
+				  <statusCode code="completed" />
+				  <effectiveTime value="20171128" />
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="1ddfdc82-6451-4186-921f-979c8b0a30d3" />
+					  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height" />
+					  <text>
+						<reference value="#vital_582b9b01-1407-4602-80e3-fcf9f2719be0" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="58.00" unit="[in_i]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="acf4aaa9-5a17-435a-95e6-8aa2d0999df1" />
+					  <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Weight" />
+					  <text>
+						<reference value="#vital_58dacb59-7078-4634-9b23-68f1366df0de" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="107.00" unit="[lb_av]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="95696af4-2734-4ea5-aa23-961fb8b66b52" />
+					  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Blood Pressure (Systolic)" />
+					  <text>
+						<reference value="#vital_2fe61192-3aa0-4cc0-9ce9-3235d7c3951f" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="95" unit="mm[Hg]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="596218d1-ee70-4284-b824-b2accf7ef5ff" />
+					  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Blood Pressure (Diastolic)" />
+					  <text>
+						<reference value="#vital_5eb4983e-5ce5-4dfb-960f-dcdeb7344dcc" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="68" unit="mm[Hg]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="ef54ce19-4976-4b0a-ac53-76cffdb028d1" />
+					  <code code="39156-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="BMI" />
+					  <text>
+						<reference value="#vital_7e337616-b22d-4b2b-a7ed-61ff5332ca4c" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="22.36" unit="kg/m2" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="c525fdb0-b483-4313-86c4-b92423991d16" />
+					  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Heart Rate" />
+					  <text>
+						<reference value="#vital_aa76c2fd-dccf-4d91-bb08-cd0107676217" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="75" unit="{beats}/min" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				  <component>
+					<observation classCode="OBS" moodCode="EVN">
+					  <templateId root="2.16.840.1.113883.10.20.22.4.27" />
+					  <id root="e0a9ebc6-e473-4527-a675-5ce59e1a8ea6" />
+					  <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body Temperature" />
+					  <text>
+						<reference value="#vital_53e97fbe-5103-4ea0-bca6-fa6eaf7cffbb" />
+					  </text>
+					  <statusCode code="completed" />
+					  <effectiveTime value="20171127" />
+					  <value xsi:type="PQ" value="98.90" unit="[degF]" />
+					  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+					</observation>
+				  </component>
+				</organizer>
+			  </entry>
+			</section>
+		  </component>
+		  <component>
+			<section>
+			  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.1" />
+			  <code code="42349-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="REASON FOR REFERRAL" />
+			  <title>REASON FOR REFERRAL</title>
+			  <text>No records</text>
+			</section>
+		  </component>
+		</structuredBody>
+	  </component>
+	</ClinicalDocument>
+</sample>

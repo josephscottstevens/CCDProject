@@ -149,9 +149,9 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 //To check visit within the last 12 months 
                 ; ``Last Encounter Date`` = lastEncounterDate
                 ; ``First Name`` = lastEncounterDate
-                ; ``Last Name`` = lastName
-                ; ``Middle Initial`` = middleInitial
-                ; ``Facility Name`` = facilityName
+                ; ``Last Name`` = Some lastName
+                ; ``Middle Initial`` = Some middleInitial
+                ; ``Facility Name`` = Some faciltyName
 
                 // Additional fields
                 ; ``Gender`` = Some gender
