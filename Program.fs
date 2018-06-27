@@ -77,20 +77,16 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let primaryInsurance = getInsurance 0
             let secondaryInsurance = getInsurance 1
         
-            //
-            //let maritalStatus =
-
-            // todo
-            //let smokingStatus =
-            // either in social history table or table is blank
+            //Unsure of where to store in enrollment table
+            let maritalStatus =
+                ccd.RecordTarget.PatientRole.Patient.MaritalStatusCode
+                |> Option.map (fun t -> t.DisplayName)
 
             // possible values [NonSmoker, Smoker]
-            //let getSmokingStatus (rowIndex:int) : string =
-            //    let table = findTable "SOCIAL HISTORY"
-            //    let row = findRowByIndex table rowIndex
-            //    let columnIndex = findColumnIndex "Payer Name" table
-            //    row.Tds.[columnIndex].XElement.Value
-            
+            let smokingStatus =
+                findTable "SOCIAL HISTORY"
+                |> Result.bind (getCell 0 1)
+                
             // todo
             //let alcoholStatus =
 
@@ -134,6 +130,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 ; ``Work Phone`` = workPhone
                 ; ``Cell Phone`` = cellPhone
                 ; ``Preferred Phone Type Id`` = preferredPhoneTypeId
+                ; ``Marital Status`` = maritalStatus
+                ; ``Smoking Status`` = smokingStatus
                 ; ``Address`` = ``Address``
                 ; ``City`` = city
                 ; ``State`` = state

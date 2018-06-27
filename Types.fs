@@ -23,9 +23,9 @@ module Types
         ; ``Work Phone`` : string option                                    // [Enrollment].[WorkPhone]
         ; ``Cell Phone`` : string option                                    // [Enrollment].[CellPhone]
         ; ``Preferred Phone Type Id`` : int option                          // [Enrollment].[PrimaryPhoneNumberTypeId]
-        //-?-maritalStatus : string                                         // [Enrollment].[MaritalStatus]
-        //smokingStatus : string                                            // [Enrollment].
-        //-?-alcoholStatus : string                                         // [Enrollment].
+        ; ``Marital Status`` : string option                                // [Enrollment].[MaritalStatus]
+        ; ``Smoking Status``: Result<string, string>                        // [Enrollment].?
+        //-?-alcoholStatus : string                                         // [Enrollment].?
 
         ; ``Primary Insurance`` : Result<string,string>                     // [Enrollment].[PrimaryInsurance]
         ; ``Secondary Insurance`` : Result<string,string>                   // [Enrollment].[SecondaryInsurance]

@@ -10,19 +10,25 @@
             Ok (CCD.Load(path))
 
     let findColumnIndex (columnTh:string) (table:CCD.Table) : Result<int, string> =
-        table.Thead.Tr.Ths 
-        |> Array.tryFindIndex (fun t -> t = columnTh)
-        |> Result.fromOption ""
+        try
+            table.Thead.Tr.Ths 
+            |> Array.tryFindIndex (fun t -> t = columnTh)
+            |> Result.fromOption ""
+        with ex ->
+            Error ex.Message
 
     let findTableWithCCd (ccd:CCD.ClinicalDocument) (sectionTitle:string) =
         if Array.isEmpty ccd.Component.StructuredBody.Components then
             Error (sprintf "Could not find table by title: %s" sectionTitle)
         else 
-            ccd.Component.StructuredBody.Components
-            |> Array.filter (fun t -> t.Section.Title = sectionTitle)
-            |> Array.map (fun t -> t.Section.Text.Table)
-            |> Array.tryHead
-            |> Result.fromOption ""
+            try
+                ccd.Component.StructuredBody.Components
+                |> Array.filter (fun t -> t.Section.Title = sectionTitle)
+                |> Array.map (fun t -> t.Section.Text.Table)
+                |> Array.tryHead
+                |> Result.fromOption ""
+             with ex ->
+                Error ex.Message
             
     let findRowByIndex (amt:int) (table:CCD.Table) =
         if Array.isEmpty table.Tbody.Trs then
@@ -32,6 +38,8 @@
             |> Array.skip amt 
             |> Array.tryHead
             |> Result.fromOption "Error no value"
+    let getCell (rowIdx:int) (colIdx:int) (t:CCD.Table) : Result<string,string> =
+        Ok t.Tbody.Trs.[0].Tds.[1].Content.XElement.Value
 
     let cleanTel(str:string) =
         str.Replace("tel: ", "")
