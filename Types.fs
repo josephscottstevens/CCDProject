@@ -1,16 +1,13 @@
-﻿//let [<Literal>] ConnectionString = "Data Source=localhost;Initial Catalog=NavcareDB_interface2;Integrated Security=True;"
-//type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>
-module Types
-    
+﻿module Types
+    open FSharp.Data.Sql
+    let [<Literal>] ConnectionString = "Data Source=localhost;Initial Catalog=NavcareDB_interface2;Integrated Security=True;"
+    type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>    
     let [<Literal>] sampleProvider = "sampleData.xml"
     type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>
     // 21 required fields - 2 optional
     // Question: Always the home address\city\state\zip?
+    //           Or like the other fields like address instead of homeAddress
 
-    // required: DOB OR MRN OR PATIENT_ID
-    // required: firstname
-    // required: lastname
-    // required: facilityid
     type CCDRecord = 
         { ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
         ; ``First Name`` : string option                                    // [Enrollment].[FirstName]
@@ -22,7 +19,7 @@ module Types
         ; ``City`` : string option                                          // [Enrollment].[HomeCity]
         ; ``State`` : string option                                         // [Enrollment].[HomeState]
         ; ``Zip Code`` : Result<string, string>                             // [Enrollment].[HomeZip]
-        ; ``Medical Record Number`` : string                                // [Enrollment].[MedicalRecordNumber]
+        ; ``Medical Record Number`` : Result<string,string>                 // [Enrollment].[MedicalRecordNumber]
         ; ``Home Phone`` : string option                                    // [Enrollment].[HomePhone]
         ; ``Work Phone`` : string option                                    // [Enrollment].[WorkPhone]
         ; ``Cell Phone`` : string option                                    // [Enrollment].[CellPhone]
@@ -30,7 +27,6 @@ module Types
         ; ``Marital Status`` : string option                                // [Enrollment].[MaritalStatus]
         ; ``Smoking Status``: Result<string, string>                        // [Enrollment].?
         //-?-alcoholStatus : string                                         // [Enrollment].?
-
         ; ``Primary Insurance`` : Result<string,string>                     // [Enrollment].[PrimaryInsurance]
         ; ``Secondary Insurance`` : Result<string,string>                   // [Enrollment].[SecondaryInsurance]
         //; ``Diagnoses & Active Problem List`` : ?
@@ -44,8 +40,6 @@ module Types
         // Additional fields
         ; ``Gender`` : string option                                        // [Enrollment].[Gender]
         ; ``Preferred Language``: string option                             // [Enrollment].[PreferredLanguage]
-        ; ``Last Encounter Date``: string option                            // [Enrollment].
-        ; ``Race``: string option                                           //[Enrollment].[Ethnicity]
-        //; ``Race``: string option                                           //[Enrollment].[Ethnicity]
-
+        ; ``Last Encounter Date``: Result<System.DateTime,string>           // [Enrollment].
+        ; ``Race``: string option                                           // [Enrollment].[Ethnicity]
         }

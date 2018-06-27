@@ -88,7 +88,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> Result.bind (getCell 0 1)
                 
             // todo
-            //let alcoholStatus =
+            //let alcoholStatus = ?
 
             // todo
             //<title>PROBLEMS</title>
@@ -101,13 +101,6 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 // put mk-ma if no allergies
             //<title>VITAL SIGNS</title>
 
-
-            // FINAL - three groups
-            // Can Process
-            // Cannot parse (exception thrown)
-        
-            // Duplicates
-            // todo, validate at least 1 phone number
             let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
             let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
             let lastEncounterDate = 
@@ -124,12 +117,14 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             Ok  { ``Last Four of Social Security Number`` = 
                     ssn
                     |> Result.bind isNotNullOrEmpty 
-                    |> Result.bind (exactly 11)
+                    |> Result.bind (exactly "Social Security Number" 11)
                     |> Result.bind (takeLast 4)
                 ; ``8 digit Date of Birth`` =
                     dob
-                    |> dateFromString 
-                ; ``Medical Record Number`` = mrn
+                    |> dateFromString "Date of Birth"
+                ; ``Medical Record Number`` = 
+                    mrn
+                    |> isNotNullOrEmpty
                 ; ``Home Phone`` = homePhone
                 ; ``Work Phone`` = workPhone
                 ; ``Cell Phone`` = cellPhone
@@ -143,12 +138,14 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                     zipCodeElement
                     |> Result.fromOption "zip code not found"
                     |> Result.bind (getElementValueByTag "postalCode")
-                    |> Result.bind (between 5 9)
+                    |> Result.bind (between "postalCode" 5 9)
                 ; ``Primary Insurance`` = primaryInsurance
                 ; ``Secondary Insurance`` = secondaryInsurance
-                //To check visit within the last 12 months 
-                ; ``Last Encounter Date`` = lastEncounterDate
-                ; ``First Name`` = lastEncounterDate
+                ; ``Last Encounter Date`` = 
+                    lastEncounterDate
+                    |> Result.fromOption "No encounter Date found"
+                    |> Result.bind (dateFromString "Last Encounter Date")
+                ; ``First Name`` = Some firstName
                 ; ``Last Name`` = Some lastName
                 ; ``Middle Initial`` = Some middleInitial
                 ; ``Facility Name`` = Some faciltyName
@@ -161,19 +158,137 @@ let findCCD (path:string) : Result<CCDRecord, string> =
     with ex ->
         Error ex.Message
 
+let ``Validate Last Encounter within the last 12 months`` (ccd:CCDRecord) =
+    match ccd.``Last Encounter Date`` with 
+    | Error t -> Error t
+    | Ok dt -> 
+        if dt.AddYears(1) < DateTime.UtcNow then
+            Error (sprintf "Last Encounter Date not within 1 year of %s" (DateTime.UtcNow.ToShortDateString()))
+        else
+            Ok ccd
+    
+let ``Validate First Name and Last Name are present`` (ccd:CCDRecord) =
+    if ccd.``First Name``.IsNone then
+        Error "First Name required"
+    else if ccd.``Last Name``.IsNone then
+        Error "Last Name required"
+    else
+        Ok ccd  
+
+let ``Validate Date of Birth, or MRN number or Patient Id`` (ccd:CCDRecord) =
+    match (ccd.``8 digit Date of Birth``, ccd.``Medical Record Number``) with
+    | (Ok _, Ok _) -> Ok ccd
+    | (Ok _, Error _) -> Ok ccd
+    | (Error _, Ok _) -> Ok ccd
+    | (Error err, Error _) -> Error err
+
+let ``Validate at least one phone number`` (ccd:CCDRecord) =
+    match (ccd.``Home Phone``, ccd.``Work Phone``, ccd.``Cell Phone``) with
+    | (Some _, _, _) -> Ok ccd
+    | (_, Some _, _) -> Ok ccd
+    | (_ , _, Some _) -> Ok ccd
+    | _ -> Error "At least one phone number is required"
+
+let ``Validate Medicare is Primary or Secondary Insurance`` (ccd:CCDRecord) =
+    let cleanInsuranceStr (resultStr : Result<string, string>) : string =
+        resultStr
+        |> Result.toOption
+        |> Option.defaultValue ""
+        |> (fun t -> t.ToUpper())
+    [ ccd.``Primary Insurance`` |> cleanInsuranceStr
+    ; ccd.``Secondary Insurance`` |> cleanInsuranceStr
+    ]
+    |> List.exists(fun t -> t.Contains("MEDICARE"))
+    |> (fun t -> if t then Ok ccd else Error "MEDICARE is the required insurance type")
+    
+
+let validateCCD (record:CCDRecord) : Result<CCDRecord, string> =
+    record
+    |> ``Validate Last Encounter within the last 12 months`` 
+    |> Result.bind ``Validate First Name and Last Name are present``
+    |> Result.bind ``Validate Date of Birth, or MRN number or Patient Id``
+    |> Result.bind ``Validate Medicare is Primary or Secondary Insurance``
+    |> Result.bind ``Validate at least one phone number``
+
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
     let ccds : Result<CCDRecord, string> array =
         System.IO.Directory.GetFiles("R:\IT\CCDS")
-        |> Array.filter (fun t -> t <> sampleProvider)
-        |> Array.map (fun t -> findCCD t)
+        |> Array.map findCCD
+        |> Array.map (Result.bind validateCCD)
+    let ctx = Sql.GetDataContext()
+    
+    let insertEnrollmentIDs (ccd:CCDRecord) : Result<int,string> =
+        try
+            let facilityId = ctx.Hco.Hcos 
+                             |> Seq.where(fun t -> t.FacilityName.Contains(ccd.``Facility Name``.Value))
+                             |> Seq.map(fun t ->  t.Id) 
+                             |> Seq.head
+            let mrn = ccd.``Medical Record Number`` |> Result.toOption
+            let existingRecord =
+                query {
+                    for e in ctx.Ptn.Enrollment do
+                    where (e.FirstName.Contains(ccd.``First Name``.Value))
+                    where (e.LastName.Contains(ccd.``Last Name``.Value))
+                    where (e.FacilityId = facilityId)
+                    where (e.MedicalRecordNumber = mrn)
+                    select e
+                }
+                |> Seq.tryHead
 
-    // todo - filter duplicates
-    // todo - check for existing enrollment
-    // •	Visit within the last 12 months (see <title>ENCOUNTER DIAGNOSIS</title>)
-    // •	Medicare as primary insurance
-    // •	At least 2 qualifying diagnoses
-    //      This auto qualifies them
+            if existingRecord.IsSome then
+                Error (sprintf "Record already exists: %s" (string ccd))
+            else
+                let row = ctx.Ptn.Enrollment.Create()
+                row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
+                row.FirstName <- ccd.``First Name``.Value
+                row.LastName <- ccd.``Last Name``.Value
+                row.FacilityId <- facilityId
+                row.MiddleName <- ccd.``Middle Initial``
+                row.DoB <- ccd.``8 digit Date of Birth`` |> Result.toOption
+                row.HomeAddress <- ccd.Address
+                row.HomeCity <- ccd.City
+                row.State <- ccd.State
+                row.HomeZip <- ccd.``Zip Code`` |> Result.toOption
+                row.MedicalRecordNumber <- ccd.``Medical Record Number`` |> Result.toOption
+                row.HomePhone <- ccd.``Home Phone``
+                row.WorkPhone <- ccd.``Work Phone``
+                row.CellPhone <- ccd.``Cell Phone``
+                row.PrimaryPhoneNumberTypeId <- ccd.``Preferred Phone Type Id``
+                row.MaritalStatus <- ccd.``Marital Status``
+                row.PrimaryInsurance <- ccd.``Primary Insurance`` |> Result.toOption
+                row.SecondaryInsurance <- ccd.``Secondary Insurance`` |> Result.toOption
+
+                // Additional fields
+
+                row.Gender <- ccd.Gender
+                row.PreferredLanguage <- ccd.``Preferred Language``
+                // row.EncounterDate isn't a thing right?
+
+                row.OptIn <- false //TODO, this can be true if 'At least 2 qualifying diagnoses'
+                row.AdmitDate <- Some System.DateTime.UtcNow
+                ctx.SubmitUpdates()
+                Ok row.Id
+        with ex ->
+            Error ex.Message
+
+    let insertedEnrollmentIDs =
+        ccds 
+        |> Array.choose Result.toOption
+        |> Array.distinct //TODO, this is a thing yah?
+        |> Array.map insertEnrollmentIDs
+
+    insertedEnrollmentIDs
+    |> Array.choose Result.toOption
+    |> Array.map (fun (enrollmentId:int) -> 
+                    let row = 
+                        ctx.Ptn.Enrollment
+                        |> Seq.find (fun t -> t.Id = enrollmentId) 
+                    row.Delete()
+                    ctx.SubmitUpdates()
+                    ()
+    )|> ignore
+    
     
     0
