@@ -116,7 +116,11 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let race = 
                 ccd.RecordTarget.PatientRole.Patient.EthnicGroupCode
                 |> Option.map (fun t -> t.DisplayName)
-
+            let firstName = ccd.RecordTarget.PatientRole.Patient.Name.Given
+            let lastName = ccd.RecordTarget.PatientRole.Patient.Name.Family
+            let middleInitial = ccd.RecordTarget.PatientRole.Patient.Name.Use
+            let faciltyName = ccd.Custodian.AssignedCustodian.RepresentedCustodianOrganization.Name
+         
             Ok  { ``Last Four of Social Security Number`` = 
                     ssn
                     |> Result.bind isNotNullOrEmpty 
@@ -144,6 +148,10 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 ; ``Secondary Insurance`` = secondaryInsurance
                 //To check visit within the last 12 months 
                 ; ``Last Encounter Date`` = lastEncounterDate
+                ; ``First Name`` = lastEncounterDate
+                ; ``Last Name`` = lastName
+                ; ``Middle Initial`` = middleInitial
+                ; ``Facility Name`` = facilityName
 
                 // Additional fields
                 ; ``Gender`` = Some gender
