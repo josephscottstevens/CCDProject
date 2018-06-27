@@ -60,10 +60,10 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let secondaryInsurance = getInsurance 1
     
         //
-        //let maritalStatus =
+        //let maritalStatus = 
 
         // todo
-        //let smokingStatus =
+        //let smokingStatus
         // either in social history table or table is blank
         
         let getSmokingStatus (rowIndex:int) : string =
@@ -104,6 +104,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         // todo, validate at least 1 phone number
         let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
         let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
+        let lastEncounterDate = ccd.DocumentationOf.ServiceEvent.EffectiveTime.High.Value 
+        let race = ccd.RecordTarget.PatientRole.Patient.EthnicGroupCode.DisplayName
         Ok  { ``Last Four of Social Security Number`` = 
                 ssn
                 |> isNotNullOrEmpty 
@@ -126,10 +128,14 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> andAlso (between 5 9)
             ; ``Primary Insurance`` = primaryInsurance
             ; ``Secondary Insurance`` = secondaryInsurance
+            //To check visit within the last 12 months 
+            ; ``Last Encounter Date`` = lastEncounterDate
+
 
             // Additional fields
             ; ``Gender`` = Some gender
             ; ``Preferred Language`` = Some preferredLanguage
+            ; ``Race`` = Some race
             }
     with ex ->
         Err ex.Message
