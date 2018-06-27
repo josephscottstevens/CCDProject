@@ -14,35 +14,38 @@ module Types
 
     // 21 required fields - 2 optional
     // Question: Always the home address\city\state\zip?
-    type CCDRecord = 
-        { ``Last Four of Social Security Number`` : Result<string,string>                   // [Enrollment].[SSNNumber]
-        ; ``8 digit Date of Birth`` : Result<System.DateTime,string>          // [Enrollment].[DoB]
-        ; ``Address`` : string                              // [Enrollment].[HomeAddress]
-        ; ``City`` : string                                 // [Enrollment].[HomeCity]
-        ; ``State`` : string                                // [Enrollment].[HomeState]
-        ; ``Zip Code`` : Result<string, string>                              // [Enrollment].[HomeZip]
-        //; Contact Preferences (from discussion with patient)?
-        ; ``Medical Record Number`` : string                // [Enrollment].[MedicalRecordNumber]
-        //; homePhone : string option                       // [Enrollment].
-        //; workPhone : string option                       // [Enrollment].
-        //; cellPhone : string option                       // [Enrollment].
-        //maritalStatus : string                            // [Enrollment].
-        //smokingStatus : string                            // [Enrollment].
-        //alcoholStatus : string                            // [Enrollment].
-        //encounterNotes : string                           // [Enrollment].
-        
 
-        ; ``Primary Insurance`` : string
-        ; ``Secondary Insurance`` : string
+    // required: DOB OR MRN OR PATIENT_ID
+    // required: firstname
+    // required: lastname
+    // required: facilityid
+    type CCDRecord = 
+        { ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
+        ; ``8 digit Date of Birth`` : Result<System.DateTime,string>        // [Enrollment].[DoB]
+        ; ``Address`` : string                                              // [Enrollment].[HomeAddress]
+        ; ``City`` : string                                                 // [Enrollment].[HomeCity]
+        ; ``State`` : string                                                // [Enrollment].[HomeState]
+        ; ``Zip Code`` : Result<string, string>                             // [Enrollment].[HomeZip]
+        ; ``Medical Record Number`` : string                                // [Enrollment].[MedicalRecordNumber]
+        ; ``Home Phone`` : string option                                    // [Enrollment].[HomePhone]
+        ; ``Work Phone`` : string option                                    // [Enrollment].[WorkPhone]
+        ; ``Cell Phone`` : string option                                    // [Enrollment].[CellPhone]
+        ; ``Preferred Phone Type Id`` : int option                          // [Enrollment].[PrimaryPhoneNumberTypeId]
+        //-?-maritalStatus : string                                         // [Enrollment].[MaritalStatus]
+        //smokingStatus : string                                            // [Enrollment].
+        //-?-alcoholStatus : string                                         // [Enrollment].
+
+        ; ``Primary Insurance`` : string                                    // [Enrollment].[PrimaryInsurance]
+        ; ``Secondary Insurance`` : string                                  // [Enrollment].[SecondaryInsurance]
         //; ``Diagnoses & Active Problem List`` : ?
-        //; ``Active Medications`` : ?
+        //; ``Active Medications`` : ? active medications
         //; ``Past Medical History`` : ?
         //; ``Immunizations/Screenings`` : ?
         //; ``Allergies`` : ?
         //; ``Vitals`` : ?
         //; ``Encounter Notes`` : ?
-        //; ``Faxed Consent`` : ?
-        ; ``Gender`` : string option
-        ; ``Preferred Language``:string option
-          //; ``Faxed Consent`` : ?
+        
+        // Additional fields
+        ; ``Gender`` : string option                                        // [Enrollment].[Gender]
+        ; ``Preferred Language``: string option                             // [Enrollment].[PreferredLanguage]
         }

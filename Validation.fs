@@ -13,6 +13,9 @@
             Err "SSN cannot be null or empty"
         else
             Ok input
+    // todo validate
+    let takeLast (amount:int) (str:string) : Result<string,string> = 
+        Ok (str.Substring(str.Length - amount))
 
     let exactly (amount:int) (str:string) : Result<string,string> = 
         if str.Length <> amount then 
