@@ -115,6 +115,11 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             // todo, validate at least 1 phone number
             let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
             let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
+            let lastEncounterDate = ccd.DocumentationOf.ServiceEvent.EffectiveTime.High.Value 
+            let race = 
+                ccd.RecordTarget.PatientRole.Patient.EthnicGroupCode
+                |> Option.map (fun t -> t.DisplayName)
+
             Ok  { ``Last Four of Social Security Number`` = 
                     ssn
                     |> Result.bind isNotNullOrEmpty 
@@ -138,11 +143,13 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                     |> Result.bind (between 5 9)
                 ; ``Primary Insurance`` = primaryInsurance
                 ; ``Secondary Insurance`` = secondaryInsurance
+                //To check visit within the last 12 months 
                 ; ``Last Encounter Date`` = lastEncounterDate
+
                 // Additional fields
                 ; ``Gender`` = Some gender
                 ; ``Preferred Language`` = Some preferredLanguage
-                ; ``Race`` = Some race
+                ; ``Race`` = race
                 }
     with ex ->
         Error ex.Message
