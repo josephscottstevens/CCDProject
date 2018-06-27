@@ -14,10 +14,12 @@
         |> Array.map (fun t -> t.Section.Text.Table)
         |> Array.head
 
+    // todo, change to cell instead of index
     let findRowByIndex (table:CCD.Table) (amt:int) : CCD.Tr2 =
         table.Tbody.Trs 
         |> Array.skip amt 
         |> Array.head
+
     let cleanTel(str:string) =
         str.Replace("tel: ", "")
 
@@ -28,3 +30,10 @@
         match maybeElement with
         | Some element -> Ok element.Value
         | None -> Err "No Element found"
+    
+    let genderStringToGenderTypeId (str:string) : int option =
+        match str with
+        | "MC" -> Some 0
+        | "HP" -> Some 1
+        | "WP" -> Some 2
+        | _ -> None

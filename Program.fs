@@ -12,24 +12,24 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let findTable = findTableWithCCd ccd
         
         //todo, validate 10 characters long, then take last 4
-        let ``Last Four of Social Security Number`` = 
+        let ssn = 
             ccd.RecordTarget.PatientRole.Ids 
             |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.4.1") 
             |> Array.map (fun t -> t.Extension)
             |> Array.head
 
-        let ``8 digit Date of Birth`` =
+        let dob =
             ccd.RecordTarget.PatientRole.Patient.BirthTime.XElement.Value
 
-        let ``Medical Record Number`` = 
+        let mrn = 
             ccd.RecordTarget.PatientRole.Ids 
             |> Array.filter (fun t -> t.Root = "2.16.840.1.113883.19.5.99999.2") 
             |> Array.map (fun t -> t.Extension)
             |> Array.head
     
-        let ``Address`` = ccd.RecordTarget.PatientRole.Addr.StreetAddressLine
-        let ``City`` = ccd.RecordTarget.PatientRole.Addr.City
-        let ``State`` = ccd.RecordTarget.PatientRole.Addr.State
+        let Address = ccd.RecordTarget.PatientRole.Addr.StreetAddressLine
+        let city = ccd.RecordTarget.PatientRole.Addr.City
+        let state = ccd.RecordTarget.PatientRole.Addr.State
         let zipCodeElement = ccd.RecordTarget.PatientRole.Addr.XElement
             
         let phoneNumber (phoneType : string) = 
@@ -42,8 +42,10 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let homePhone = phoneNumber "HP"
         let workPhone = phoneNumber "WP"
         let cellPhone = phoneNumber "MC"
+        let preferredPhoneTypeId = genderStringToGenderTypeId ccd.RecordTarget.PatientRole.Addr.Use 
             
-            //|> Array.map (fun t -> cleanTel t.Value)
+            
+    
     
         //todo
         //let emergencyContacts = ccd.RecordTarget.PatientRole.?
@@ -54,8 +56,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let primaryInsuranceColumnIndex = findColumnIndex "Payer Name" primaryInsuranceTable
             primaryInsuranceRow.Tds.[primaryInsuranceColumnIndex].XElement.Value
 
-        let ``Primary Insurance`` = getInsurance 0
-        let ``Secondary Insurance`` = getInsurance 1
+        let primaryInsurance = getInsurance 0
+        let secondaryInsurance = getInsurance 1
     
         //
         //let maritalStatus =
@@ -64,6 +66,11 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         //let smokingStatus =
         // either in social history table or table is blank
         // possible values [NonSmoker, ?]
+        let getSmokingStatus (rowIndex:int) : string =
+            let table = findTable "SOCIAL HISTORY"
+            let row = findRowByIndex table rowIndex
+            let columnIndex = findColumnIndex "Payer Name" table
+            row.Tds.[columnIndex].XElement.Value
             
         // todo
         //let alcoholStatus =
@@ -97,26 +104,29 @@ let findCCD (path:string) : Result<CCDRecord, string> =
         let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
         let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
         Ok  { ``Last Four of Social Security Number`` = 
-                ``Last Four of Social Security Number``
+                ssn
                 |> isNotNullOrEmpty 
                 |> andAlso (exactly 11)
                 |> andAlso (takeLast 4)
             ; ``8 digit Date of Birth`` =
-                ``8 digit Date of Birth``
+                dob
                 |> dateFromString 
-            ; ``Medical Record Number`` = ``Medical Record Number``
+            ; ``Medical Record Number`` = mrn
             ; ``Home Phone`` = homePhone
             ; ``Work Phone`` = workPhone
             ; ``Cell Phone`` = cellPhone
+            ; ``Preferred Phone Type Id`` = preferredPhoneTypeId
             ; ``Address`` = ``Address``
-            ; ``City`` = ``City``
-            ; ``State`` = ``State``
+            ; ``City`` = city
+            ; ``State`` = state
             ; ``Zip Code`` = 
                 zipCodeElement
                 |> getElementValueByTag "postalCode"
                 |> andAlso (between 5 9)
-            ; ``Primary Insurance`` = ``Primary Insurance``
-            ; ``Secondary Insurance`` = ``Secondary Insurance``
+            ; ``Primary Insurance`` = primaryInsurance
+            ; ``Secondary Insurance`` = secondaryInsurance
+
+            // Additional fields
             ; ``Gender`` = Some gender
             ; ``Preferred Language`` = Some preferredLanguage
             }
@@ -126,12 +136,17 @@ let findCCD (path:string) : Result<CCDRecord, string> =
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
-    
     let ccds : Result<CCDRecord, string> array =
         System.IO.Directory.GetFiles("R:\IT\CCDS")
         |> Array.filter (fun t -> t <> sampleProvider)
         |> Array.map (fun t -> findCCD t)
-    
+
+    // todo - filter duplicates
+    // todo - check for existing enrollment
+    // •	Visit within the last 12 months (see <title>ENCOUNTER DIAGNOSIS</title>)
+    // •	Medicare as primary insurance
+    // •	At least 2 qualifying diagnoses
+    //      This auto qualifies them
     ccds 
     |> Array.map (fun t -> 
                     match t with 
