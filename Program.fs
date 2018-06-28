@@ -213,33 +213,56 @@ let validateCCD (record:CCDRecord) : Result<CCDRecord, string> =
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
+    let files = System.IO.Directory.GetFiles("R:\IT\CCDS")
     let ccds : Result<CCDRecord, string> array =
-        System.IO.Directory.GetFiles("R:\IT\CCDS")
+        files
         |> Array.map findCCD
         |> Array.map (Result.bind validateCCD)
     let ctx = Sql.GetDataContext()
+
+    let facilityName = 
+        ccds 
+        |> Array.choose Result.toOption
+        |> Array.map (fun t -> t.``Facility Name``.Value)
+        |> Array.head
+
+    let facilityId = 
+        ctx.Hco.Hcos 
+        |> Seq.where(fun t -> t.FacilityName.Contains(facilityName))
+        |> Seq.map(fun t -> t.Id) 
+        |> Seq.head
     
     let insertEnrollmentIDs (ccd:CCDRecord) : Result<int,string> =
         try
-            let facilityId = ctx.Hco.Hcos 
-                             |> Seq.where(fun t -> t.FacilityName.Contains(ccd.``Facility Name``.Value))
-                             |> Seq.map(fun t ->  t.Id) 
-                             |> Seq.head
             let mrn = ccd.``Medical Record Number`` |> Result.toOption
+            if ccd.``Facility Name``.Value <> facilityName then
+                failwith "invalid facility name"
+            let firstName = ccd.``First Name``.Value
+            let lastName = ccd.``Last Name``.Value
             let existingRecord =
                 query {
                     for e in ctx.Ptn.Enrollment do
-                    where (e.FirstName.Contains(ccd.``First Name``.Value))
-                    where (e.LastName.Contains(ccd.``Last Name``.Value))
+                    where (e.FirstName.Contains(firstName))
+                    where (e.LastName.Contains(lastName))
                     where (e.FacilityId = facilityId)
-                    where (e.MedicalRecordNumber = mrn)
-                    select e
+                    // where (e.MedicalRecordNumber = mrn) //Can't bind this
+                    // No mapping exists from object type Microsoft.FSharp.Core.FSharpOption`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] to a known managed provider native type.
+                    select e.Id
                 }
-                |> Seq.tryHead
+                |> Seq.toList
+                |> List.tryHead
 
-            if existingRecord.IsSome then
-                Error (sprintf "Record already exists: %s" (string ccd))
-            else
+            match existingRecord with
+            | Some id ->
+                //Error (sprintf "Record already exists: %s" (string ccd))
+                ctx.Ptn.Enrollment 
+                |> Seq.find(fun t -> t.Id = id)
+                |> (fun t -> 
+                    t.Delete()
+                    ctx.SubmitUpdates()
+                )
+                Ok id
+            | None ->
                 let row = ctx.Ptn.Enrollment.Create()
                 row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
                 row.FirstName <- ccd.``First Name``.Value
@@ -276,19 +299,32 @@ let main _ =
     let insertedEnrollmentIDs =
         ccds 
         |> Array.choose Result.toOption
-        |> Array.distinct //TODO, this is a thing yah?
+        //|> Array.distinct //TODO, this is a thing yah?
         |> Array.map insertEnrollmentIDs
+    
+    let erroredEnrollments =
+       ccds
+       |> Array.choose(fun t -> match t with | Ok _ -> None | Error err -> Some err)
+       
+    erroredEnrollments |> Array.map(fun t -> printf "Error: %s\n" t) |> ignore
+    printf "\n\n"
+    printf "%d total files available\n" (Array.length files)
+    printf "%d files processed\n" (Array.length insertedEnrollmentIDs)
+    printf "%d files errored\n" (Array.length erroredEnrollments)
 
-    insertedEnrollmentIDs
-    |> Array.choose Result.toOption
-    |> Array.map (fun (enrollmentId:int) -> 
-                    let row = 
-                        ctx.Ptn.Enrollment
-                        |> Seq.find (fun t -> t.Id = enrollmentId) 
-                    row.Delete()
-                    ctx.SubmitUpdates()
-                    ()
-    )|> ignore
+    printf "\nPress any key to continue"
+    System.Console.ReadLine() |> ignore
+
+    //insertedEnrollmentIDs
+    //|> Array.choose Result.toOption
+    //|> Array.map (fun (enrollmentId:int) -> 
+    //                let row = 
+    //                    ctx.Ptn.Enrollment
+    //                    |> Seq.find (fun t -> t.Id = enrollmentId) 
+    //                row.Delete()
+    //                ctx.SubmitUpdates()
+    //                ()
+    //)|> ignore
     
     
     0
