@@ -45,7 +45,5 @@ module Types
         ; ``Gender`` : string option                                        // [Enrollment].[Gender]
         ; ``Preferred Language``: string option                             // [Enrollment].[PreferredLanguage]
         ; ``Last Encounter Date``: string option                            // [Enrollment].
-        ; ``Race``: string option                                           //[Enrollment].[Ethnicity]
-        //; ``Race``: string option                                           //[Enrollment].[Ethnicity]
-
+        ; ``Race``: string option                                           // [Enrollment].[Race]
         }
