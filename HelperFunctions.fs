@@ -24,6 +24,7 @@
             try
                 ccd.Component.StructuredBody.Components
                 |> Array.filter (fun t -> t.Section.Title = sectionTitle)
+                |> Array.filter (fun t -> t.Section.Text.XElement.Value.ToLower() <> "no records"                       )
                 |> Array.map (fun t -> t.Section.Text.Table)
                 |> Array.tryHead
                 |> Result.fromOption ""
@@ -39,7 +40,8 @@
             |> Array.tryHead
             |> Result.fromOption "Error no value"
     let getCell (rowIdx:int) (colIdx:int) (t:CCD.Table) : Result<string,string> =
-        Ok t.Tbody.Trs.[0].Tds.[1].Content.XElement.Value
+        
+        Ok t.Tbody.Trs.[rowIdx].Tds.[colIdx].Content.XElement.Value
 
     let cleanTel(str:string) =
         str.Replace("tel: ", "")

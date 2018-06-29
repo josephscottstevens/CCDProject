@@ -3,6 +3,7 @@ open System
 open Types
 open HelperFunctions
 open Validation
+open Log
 
 let findCCD (path:string) : Result<CCDRecord, string> =
     try
@@ -19,7 +20,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> Result.fromOption "SSN not found"
 
             let dob =
-                ccd.RecordTarget.PatientRole.Patient.BirthTime.XElement.Value
+                ccd.RecordTarget.PatientRole.Patient.BirthTime.Value
         
             let mrn = 
                 ccd.RecordTarget.PatientRole.Ids 
@@ -116,15 +117,15 @@ let findCCD (path:string) : Result<CCDRecord, string> =
          
             Ok  { ``Last Four of Social Security Number`` = 
                     ssn
-                    |> Result.bind isNotNullOrEmpty 
-                    |> Result.bind (exactly "Social Security Number" 11)
-                    |> Result.bind (takeLast 4)
+                    |> Result.bind (isNotNullOrEmpty "Social Security Number")
+                    |> Result.bind (exactly 11 "Social Security Number")
+                    |> Result.bind (takeLast 4 "Social Security Number")
                 ; ``8 digit Date of Birth`` =
                     dob
                     |> dateFromString "Date of Birth"
                 ; ``Medical Record Number`` = 
                     mrn
-                    |> isNotNullOrEmpty
+                    |> (isNotNullOrEmpty "Medical Record Number")
                 ; ``Home Phone`` = homePhone
                 ; ``Work Phone`` = workPhone
                 ; ``Cell Phone`` = cellPhone
@@ -138,7 +139,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                     zipCodeElement
                     |> Result.fromOption "zip code not found"
                     |> Result.bind (getElementValueByTag "postalCode")
-                    |> Result.bind (between "postalCode" 5 9)
+                    |> Result.bind (between 5 9 "postalCode")
                 ; ``Primary Insurance`` = primaryInsurance
                 ; ``Secondary Insurance`` = secondaryInsurance
                 ; ``Last Encounter Date`` = 
@@ -213,7 +214,10 @@ let validateCCD (record:CCDRecord) : Result<CCDRecord, string> =
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
-    let files = System.IO.Directory.GetFiles("R:\IT\CCDS")
+    let files : string [] = 
+        //[| """R:\IT\CCDS\DELORAS_G_EASON_06212018120821_COMPLETE_CCDA.xml""" |]
+        System.IO.Directory.GetFiles("R:\IT\CCDS")
+
     let ccds : Result<CCDRecord, string> array =
         files
         |> Array.map findCCD
@@ -232,9 +236,10 @@ let main _ =
         |> Seq.map(fun t -> t.Id) 
         |> Seq.head
     
-    let insertEnrollmentIDs (ccd:CCDRecord) : Result<int,string> =
+
+    let insertEnrollmentIDs (ccd:CCDRecord) : Result<int,string> * string =
         try
-            let mrn = ccd.``Medical Record Number`` |> Result.toOption
+            //let mrn = ccd.``Medical Record Number`` |> Result.toOption
             if ccd.``Facility Name``.Value <> facilityName then
                 failwith "invalid facility name"
             let firstName = ccd.``First Name``.Value
@@ -261,7 +266,7 @@ let main _ =
                     t.Delete()
                     ctx.SubmitUpdates()
                 )
-                Ok id
+                (Ok id), (sprintf "Record exists already: %d" id)
             | None ->
                 let row = ctx.Ptn.Enrollment.Create()
                 row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
@@ -291,10 +296,11 @@ let main _ =
 
                 row.OptIn <- false //TODO, this can be true if 'At least 2 qualifying diagnoses'
                 row.AdmitDate <- Some System.DateTime.UtcNow
-                ctx.SubmitUpdates()
-                Ok row.Id
+                //ctx.SubmitUpdates()
+                
+                ((Ok row.Id), writeRecordRow ccd)
         with ex ->
-            Error ex.Message
+            ((Error ex.Message), (sprintf "error: %s" ex.Message))
 
     let insertedEnrollmentIDs =
         ccds 
@@ -311,6 +317,13 @@ let main _ =
     printf "%d total files available\n" (Array.length files)
     printf "%d files processed\n" (Array.length insertedEnrollmentIDs)
     printf "%d files errored\n" (Array.length erroredEnrollments)
+
+    let x = 
+        insertedEnrollmentIDs 
+        |> Array.map snd
+        |> Array.reduce(fun t y -> t + "\n" + y)
+    
+    (writeRecordHeader + x) |> System.Windows.Forms.Clipboard.SetText
 
     printf "\nPress any key to continue"
     System.Console.ReadLine() |> ignore

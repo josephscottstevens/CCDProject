@@ -60,6 +60,7 @@
     <Compile Include="Validation.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="HelperFunctions.fs" />
+    <Compile Include="Log.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
@@ -88,6 +89,7 @@
       <HintPath>packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

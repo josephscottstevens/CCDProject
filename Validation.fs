@@ -1,23 +1,23 @@
 ﻿module Validation
-    let isNotNullOrEmpty (input:string) : Result<string,string> =
+    let isNotNullOrEmpty (fieldName:string) (input:string) : Result<string,string> =
         if System.String.IsNullOrWhiteSpace input then
-            Error "SSN cannot be null or empty"
+            Error (sprintf "%s cannot be null or empty" fieldName)
         else
             Ok input
 
-    let takeLast (amount:int) (str:string) : Result<string,string> = 
+    let takeLast (amount:int) (fieldName:string) (str:string) : Result<string,string> = 
         if amount > str.Length then
-            Error "Error out of range"
+            Error (sprintf "%s is out of range" fieldName)
         else
             Ok (str.Substring(str.Length - amount))
 
-    let exactly (fieldName:string) (amount:int) (str:string) : Result<string,string> = 
+    let exactly (amount:int) (fieldName:string) (str:string) : Result<string,string> = 
         if str.Length <> amount then 
             Error (sprintf "%s must be exactly %d characters" fieldName amount)
         else
             Ok str
 
-    let between (fieldName:string) (minimum:int) (maximum:int) (str:string) : Result<string,string> =
+    let between (minimum:int) (maximum:int) (fieldName:string) (str:string) : Result<string,string> =
         if str.Length < minimum then
             Error (sprintf "%s is too small" fieldName)
         else if str.Length > maximum then
@@ -30,10 +30,10 @@
             Ok str
         else 
             Error "String is not all digits"
-    
+
     let dateFromString (fieldName:string) (str:string) : Result<System.DateTime,string> =
-        isNotNullOrEmpty str
-        |> Result.bind (between fieldName 8 (8+9) )
+        isNotNullOrEmpty fieldName str
+        |> Result.bind (between  8 (8+9) fieldName)
         |> (fun result -> 
             match result with 
             | Ok str ->
