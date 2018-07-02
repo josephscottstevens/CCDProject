@@ -16,15 +16,26 @@
 
     let writeDt (dt:DateTime) : string =
         dt.ToString()
-    
-    let writeAllergy (allergies:Allergy array) : string =
-        allergies 
+    let reducer strings =
+        strings 
+        |> Array.reduce(fun t y -> t + ", " + y) 
+
+    let writeAllergy (items:Allergy array) : string =
+        items 
         |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
-                                + ":" 
-                                + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
+                              + ":" 
+                              + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
                     )
-        |> Array.reduce(fun t y -> t + ", " + y)
-    
+        |> reducer
+
+    //let writeProblems (items:Problem array) : string =
+    //    items
+    //    |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
+    //                          + ":" 
+    //                          + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
+    //                )
+    //    |> reducer
+
     let writeRecordHeader : string =
         Reflection.FSharpType.GetRecordFields(typeof<CCDRecord>) 
         |> Seq.map (fun field -> field.Name)
@@ -43,6 +54,7 @@
             | :? Result<string,string> as t -> handleError id  t
             | :? Result<DateTime,string> as t -> handleError writeDt t
             | :? Result<Allergy array,string> as t -> handleError writeAllergy t
+            //| :? Result<Problem array,string> as t -> handleError writeAllergy t
             | _ ->
                 let x = field
                 "not implemented"

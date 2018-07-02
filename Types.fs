@@ -7,21 +7,17 @@
     // Question: Always the home address\city\state\zip?
     //           Or like the other fields like address instead of homeAddress
 
-    type StatusType = Active | Inactive
-
-    type CCDType = ICD9 of string | ICD10 of string
-
     type Allergy =
         { name : string
         ; reaction : string option
         }
 
-    type Problem = // <title>PROBLEMS</title>
-        { code : string 
-        ; ccdType : CCDType
+    type Problem =
+        { name : string
+        ; code : int64 option
+        ; codeSystem : string 
         ; date : Result<System.DateTime,string>
-        ; performer : string
-        ; status : StatusType
+        ; status : string
         }
 
     type Medication =
@@ -43,45 +39,45 @@
 
     type Encounter = // <title>ENCOUNTER DIAGNOSIS</title>
         { code : string 
-        ; ccdType : CCDType
+        ; codeSystem : string 
         ; date : Result<System.DateTime,string>
         ; performer : string
-        ; status : StatusType
+        ; status : string
         }
 
     type Immunization = // <title>IMMUNIZATIONS</title>
         { vaccine : string
         ; code : string 
-        ; ccdType : CCDType
+        ; codeSystem : string 
         ; date : Result<System.DateTime,string>
-        ; status : StatusType
+        ; status : string
         }
 
     type CCDRecord = 
         { ``File Name`` : string
-        ; ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
-        ; ``First Name`` : string option                                    // [Enrollment].[FirstName]
-        ; ``Middle Initial`` : string option                                // [Enrollment].[MiddleName]
-        ; ``Last Name`` : string option                                     // [Enrollment].[LastName]
-        ; ``Facility Name`` : string option                                 // [Enrollment].[FacilityID]
-        ; ``8 digit Date of Birth`` : Result<System.DateTime,string>        // [Enrollment].[DoB]
-        ; ``Address`` : string option                                       // [Enrollment].[HomeAddress]
-        ; ``City`` : string option                                          // [Enrollment].[HomeCity]
-        ; ``State`` : string option                                         // [Enrollment].[HomeState]
-        ; ``Zip Code`` : Result<string, string>                             // [Enrollment].[HomeZip]
-        ; ``Medical Record Number`` : Result<string,string>                 // [Enrollment].[MedicalRecordNumber]
-        ; ``Home Phone`` : string option                                    // [Enrollment].[HomePhone]
-        ; ``Work Phone`` : string option                                    // [Enrollment].[WorkPhone]
-        ; ``Cell Phone`` : string option                                    // [Enrollment].[CellPhone]
-        ; ``Preferred Phone Type Id`` : int option                          // [Enrollment].[PrimaryPhoneNumberTypeId]
-        ; ``Marital Status`` : string option                                // [Enrollment].[MaritalStatus]
-        ; ``Smoking Status``: Result<string, string>                        // [Enrollment].?
-        //-?-alcoholStatus : string                                         // [Enrollment].?
-        ; ``Primary Insurance`` : Result<string,string>                     // [Enrollment].[PrimaryInsurance]
-        ; ``Secondary Insurance`` : Result<string,string>                   // [Enrollment].[SecondaryInsurance]
+        ; ``Last Four of Social Security Number`` : Result<string,string>    // [Enrollment].[SSNNumber]
+        ; ``First Name`` : string option                                     // [Enrollment].[FirstName]
+        ; ``Middle Initial`` : string option                                 // [Enrollment].[MiddleName]
+        ; ``Last Name`` : string option                                      // [Enrollment].[LastName]
+        ; ``Facility Name`` : string option                                  // [Enrollment].[FacilityID]
+        ; ``8 digit Date of Birth`` : Result<System.DateTime,string>         // [Enrollment].[DoB]
+        ; ``Address`` : string option                                        // [Enrollment].[HomeAddress]
+        ; ``City`` : string option                                           // [Enrollment].[HomeCity]
+        ; ``State`` : string option                                          // [Enrollment].[HomeState]
+        ; ``Zip Code`` : Result<string, string>                              // [Enrollment].[HomeZip]
+        ; ``Medical Record Number`` : Result<string,string>                  // [Enrollment].[MedicalRecordNumber]
+        ; ``Home Phone`` : string option                                     // [Enrollment].[HomePhone]
+        ; ``Work Phone`` : string option                                     // [Enrollment].[WorkPhone]
+        ; ``Cell Phone`` : string option                                     // [Enrollment].[CellPhone]
+        ; ``Preferred Phone Type Id`` : int option                           // [Enrollment].[PrimaryPhoneNumberTypeId]
+        ; ``Marital Status`` : string option                                 // [Enrollment].[MaritalStatus]
+        ; ``Smoking Status``: Result<string, string>                         // [Enrollment].?
+        //-?-alcoholStatus : string                                          // [Enrollment].?
+        ; ``Primary Insurance`` : Result<string,string>                      // [Enrollment].[PrimaryInsurance]
+        ; ``Secondary Insurance`` : Result<string,string>                    // [Enrollment].[SecondaryInsurance]
         // CLS table section
-        ; ``Allergies`` : Result<Allergy array,string>                      // [cls].[Allergies]
-        //; ``Diagnoses & Active Problem List`` : ?                 
+        ; ``Allergies`` : Result<Allergy array,string>                       // [cls].[Allergies]
+        ; ``Diagnoses & Active Problem List`` : Result<Problem array,string> // [dbo].[PatientProblems]
         //; ``Active Medications`` : ? active medications
         //; ``Vitals`` : ?
         //; ``Encounter Notes`` : ?

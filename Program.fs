@@ -101,25 +101,39 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             // ##### Start CCD Table Section ##### \\
 
             let allergies : Result<Allergy array,string> =
+                // todo: put mk-ma if no allergies?
                 let tableResult = findTable "ALLERGIES, ADVERSE REACTIONS, ALERTS"
-                let allergyRow (row:CCD.Tr2) : Allergy =
+                let row (row:CCD.Tr2) : Allergy =
                     { name = row.Tds.[0].Content.XElement.Value
                     ; reaction = row.Tds.[3].Content.String
                     }
 
                 tableResult
                 |> Result.map (fun t -> t.Tbody.Trs)
-                |> Result.map (fun t -> Array.map allergyRow t )
+                |> Result.map (fun t -> Array.map row t )
+
+            let problems : Result<Problem array,string> =
+                let tableResult = findTable "PROBLEMS"
+                let row (row:CCD.Tr2) : Problem =
+                    { name = row.Tds.[0].Content.XElement.Value
+                    ; code = row.Tds.[1].Content.Number
+                    ; codeSystem = row.Tds.[2].Content.XElement.Value
+                    ; date = row.Tds.[3].Content.String |> Option.defaultValue "" |> (dateFromString "Problem Effective Date")
+                    ; status = row.Tds.[4].Content.XElement.Value
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+
 
             // todo
-            //<title>PROBLEMS</title>
             //<title>MEDICATIONS</title>
             //<title>ENCOUNTER DIAGNOSIS</title>
                 //Encounter notes? this thing?
             //<title>PROCEDURES</title>
             //<title>IMMUNIZATIONS</title>
-            //<title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
-                // put mk-ma if no allergies?
+                
             //<title>VITAL SIGNS</title>
 
             // ##### End   CCD Table Section ##### \\
@@ -162,6 +176,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 ; ``Facility Name`` = Some faciltyName
                 // CLS table section
                 ; ``Allergies`` = allergies
+                ; ``Diagnoses & Active Problem List`` = problems
 
                 // Additional fields
                 ; ``Gender`` = Some gender
