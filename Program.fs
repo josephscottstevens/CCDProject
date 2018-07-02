@@ -85,8 +85,6 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             // todo
             //let alcoholStatus = ?
 
-            
-
             let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
             let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
             let lastEncounterDate = 
@@ -102,6 +100,17 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             
             // ##### Start CCD Table Section ##### \\
 
+            let allergies : Result<Allergy array,string> =
+                let tableResult = findTable "ALLERGIES, ADVERSE REACTIONS, ALERTS"
+                let allergyRow (row:CCD.Tr2) : Allergy =
+                    { name = row.Tds.[0].Content.XElement.Value
+                    ; reaction = row.Tds.[3].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map allergyRow t )
+
             // todo
             //<title>PROBLEMS</title>
             //<title>MEDICATIONS</title>
@@ -110,7 +119,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             //<title>PROCEDURES</title>
             //<title>IMMUNIZATIONS</title>
             //<title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
-                // put mk-ma if no allergies
+                // put mk-ma if no allergies?
             //<title>VITAL SIGNS</title>
 
             // ##### End   CCD Table Section ##### \\
@@ -151,6 +160,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 ; ``Last Name`` = Some lastName
                 ; ``Middle Initial`` = Some middleInitial
                 ; ``Facility Name`` = Some faciltyName
+                // CLS table section
+                ; ``Allergies`` = allergies
 
                 // Additional fields
                 ; ``Gender`` = Some gender
@@ -324,7 +335,7 @@ let main _ =
     (writeRecordHeader + x) |> System.Windows.Forms.Clipboard.SetText
 
     printf "\nPress any key to continue"
-    System.Console.ReadLine() |> ignore
+    //System.Console.ReadLine() |> ignore
 
     //insertedEnrollmentIDs
     //|> Array.choose Result.toOption

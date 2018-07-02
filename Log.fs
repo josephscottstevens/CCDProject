@@ -17,7 +17,18 @@
     let writeDt (t:Result<DateTime,string>) : string =
         match t with
         | Ok (dt:DateTime) -> dt.ToString()
-        | Error str  -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
+        | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
+    
+    let writeAllergy (t:Result<Allergy array,string>) : string =
+        match t with 
+        | Ok (allergies:Allergy array) -> 
+            allergies 
+            |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
+                                  + " - " 
+                                  + (t.reaction |> Option.defaultValue "" |> filterOnlyLettersOrSpaces)
+                        )
+            |> Array.reduce(fun t y -> t + " | " + y)
+        | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
     
     let writeRecordHeader : string =
         Reflection.FSharpType.GetRecordFields(typeof<CCDRecord>) 
@@ -36,6 +47,7 @@
             | :? Option<int> as t -> match t with | Some a -> string a | None -> ""
             | :? Result<string,string> as t -> writeStrStr t
             | :? Result<DateTime,string> as t -> writeDt t
+            | :? Result<Allergy array,string> as t -> writeAllergy t
             | _ ->
                 let x = field
                 "not implemented"

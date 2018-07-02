@@ -12,8 +12,8 @@
     type CCDType = ICD9 of string | ICD10 of string
 
     type Allergy =
-        { Name : string
-        ; Reaction : string option
+        { name : string
+        ; reaction : string option
         }
 
     type Problem = // <title>PROBLEMS</title>
@@ -79,16 +79,16 @@
         //-?-alcoholStatus : string                                         // [Enrollment].?
         ; ``Primary Insurance`` : Result<string,string>                     // [Enrollment].[PrimaryInsurance]
         ; ``Secondary Insurance`` : Result<string,string>                   // [Enrollment].[SecondaryInsurance]
-        //; ``Allergies`` : ?
-        //; ``Diagnoses & Active Problem List`` : ?
+        // CLS table section
+        ; ``Allergies`` : Result<Allergy array,string>                      // [cls].[Allergies]
+        //; ``Diagnoses & Active Problem List`` : ?                 
         //; ``Active Medications`` : ? active medications
         //; ``Vitals`` : ?
         //; ``Encounter Notes`` : ?
         //; ``Immunizations/Screenings`` : ?
         
         
-        //; ``Past Medical History`` : ? 
-            // is this referring to procedures?
+        //; ``Past Medical History`` : ?                        [ptn].[PastMedicalHistories]
         
         
         // Additional fields
