@@ -4,16 +4,66 @@
     type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>    
     let [<Literal>] sampleProvider = "sampleData.xml"
     type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>
-    // 21 required fields - 2 optional
     // Question: Always the home address\city\state\zip?
     //           Or like the other fields like address instead of homeAddress
 
+    type StatusType = Active | Inactive
+
+    type CCDType = ICD9 of string | ICD10 of string
+
+    type Allergy =
+        { Name : string
+        ; Reaction : string option
+        }
+
+    type Problem = // <title>PROBLEMS</title>
+        { code : string 
+        ; ccdType : CCDType
+        ; date : Result<System.DateTime,string>
+        ; performer : string
+        ; status : StatusType
+        }
+
+    type Medication =
+        { name : string
+        ; code : string
+        ; codeSystem : string
+        ; strength : string
+        ; directions : string
+        ; startDate : Result<System.DateTime,string>
+        ; status : string
+        ; prescriber : string
+        }
+
+    type Vital = //<title>VITAL SIGNS</title>
+        { name : string
+        ; value : string
+        ; effectiveDate : Result<System.DateTime,string>
+        }
+
+    type Encounter = // <title>ENCOUNTER DIAGNOSIS</title>
+        { code : string 
+        ; ccdType : CCDType
+        ; date : Result<System.DateTime,string>
+        ; performer : string
+        ; status : StatusType
+        }
+
+    type Immunization = // <title>IMMUNIZATIONS</title>
+        { vaccine : string
+        ; code : string 
+        ; ccdType : CCDType
+        ; date : Result<System.DateTime,string>
+        ; status : StatusType
+        }
+
     type CCDRecord = 
-        { ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
+        { ``File Name`` : string
+        ; ``Last Four of Social Security Number`` : Result<string,string>   // [Enrollment].[SSNNumber]
         ; ``First Name`` : string option                                    // [Enrollment].[FirstName]
+        ; ``Middle Initial`` : string option                                // [Enrollment].[MiddleName]
         ; ``Last Name`` : string option                                     // [Enrollment].[LastName]
         ; ``Facility Name`` : string option                                 // [Enrollment].[FacilityID]
-        ; ``Middle Initial`` : string option                                // [Enrollment].
         ; ``8 digit Date of Birth`` : Result<System.DateTime,string>        // [Enrollment].[DoB]
         ; ``Address`` : string option                                       // [Enrollment].[HomeAddress]
         ; ``City`` : string option                                          // [Enrollment].[HomeCity]
@@ -29,13 +79,17 @@
         //-?-alcoholStatus : string                                         // [Enrollment].?
         ; ``Primary Insurance`` : Result<string,string>                     // [Enrollment].[PrimaryInsurance]
         ; ``Secondary Insurance`` : Result<string,string>                   // [Enrollment].[SecondaryInsurance]
+        //; ``Allergies`` : ?
         //; ``Diagnoses & Active Problem List`` : ?
         //; ``Active Medications`` : ? active medications
-        //; ``Past Medical History`` : ?
-        //; ``Immunizations/Screenings`` : ?
-        //; ``Allergies`` : ?
         //; ``Vitals`` : ?
         //; ``Encounter Notes`` : ?
+        //; ``Immunizations/Screenings`` : ?
+        
+        
+        //; ``Past Medical History`` : ? 
+            // is this referring to procedures?
+        
         
         // Additional fields
         ; ``Gender`` : string option                                        // [Enrollment].[Gender]

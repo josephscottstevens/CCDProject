@@ -115,7 +115,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let middleInitial = ccd.RecordTarget.PatientRole.Patient.Name.Use
             let faciltyName = ccd.Custodian.AssignedCustodian.RepresentedCustodianOrganization.Name
          
-            Ok  { ``Last Four of Social Security Number`` = 
+            Ok  { ``File Name`` = path
+                ; ``Last Four of Social Security Number`` = 
                     ssn
                     |> Result.bind (isNotNullOrEmpty "Social Security Number")
                     |> Result.bind (exactly 11 "Social Security Number")
@@ -251,7 +252,7 @@ let main _ =
                     where (e.LastName.Contains(lastName))
                     where (e.FacilityId = facilityId)
                     // where (e.MedicalRecordNumber = mrn) //Can't bind this
-                    // No mapping exists from object type Microsoft.FSharp.Core.FSharpOption`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] to a known managed provider native type.
+                        // No mapping exists from object type Microsoft.FSharp.Core.FSharpOption`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] to a known managed provider native type.
                     select e.Id
                 }
                 |> Seq.toList
@@ -271,6 +272,7 @@ let main _ =
                 let row = ctx.Ptn.Enrollment.Create()
                 row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
                 row.FirstName <- ccd.``First Name``.Value
+                row.MiddleName <- ccd.``Middle Initial``
                 row.LastName <- ccd.``Last Name``.Value
                 row.FacilityId <- facilityId
                 row.MiddleName <- ccd.``Middle Initial``
@@ -287,13 +289,9 @@ let main _ =
                 row.MaritalStatus <- ccd.``Marital Status``
                 row.PrimaryInsurance <- ccd.``Primary Insurance`` |> Result.toOption
                 row.SecondaryInsurance <- ccd.``Secondary Insurance`` |> Result.toOption
-
                 // Additional fields
-
                 row.Gender <- ccd.Gender
                 row.PreferredLanguage <- ccd.``Preferred Language``
-                // row.EncounterDate isn't a thing right?
-
                 row.OptIn <- false //TODO, this can be true if 'At least 2 qualifying diagnoses'
                 row.AdmitDate <- Some System.DateTime.UtcNow
                 //ctx.SubmitUpdates()
