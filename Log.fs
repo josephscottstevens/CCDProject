@@ -9,26 +9,21 @@
     let filterOnlyLettersOrSpaces (str:string) : string =
         String.filter onlyLettersOrSpaces str
 
-    let writeStrStr (t:Result<string,string>) : string =
+    let handleError func t : string =
         match t with
-        | Ok str -> str
+        | Ok a -> func a
         | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
+
+    let writeDt (dt:DateTime) : string =
+        dt.ToString()
     
-    let writeDt (t:Result<DateTime,string>) : string =
-        match t with
-        | Ok (dt:DateTime) -> dt.ToString()
-        | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
-    
-    let writeAllergy (t:Result<Allergy array,string>) : string =
-        match t with 
-        | Ok (allergies:Allergy array) -> 
-            allergies 
-            |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
-                                  + ":" 
-                                  + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
-                        )
-            |> Array.reduce(fun t y -> t + ", " + y)
-        | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
+    let writeAllergy (allergies:Allergy array) : string =
+        allergies 
+        |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
+                                + ":" 
+                                + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
+                    )
+        |> Array.reduce(fun t y -> t + ", " + y)
     
     let writeRecordHeader : string =
         Reflection.FSharpType.GetRecordFields(typeof<CCDRecord>) 
@@ -45,9 +40,9 @@
             | :? Option<string> as t -> Option.defaultValue "" t
             | :? int as t -> string t
             | :? Option<int> as t -> match t with | Some a -> string a | None -> ""
-            | :? Result<string,string> as t -> writeStrStr t
-            | :? Result<DateTime,string> as t -> writeDt t
-            | :? Result<Allergy array,string> as t -> writeAllergy t
+            | :? Result<string,string> as t -> handleError id  t
+            | :? Result<DateTime,string> as t -> handleError writeDt t
+            | :? Result<Allergy array,string> as t -> handleError writeAllergy t
             | _ ->
                 let x = field
                 "not implemented"
