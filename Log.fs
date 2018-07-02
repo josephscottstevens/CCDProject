@@ -24,10 +24,10 @@
         | Ok (allergies:Allergy array) -> 
             allergies 
             |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
-                                  + " - " 
-                                  + (t.reaction |> Option.defaultValue "" |> filterOnlyLettersOrSpaces)
+                                  + ":" 
+                                  + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
                         )
-            |> Array.reduce(fun t y -> t + " | " + y)
+            |> Array.reduce(fun t y -> t + ", " + y)
         | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
     
     let writeRecordHeader : string =
