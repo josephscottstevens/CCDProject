@@ -2,39 +2,34 @@
     open System
     open Microsoft.FSharp.Reflection
     open Types
-
-    let onlyLettersOrSpaces (c:char) : bool =
-        Char.IsLetterOrDigit c = true || c = ' '
-
-    let filterOnlyLettersOrSpaces (str:string) : string =
-        String.filter onlyLettersOrSpaces str
+    open Result
 
     let handleError func t : string =
         match t with
         | Ok a -> func a
         | Error str -> sprintf "=HYPERLINK(\"%s\")" (filterOnlyLettersOrSpaces str)
 
-    let writeDt (dt:DateTime) : string =
-        dt.ToString()
-    let reducer strings =
-        strings 
+    let reducer (items:array<list<string>>) : string =
+        items
+        |> Array.map(fun arr -> List.map filterOnlyLettersOrSpaces arr)
+        |> Array.map(fun arr -> List.reduce (fun t y -> t + ";" + y) arr)
         |> Array.reduce(fun t y -> t + ", " + y) 
 
     let writeAllergy (items:Allergy array) : string =
         items 
-        |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
-                              + ":" 
-                              + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
-                    )
+        |> Array.map(fun t -> [t.name; toStr t.reaction])
         |> reducer
 
-    //let writeProblems (items:Problem array) : string =
-    //    items
-    //    |> Array.map(fun t -> (filterOnlyLettersOrSpaces t.name) 
-    //                          + ":" 
-    //                          + (t.reaction |> Option.defaultValue "none" |> filterOnlyLettersOrSpaces)
-    //                )
-    //    |> reducer
+    let writeProblems (items:Problem array) : string =
+        items
+        |> Array.map(fun t -> [ toStr t.name
+                              ; intToStr t.code
+                              ; toStr t.codeSystem
+                              ; handleError dateToStr t.date
+                              ; toStr t.status
+                              ]
+                    )
+        |> reducer
 
     let writeRecordHeader : string =
         Reflection.FSharpType.GetRecordFields(typeof<CCDRecord>) 
@@ -52,9 +47,9 @@
             | :? int as t -> string t
             | :? Option<int> as t -> match t with | Some a -> string a | None -> ""
             | :? Result<string,string> as t -> handleError id  t
-            | :? Result<DateTime,string> as t -> handleError writeDt t
+            | :? Result<DateTime,string> as t -> handleError dateToStr t
             | :? Result<Allergy array,string> as t -> handleError writeAllergy t
-            //| :? Result<Problem array,string> as t -> handleError writeAllergy t
+            | :? Result<Problem array,string> as t -> handleError writeProblems t
             | _ ->
                 let x = field
                 "not implemented"

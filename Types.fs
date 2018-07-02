@@ -13,11 +13,11 @@
         }
 
     type Problem =
-        { name : string
+        { name : string option
         ; code : int64 option
-        ; codeSystem : string 
+        ; codeSystem : string option
         ; date : Result<System.DateTime,string>
-        ; status : string
+        ; status : string option
         }
 
     type Medication =

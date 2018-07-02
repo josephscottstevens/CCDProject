@@ -115,11 +115,14 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let problems : Result<Problem array,string> =
                 let tableResult = findTable "PROBLEMS"
                 let row (row:CCD.Tr2) : Problem =
-                    { name = row.Tds.[0].Content.XElement.Value
+                    { name = row.Tds.[0].Content.String
                     ; code = row.Tds.[1].Content.Number
-                    ; codeSystem = row.Tds.[2].Content.XElement.Value
-                    ; date = row.Tds.[3].Content.String |> Option.defaultValue "" |> (dateFromString "Problem Effective Date")
-                    ; status = row.Tds.[4].Content.XElement.Value
+                    ; codeSystem = row.Tds.[2].Content.String
+                    ; date =
+                        row.Tds.[3].Content.String 
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Problem Effective Date")
+                    ; status = row.Tds.[4].Content.String
                     }
 
                 tableResult

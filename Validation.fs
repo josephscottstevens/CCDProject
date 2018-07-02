@@ -31,6 +31,24 @@
         else 
             Error "String is not all digits"
 
+    let mmDdYyyyFromString (fieldName:string) (str:string) : Result<System.DateTime,string> =
+        isNotNullOrEmpty fieldName str
+        |> Result.bind (between 8 10 fieldName)
+        |> (fun result -> 
+            match result with 
+            | Ok str ->
+                let parts = str.Split('/')
+                if parts.Length = 3 then
+                    let yearPart = int (parts.[2])
+                    let monthPart = int (parts.[0])
+                    let dayPart = int (parts.[1])
+                    Ok (System.DateTime(yearPart, monthPart, dayPart, 0, 0, 0, System.DateTimeKind.Utc))
+                else
+                    Error "invalid format, expecting two '/' characters"
+            | Error t ->
+                Error t
+        )
+
     let dateFromString (fieldName:string) (str:string) : Result<System.DateTime,string> =
         isNotNullOrEmpty fieldName str
         |> Result.bind (between  8 (8+9) fieldName)
