@@ -59,10 +59,6 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> Option.map (fun t -> t.Use)
                 |> Option.bind genderStringToGenderTypeId
             
-            //todo
-            //let emergencyContacts = ccd.RecordTarget.PatientRole.?
-                //maybe it is the proxy fields?
-    
             let getInsurance (rowIndex:int) : Result<string,string> =
                 let tableResult = findTable "INSURANCE PROVIDERS"
                 let rowResult : Result<CCD.Tr2,string> =
@@ -78,12 +74,10 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let primaryInsurance = getInsurance 0
             let secondaryInsurance = getInsurance 1
         
-            //Unsure of where to store in enrollment table
             let maritalStatus =
                 ccd.RecordTarget.PatientRole.Patient.MaritalStatusCode
                 |> Option.map (fun t -> t.DisplayName)
 
-            // possible values [NonSmoker, Smoker]
             let smokingStatus =
                 findTable "SOCIAL HISTORY"
                 |> Result.bind (getCell 0 1)
@@ -91,16 +85,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             // todo
             //let alcoholStatus = ?
 
-            // todo
-            //<title>PROBLEMS</title>
-            //<title>MEDICATIONS</title>
-            //<title>ENCOUNTER DIAGNOSIS</title>
-                //Encounter notes? this thing?
-            //<title>PROCEDURES</title>
-            //<title>IMMUNIZATIONS</title>
-            //<title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
-                // put mk-ma if no allergies
-            //<title>VITAL SIGNS</title>
+            
 
             let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
             let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
@@ -114,7 +99,22 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let lastName = ccd.RecordTarget.PatientRole.Patient.Name.Family
             let middleInitial = ccd.RecordTarget.PatientRole.Patient.Name.Use
             let faciltyName = ccd.Custodian.AssignedCustodian.RepresentedCustodianOrganization.Name
-         
+            
+            // ##### Start CCD Table Section ##### \\
+
+            // todo
+            //<title>PROBLEMS</title>
+            //<title>MEDICATIONS</title>
+            //<title>ENCOUNTER DIAGNOSIS</title>
+                //Encounter notes? this thing?
+            //<title>PROCEDURES</title>
+            //<title>IMMUNIZATIONS</title>
+            //<title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
+                // put mk-ma if no allergies
+            //<title>VITAL SIGNS</title>
+
+            // ##### End   CCD Table Section ##### \\
+
             Ok  { ``File Name`` = path
                 ; ``Last Four of Social Security Number`` = 
                     ssn
