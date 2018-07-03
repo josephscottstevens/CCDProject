@@ -57,7 +57,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let preferredPhoneTypeId = 
                 ccd.RecordTarget.PatientRole.Addr
                 |> Option.map (fun t -> t.Use)
-                |> Option.bind genderStringToGenderTypeId
+                |> Option.bind phoneStringToPhoneTypeId
             
             let getInsurance (rowIndex:int) : Result<string,string> =
                 let tableResult = findTable "INSURANCE PROVIDERS"
@@ -252,6 +252,7 @@ let main _ =
         files
         |> Array.map findCCD
         |> Array.map (Result.bind validateCCD)
+
     let ctx = Sql.GetDataContext()
 
     let facilityName = 
@@ -265,11 +266,9 @@ let main _ =
         |> Seq.where(fun t -> t.FacilityName.Contains(facilityName))
         |> Seq.map(fun t -> t.Id) 
         |> Seq.head
-    
 
     let insertEnrollmentIDs (ccd:CCDRecord) : Result<int,string> * string =
         try
-            //let mrn = ccd.``Medical Record Number`` |> Result.toOption
             if ccd.``Facility Name``.Value <> facilityName then
                 failwith "invalid facility name"
             let firstName = ccd.``First Name``.Value
@@ -280,52 +279,60 @@ let main _ =
                     where (e.FirstName.Contains(firstName))
                     where (e.LastName.Contains(lastName))
                     where (e.FacilityId = facilityId)
-                    // where (e.MedicalRecordNumber = mrn) //Can't bind this
-                        // No mapping exists from object type Microsoft.FSharp.Core.FSharpOption`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] to a known managed provider native type.
                     select e.Id
                 }
                 |> Seq.toList
                 |> List.tryHead
 
-            match existingRecord with
-            | Some id ->
-                //Error (sprintf "Record already exists: %s" (string ccd))
-                ctx.Ptn.Enrollment 
-                |> Seq.find(fun t -> t.Id = id)
-                |> (fun t -> 
-                    t.Delete()
-                    ctx.SubmitUpdates()
-                )
-                (Ok id), (sprintf "Record exists already: %d" id)
-            | None ->
-                let row = ctx.Ptn.Enrollment.Create()
-                row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
-                row.FirstName <- ccd.``First Name``.Value
-                row.MiddleName <- ccd.``Middle Initial``
-                row.LastName <- ccd.``Last Name``.Value
-                row.FacilityId <- facilityId
-                row.MiddleName <- ccd.``Middle Initial``
-                row.DoB <- ccd.``8 digit Date of Birth`` |> Result.toOption
-                row.HomeAddress <- ccd.Address
-                row.HomeCity <- ccd.City
-                row.State <- ccd.State
-                row.HomeZip <- ccd.``Zip Code`` |> Result.toOption
-                row.MedicalRecordNumber <- ccd.``Medical Record Number`` |> Result.toOption
-                row.HomePhone <- ccd.``Home Phone``
-                row.WorkPhone <- ccd.``Work Phone``
-                row.CellPhone <- ccd.``Cell Phone``
-                row.PrimaryPhoneNumberTypeId <- ccd.``Preferred Phone Type Id``
-                row.MaritalStatus <- ccd.``Marital Status``
-                row.PrimaryInsurance <- ccd.``Primary Insurance`` |> Result.toOption
-                row.SecondaryInsurance <- ccd.``Secondary Insurance`` |> Result.toOption
-                // Additional fields
-                row.Gender <- ccd.Gender
-                row.PreferredLanguage <- ccd.``Preferred Language``
-                row.OptIn <- false //TODO, this can be true if 'At least 2 qualifying diagnoses'
-                row.AdmitDate <- Some System.DateTime.UtcNow
-                //ctx.SubmitUpdates()
+            let row =
+                match existingRecord with
+                | Some id ->
+                    //(Error (sprintf "Already Exisits %d" id), (sprintf "Record already exists: %s" (string ccd)))
+                    //ctx.Ptn.Enrollment 
+                    //|> Seq.find(fun t -> t.Id = id)
+                    //|> (fun t -> 
+                    //    t.Delete()
+                    //    ctx.SubmitUpdates()
+                    //)
+                    //(Ok id), (sprintf "Record exists already: %d" id)
+                    ctx.Ptn.Enrollment |> Seq.find(fun t -> t.Id = id)
+                | None ->
+                    ctx.Ptn.Enrollment.Create()
+            
+            row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
+            row.FirstName <- ccd.``First Name``.Value
+            row.MiddleName <- ccd.``Middle Initial``
+            row.LastName <- ccd.``Last Name``.Value
+            row.FacilityId <- facilityId
+            row.MiddleName <- ccd.``Middle Initial``
+            row.DoB <- ccd.``8 digit Date of Birth`` |> Result.toOption
+            row.HomeAddress <- ccd.Address
+            row.HomeCity <- ccd.City
+            row.State <- ccd.State
+            row.HomeZip <- ccd.``Zip Code`` |> Result.toOption
+            row.MedicalRecordNumber <- ccd.``Medical Record Number`` |> Result.toOption
+            row.HomePhone <- ccd.``Home Phone``
+            row.WorkPhone <- ccd.``Work Phone``
+            row.CellPhone <- ccd.``Cell Phone``
+            row.PrimaryPhoneNumberTypeId <- ccd.``Preferred Phone Type Id``
+            row.MaritalStatus <- ccd.``Marital Status``
+            row.PrimaryInsurance <- ccd.``Primary Insurance`` |> Result.toOption
+            row.SecondaryInsurance <- ccd.``Secondary Insurance`` |> Result.toOption
+            // Additional fields
+            row.Gender <- ccd.Gender
+            row.PreferredLanguage <- ccd.``Preferred Language``
+            row.OptIn <- false //TODO, this can be true if 'At least 2 qualifying diagnoses'
+            row.AdmitDate <- ccd.``Last Encounter Date`` |> Result.toOption
+            row.ImportDate <- System.DateTime.UtcNow
+
+            // todo, follow up, 
+            // StateId
+            // secondary phone type id, weird inferance at play
+            // SexTypeId
+            ctx.SubmitUpdates()
                 
-                ((Ok row.Id), writeRecordRow ccd)
+            ((Ok row.Id), writeRecordRow ccd)
+
         with ex ->
             ((Error ex.Message), (sprintf "error: %s" ex.Message))
 
@@ -355,6 +362,7 @@ let main _ =
     printf "\nPress any key to continue"
     //System.Console.ReadLine() |> ignore
 
+    // Cleanup existing
     //insertedEnrollmentIDs
     //|> Array.choose Result.toOption
     //|> Array.map (fun (enrollmentId:int) -> 

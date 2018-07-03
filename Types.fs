@@ -1,6 +1,7 @@
 ﻿module Types
     open FSharp.Data.Sql
     let [<Literal>] ConnectionString = "Data Source=localhost;Initial Catalog=NavcareDB_interface2;Integrated Security=True;"
+    //let [<Literal>] ConnectionString = "Data Source=10.8.100.4;Initial Catalog=NavcareDBTest;user id=USCareNet;password=BHI_US_2022_2022;"
     type Sql = SqlDataProvider<ConnectionString = ConnectionString, DatabaseVendor = Common.DatabaseProviderTypes.MSSQLSERVER, UseOptionTypes = true>    
     let [<Literal>] sampleProvider = "sampleData.xml"
     type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>

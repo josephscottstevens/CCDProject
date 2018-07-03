@@ -19,7 +19,7 @@
         dt.ToString()
 
     let toStr (t:string option) : string =
-        Option.defaultValue "none" t
+        Option.defaultValue "" t
     
     let intToStr (someMaybeInt:int64 option) : string =
         match someMaybeInt with 

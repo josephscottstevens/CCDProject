@@ -12,8 +12,8 @@
     let reducer (items:array<list<string>>) : string =
         items
         |> Array.map(fun arr -> List.map filterOnlyLettersOrSpaces arr)
-        |> Array.map(fun arr -> List.reduce (fun t y -> t + ";" + y) arr)
-        |> Array.reduce(fun t y -> t + ", " + y) 
+        |> Array.map(fun arr -> List.reduce (fun t y -> t + " " + y) arr)
+        |> Array.reduce(fun t y -> t + "|" + y) 
 
     let writeAllergy (items:Allergy array) : string =
         items 
@@ -50,6 +50,11 @@
             | :? Result<DateTime,string> as t -> handleError dateToStr t
             | :? Result<Allergy array,string> as t -> handleError writeAllergy t
             | :? Result<Problem array,string> as t -> handleError writeProblems t
+            | :? Result<Medication array,string> as t -> handleError (fun x -> x.ToString()) t
+            | :? Result<Vital array,string> as t -> handleError (fun x -> x.ToString()) t
+            | :? Result<Encounter array,string> as t -> handleError (fun x -> x.ToString()) t
+            | :? Result<Immunization array,string> as t -> handleError (fun x -> x.ToString()) t
+            | :? Result<CCDRecord array,string> as t -> handleError (fun x -> x.ToString()) t
             | _ ->
                 let x = field
                 "not implemented"

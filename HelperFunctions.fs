@@ -54,7 +54,7 @@
         | Some element -> Ok element.Value
         | None -> Error "No Element found"
     
-    let genderStringToGenderTypeId (str:string) : int option =
+    let phoneStringToPhoneTypeId (str:string) : int option =
         match str with
         | "MC" -> Some 0
         | "HP" -> Some 1
