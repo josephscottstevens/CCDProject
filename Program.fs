@@ -99,19 +99,6 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let faciltyName = ccd.Custodian.AssignedCustodian.RepresentedCustodianOrganization.Name
             
             // ##### Start CCD Table Section ##### \\
-
-            let allergies : Result<Allergy array,string> =
-                // todo: put mk-ma if no allergies?
-                let tableResult = findTable "ALLERGIES, ADVERSE REACTIONS, ALERTS"
-                let row (row:CCD.Tr2) : Allergy =
-                    { name = row.Tds.[0].Content.XElement.Value
-                    ; reaction = row.Tds.[3].Content.String
-                    }
-
-                tableResult
-                |> Result.map (fun t -> t.Tbody.Trs)
-                |> Result.map (fun t -> Array.map row t )
-
             let problems : Result<Problem array,string> =
                 let tableResult = findTable "PROBLEMS"
                 let row (row:CCD.Tr2) : Problem =
@@ -129,16 +116,90 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> Result.map (fun t -> t.Tbody.Trs)
                 |> Result.map (fun t -> Array.map row t )
 
+            let medications : Result<Medication array,string> =
+                let tableResult = findTable "MEDICATIONS"
+                let row (row:CCD.Tr2) : Medication =
+                    { name = row.Tds.[0].Content.String
+                    ; code = row.Tds.[1].Content.String
+                    ; codeSystem = row.Tds.[2].Content.String
+                    ; strength = row.Tds.[3].Content.String
+                    ; directions = row.Tds.[4].Content.String
+                    ; startDate = 
+                        row.Tds.[5].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Medication Start Date")
+                    ; status = row.Tds.[6].Content.String
+                    ; prescriber = row.Tds.[7].Content.String
+                    }
 
-            // todo
-            //<title>MEDICATIONS</title>
-            //<title>ENCOUNTER DIAGNOSIS</title>
-                //Encounter notes? this thing?
-            //<title>PROCEDURES</title>
-            //<title>IMMUNIZATIONS</title>
-                
-            //<title>VITAL SIGNS</title>
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            
+            let medicalHistories : Result<MedicalHistory array,string> =
+                let tableResult = findTable "ENCOUNTER DIAGNOSIS"
+                let row (row:CCD.Tr2) : MedicalHistory =
+                    { code = row.Tds.[0].Content.String
+                    ; codeSystem = row.Tds.[1].Content.String
+                    ; description = row.Tds.[2].Content.String
+                    ; date = 
+                        row.Tds.[3].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Medical History Date")
+                    ; performer = row.Tds.[4].Content.String
+                    ; status = row.Tds.[5].Content.String
+                    }
 
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            
+            //let encounters = ? //<title>PROCEDURES</title> ?
+
+            let immunizations : Result<Immunization array,string> =
+                let tableResult = findTable "IMMUNIZATIONS"
+                let row (row:CCD.Tr2) : Immunization =
+                    { vaccine = row.Tds.[0].Content.String
+                    ; code = row.Tds.[1].Content.String
+                    ; codeSystem = row.Tds.[2].Content.String
+                    ; date = 
+                        row.Tds.[3].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Immunization Date")
+                    ; status = row.Tds.[4].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+
+            let allergies : Result<Allergy array,string> =
+                let tableResult = findTable "ALLERGIES, ADVERSE REACTIONS, ALERTS"
+                let row (row:CCD.Tr2) : Allergy =
+                    { name = 
+                        row.Tds.[0].Content.String
+                        |> Option.defaultValue "no known drug allergies"
+                    ; reaction = row.Tds.[3].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            
+            let vitals : Result<Vital array,string> =
+                let tableResult = findTable "VITAL SIGNS"
+                let row (row:CCD.Tr2) : Vital =
+                    { name = row.Tds.[0].Content.String
+                    ; value = row.Tds.[1].Content.String
+                    ; effectiveDate = 
+                        row.Tds.[2].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Vitals Date")
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
             // ##### End   CCD Table Section ##### \\
 
             Ok  { ``File Name`` = path
@@ -178,8 +239,13 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 ; ``Middle Initial`` = Some middleInitial
                 ; ``Facility Name`` = Some faciltyName
                 // CLS table section
-                ; ``Allergies`` = allergies
                 ; ``Diagnoses & Active Problem List`` = problems
+                ; ``Active Medications`` = medications
+                ; ``Past Medical History`` = medicalHistories
+                //; ``Encounter Notes`` = ?
+                ; ``Immunizations/Screenings`` = immunizations
+                ; ``Allergies`` = allergies
+                ; ``Vitals`` = vitals
 
                 // Additional fields
                 ; ``Gender`` = Some gender
@@ -285,18 +351,10 @@ let main _ =
                 |> List.tryHead
 
             let row =
-                match existingRecord with
-                | Some id ->
-                    //(Error (sprintf "Already Exisits %d" id), (sprintf "Record already exists: %s" (string ccd)))
-                    //ctx.Ptn.Enrollment 
-                    //|> Seq.find(fun t -> t.Id = id)
-                    //|> (fun t -> 
-                    //    t.Delete()
-                    //    ctx.SubmitUpdates()
-                    //)
-                    //(Ok id), (sprintf "Record exists already: %d" id)
-                    ctx.Ptn.Enrollment |> Seq.find(fun t -> t.Id = id)
-                | None ->
+                //match existingRecord with
+                //| Some id ->
+                //    ctx.Ptn.Enrollment |> Seq.find(fun t -> t.Id = id)
+                //| None ->
                     ctx.Ptn.Enrollment.Create()
             
             row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
@@ -329,7 +387,7 @@ let main _ =
             // StateId
             // secondary phone type id, weird inferance at play
             // SexTypeId
-            ctx.SubmitUpdates()
+            //ctx.SubmitUpdates()
                 
             ((Ok row.Id), writeRecordRow ccd)
 
@@ -360,19 +418,6 @@ let main _ =
     (writeRecordHeader + x) |> System.Windows.Forms.Clipboard.SetText
 
     printf "\nPress any key to continue"
-    //System.Console.ReadLine() |> ignore
+    System.Console.ReadLine() |> ignore
 
-    // Cleanup existing
-    //insertedEnrollmentIDs
-    //|> Array.choose Result.toOption
-    //|> Array.map (fun (enrollmentId:int) -> 
-    //                let row = 
-    //                    ctx.Ptn.Enrollment
-    //                    |> Seq.find (fun t -> t.Id = enrollmentId) 
-    //                row.Delete()
-    //                ctx.SubmitUpdates()
-    //                ()
-    //)|> ignore
-    
-    
     0

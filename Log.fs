@@ -52,7 +52,8 @@
             | :? Result<Problem array,string> as t -> handleError writeProblems t
             | :? Result<Medication array,string> as t -> handleError (fun x -> x.ToString()) t
             | :? Result<Vital array,string> as t -> handleError (fun x -> x.ToString()) t
-            | :? Result<Encounter array,string> as t -> handleError (fun x -> x.ToString()) t
+            //| :? Result<Encounter array,string> as t -> handleError (fun x -> x.ToString()) t
+            | :? Result<MedicalHistory array,string> as t -> handleError (fun x -> x.ToString()) t
             | :? Result<Immunization array,string> as t -> handleError (fun x -> x.ToString()) t
             | :? Result<CCDRecord array,string> as t -> handleError (fun x -> x.ToString()) t
             | _ ->

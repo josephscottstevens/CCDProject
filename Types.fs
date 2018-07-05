@@ -7,12 +7,7 @@
     type CCD = FSharp.Data.XmlProvider<sampleProvider, SampleIsList=true>
     // Question: Always the home address\city\state\zip?
     //           Or like the other fields like address instead of homeAddress
-
-    type Allergy =
-        { name : string
-        ; reaction : string option
-        }
-
+    
     type Problem =
         { name : string option
         ; code : int64 option
@@ -22,36 +17,51 @@
         }
 
     type Medication =
-        { name : string
-        ; code : string
-        ; codeSystem : string
-        ; strength : string
-        ; directions : string
+        { name : string option
+        ; code : string option
+        ; codeSystem : string option
+        ; strength : string option
+        ; directions : string option
         ; startDate : Result<System.DateTime,string>
-        ; status : string
-        ; prescriber : string
+        ; status : string option
+        ; prescriber : string option
+        }
+
+    type MedicalHistory =
+        { code : string option
+        ; codeSystem : string option
+        ; description : string option
+        ; date : Result<System.DateTime,string>
+        ; performer : string option
+        ; status : string option
+        }
+
+    //type Encounter = // is it <encompassingEncounter>
+    //                 // or this? <title>ENCOUNTER DIAGNOSIS</title>
+    //    { code : string 
+    //    ; codeSystem : string 
+    //    ; date : Result<System.DateTime,string>
+    //    ; performer : string
+    //    ; status : string
+    //    }
+
+    type Immunization = // <title>IMMUNIZATIONS</title>
+        { vaccine : string option
+        ; code : string option
+        ; codeSystem : string option
+        ; date : Result<System.DateTime,string>
+        ; status : string option
+        }
+
+    type Allergy =
+        { name : string
+        ; reaction : string option
         }
 
     type Vital = //<title>VITAL SIGNS</title>
-        { name : string
-        ; value : string
+        { name : string option
+        ; value : string option
         ; effectiveDate : Result<System.DateTime,string>
-        }
-
-    type Encounter = // <title>ENCOUNTER DIAGNOSIS</title>
-        { code : string 
-        ; codeSystem : string 
-        ; date : Result<System.DateTime,string>
-        ; performer : string
-        ; status : string
-        }
-
-    type Immunization = // <title>IMMUNIZATIONS</title>
-        { vaccine : string
-        ; code : string 
-        ; codeSystem : string 
-        ; date : Result<System.DateTime,string>
-        ; status : string
         }
 
     type CCDRecord = 
@@ -77,20 +87,17 @@
         ; ``Primary Insurance`` : Result<string,string>                      // [Enrollment].[PrimaryInsurance]
         ; ``Secondary Insurance`` : Result<string,string>                    // [Enrollment].[SecondaryInsurance]
         // CLS table section
-        ; ``Allergies`` : Result<Allergy array,string>                       // [cls].[Allergies]
         ; ``Diagnoses & Active Problem List`` : Result<Problem array,string> // [dbo].[PatientProblems]
-        //; ``Active Medications`` : ? active medications
-        //; ``Vitals`` : ?
-        //; ``Encounter Notes`` : ?
-        //; ``Immunizations/Screenings`` : ?
-        
-        
-        //; ``Past Medical History`` : ?                        [ptn].[PastMedicalHistories]
-        
+        ; ``Active Medications`` : Result<Medication array,string>           // [dbo].[Medications]
+        ; ``Past Medical History`` : Result<MedicalHistory array,string>     // [ptn].[PastMedicalHistories]
+        //; ``Encounter Notes`` : Result<Encounter array,string>               // ?
+        ; ``Immunizations/Screenings`` : Result<Immunization array,string>   // [cls].[Vaccinations]
+        ; ``Allergies`` : Result<Allergy array,string>                       // [cls].[Allergies]
+        ; ``Vitals`` : Result<Vital array,string>                            // [cls].[Vitals]
         
         // Additional fields
-        ; ``Gender`` : string option                                        // [Enrollment].[Gender]
-        ; ``Preferred Language``: string option                             // [Enrollment].[PreferredLanguage]
-        ; ``Last Encounter Date``: Result<System.DateTime,string>           // [Enrollment].
-        ; ``Race``: string option                                           // [Enrollment].[Ethnicity]
+        ; ``Gender`` : string option                                         // [Enrollment].[Gender]
+        ; ``Preferred Language``: string option                              // [Enrollment].[PreferredLanguage]
+        ; ``Last Encounter Date``: Result<System.DateTime,string>            // [Enrollment].
+        ; ``Race``: string option                                            // [Enrollment].[Ethnicity]
         }
