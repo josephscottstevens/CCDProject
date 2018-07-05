@@ -3,6 +3,7 @@ open System
 open Types
 open HelperFunctions
 open Validation
+open Log
 
 let findCCD (path:string) : Result<CCDRecord, string> =
     try
@@ -19,7 +20,7 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                 |> Result.fromOption "SSN not found"
 
             let dob =
-                ccd.RecordTarget.PatientRole.Patient.BirthTime.XElement.Value
+                ccd.RecordTarget.PatientRole.Patient.BirthTime.Value
         
             let mrn = 
                 ccd.RecordTarget.PatientRole.Ids 
@@ -56,12 +57,8 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let preferredPhoneTypeId = 
                 ccd.RecordTarget.PatientRole.Addr
                 |> Option.map (fun t -> t.Use)
-                |> Option.bind genderStringToGenderTypeId
+                |> Option.bind phoneStringToPhoneTypeId
             
-            //todo
-            //let emergencyContacts = ccd.RecordTarget.PatientRole.?
-                //maybe it is the proxy fields?
-    
             let getInsurance (rowIndex:int) : Result<string,string> =
                 let tableResult = findTable "INSURANCE PROVIDERS"
                 let rowResult : Result<CCD.Tr2,string> =
@@ -77,37 +74,17 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let primaryInsurance = getInsurance 0
             let secondaryInsurance = getInsurance 1
         
-            //Unsure of where to store in enrollment table
             let maritalStatus =
                 ccd.RecordTarget.PatientRole.Patient.MaritalStatusCode
                 |> Option.map (fun t -> t.DisplayName)
 
-            // possible values [NonSmoker, Smoker]
             let smokingStatus =
                 findTable "SOCIAL HISTORY"
                 |> Result.bind (getCell 0 1)
                 
             // todo
-            //let alcoholStatus =
+            //let alcoholStatus = ?
 
-            // todo
-            //<title>PROBLEMS</title>
-            //<title>MEDICATIONS</title>
-            //<title>ENCOUNTER DIAGNOSIS</title>
-                //Encounter notes? this thing?
-            //<title>PROCEDURES</title>
-            //<title>IMMUNIZATIONS</title>
-            //<title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
-                // put mk-ma if no allergies
-            //<title>VITAL SIGNS</title>
-
-
-            // FINAL - three groups
-            // Can Process
-            // Cannot parse (exception thrown)
-        
-            // Duplicates
-            // todo, validate at least 1 phone number
             let gender = ccd.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName
             let preferredLanguage = ccd.RecordTarget.PatientRole.Patient.LanguageCommunication.LanguageCode.Code
             let lastEncounterDate = 
@@ -120,16 +97,123 @@ let findCCD (path:string) : Result<CCDRecord, string> =
             let lastName = ccd.RecordTarget.PatientRole.Patient.Name.Family
             let middleInitial = ccd.RecordTarget.PatientRole.Patient.Name.Use
             let faciltyName = ccd.Custodian.AssignedCustodian.RepresentedCustodianOrganization.Name
-         
-            Ok  { ``Last Four of Social Security Number`` = 
+            
+            // ##### Start CCD Table Section ##### \\
+            let problems : Result<Problem array,string> =
+                let tableResult = findTable "PROBLEMS"
+                let row (row:CCD.Tr2) : Problem =
+                    { name = row.Tds.[0].Content.String
+                    ; code = row.Tds.[1].Content.Number
+                    ; codeSystem = row.Tds.[2].Content.String
+                    ; date =
+                        row.Tds.[3].Content.String 
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Problem Effective Date")
+                    ; status = row.Tds.[4].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+
+            let medications : Result<Medication array,string> =
+                let tableResult = findTable "MEDICATIONS"
+                let row (row:CCD.Tr2) : Medication =
+                    { name = row.Tds.[0].Content.String
+                    ; code = row.Tds.[1].Content.String
+                    ; codeSystem = row.Tds.[2].Content.String
+                    ; strength = row.Tds.[3].Content.String
+                    ; directions = row.Tds.[4].Content.String
+                    ; startDate = 
+                        row.Tds.[5].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Medication Start Date")
+                    ; status = row.Tds.[6].Content.String
+                    ; prescriber = row.Tds.[7].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            
+            let medicalHistories : Result<MedicalHistory array,string> =
+                let tableResult = findTable "ENCOUNTER DIAGNOSIS"
+                let row (row:CCD.Tr2) : MedicalHistory =
+                    { code = row.Tds.[0].Content.String
+                    ; codeSystem = row.Tds.[1].Content.String
+                    ; description = row.Tds.[2].Content.String
+                    ; date = 
+                        row.Tds.[3].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Medical History Date")
+                    ; performer = row.Tds.[4].Content.String
+                    ; status = row.Tds.[5].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            
+            //let encounters = ? //<title>PROCEDURES</title> ?
+
+            let immunizations : Result<Immunization array,string> =
+                let tableResult = findTable "IMMUNIZATIONS"
+                let row (row:CCD.Tr2) : Immunization =
+                    { vaccine = row.Tds.[0].Content.String
+                    ; code = row.Tds.[1].Content.String
+                    ; codeSystem = row.Tds.[2].Content.String
+                    ; date = 
+                        row.Tds.[3].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Immunization Date")
+                    ; status = row.Tds.[4].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+
+            let allergies : Result<Allergy array,string> =
+                let tableResult = findTable "ALLERGIES, ADVERSE REACTIONS, ALERTS"
+                let row (row:CCD.Tr2) : Allergy =
+                    { name = 
+                        row.Tds.[0].Content.String
+                        |> Option.defaultValue "no known drug allergies"
+                    ; reaction = row.Tds.[3].Content.String
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            
+            let vitals : Result<Vital array,string> =
+                let tableResult = findTable "VITAL SIGNS"
+                let row (row:CCD.Tr2) : Vital =
+                    { name = row.Tds.[0].Content.String
+                    ; value = row.Tds.[1].Content.String
+                    ; effectiveDate = 
+                        row.Tds.[2].Content.String
+                        |> Result.toStr 
+                        |> (mmDdYyyyFromString "Vitals Date")
+                    }
+
+                tableResult
+                |> Result.map (fun t -> t.Tbody.Trs)
+                |> Result.map (fun t -> Array.map row t )
+            // ##### End   CCD Table Section ##### \\
+
+            Ok  { ``File Name`` = path
+                ; ``Last Four of Social Security Number`` = 
                     ssn
-                    |> Result.bind isNotNullOrEmpty 
-                    |> Result.bind (exactly 11)
-                    |> Result.bind (takeLast 4)
+                    |> Result.bind (isNotNullOrEmpty "Social Security Number")
+                    |> Result.bind (exactly 11 "Social Security Number")
+                    |> Result.bind (takeLast 4 "Social Security Number")
                 ; ``8 digit Date of Birth`` =
                     dob
-                    |> dateFromString 
-                ; ``Medical Record Number`` = mrn
+                    |> dateFromString "Date of Birth"
+                ; ``Medical Record Number`` = 
+                    mrn
+                    |> (isNotNullOrEmpty "Medical Record Number")
                 ; ``Home Phone`` = homePhone
                 ; ``Work Phone`` = workPhone
                 ; ``Cell Phone`` = cellPhone
@@ -143,15 +227,25 @@ let findCCD (path:string) : Result<CCDRecord, string> =
                     zipCodeElement
                     |> Result.fromOption "zip code not found"
                     |> Result.bind (getElementValueByTag "postalCode")
-                    |> Result.bind (between 5 9)
+                    |> Result.bind (between 5 9 "postalCode")
                 ; ``Primary Insurance`` = primaryInsurance
                 ; ``Secondary Insurance`` = secondaryInsurance
-                //To check visit within the last 12 months 
-                ; ``Last Encounter Date`` = lastEncounterDate
-                ; ``First Name`` = lastEncounterDate
+                ; ``Last Encounter Date`` = 
+                    lastEncounterDate
+                    |> Result.fromOption "No encounter Date found"
+                    |> Result.bind (dateFromString "Last Encounter Date")
+                ; ``First Name`` = Some firstName
                 ; ``Last Name`` = Some lastName
                 ; ``Middle Initial`` = Some middleInitial
                 ; ``Facility Name`` = Some faciltyName
+                // CLS table section
+                ; ``Diagnoses & Active Problem List`` = problems
+                ; ``Active Medications`` = medications
+                ; ``Past Medical History`` = medicalHistories
+                //; ``Encounter Notes`` = ?
+                ; ``Immunizations/Screenings`` = immunizations
+                ; ``Allergies`` = allergies
+                ; ``Vitals`` = vitals
 
                 // Additional fields
                 ; ``Gender`` = Some gender
@@ -161,19 +255,169 @@ let findCCD (path:string) : Result<CCDRecord, string> =
     with ex ->
         Error ex.Message
 
+let ``Validate Last Encounter within the last 12 months`` (ccd:CCDRecord) =
+    match ccd.``Last Encounter Date`` with 
+    | Error t -> Error t
+    | Ok dt -> 
+        if dt.AddYears(1) < DateTime.UtcNow then
+            Error (sprintf "Last Encounter Date not within 1 year of %s" (DateTime.UtcNow.ToShortDateString()))
+        else
+            Ok ccd
+    
+let ``Validate First Name and Last Name are present`` (ccd:CCDRecord) =
+    if ccd.``First Name``.IsNone then
+        Error "First Name required"
+    else if ccd.``Last Name``.IsNone then
+        Error "Last Name required"
+    else
+        Ok ccd  
+
+let ``Validate Date of Birth, or MRN number or Patient Id`` (ccd:CCDRecord) =
+    match (ccd.``8 digit Date of Birth``, ccd.``Medical Record Number``) with
+    | (Ok _, Ok _) -> Ok ccd
+    | (Ok _, Error _) -> Ok ccd
+    | (Error _, Ok _) -> Ok ccd
+    | (Error err, Error _) -> Error err
+
+let ``Validate at least one phone number`` (ccd:CCDRecord) =
+    match (ccd.``Home Phone``, ccd.``Work Phone``, ccd.``Cell Phone``) with
+    | (Some _, _, _) -> Ok ccd
+    | (_, Some _, _) -> Ok ccd
+    | (_ , _, Some _) -> Ok ccd
+    | _ -> Error "At least one phone number is required"
+
+let ``Validate Medicare is Primary or Secondary Insurance`` (ccd:CCDRecord) =
+    let cleanInsuranceStr (resultStr : Result<string, string>) : string =
+        resultStr
+        |> Result.toOption
+        |> Option.defaultValue ""
+        |> (fun t -> t.ToUpper())
+    [ ccd.``Primary Insurance`` |> cleanInsuranceStr
+    ; ccd.``Secondary Insurance`` |> cleanInsuranceStr
+    ]
+    |> List.exists(fun t -> t.Contains("MEDICARE"))
+    |> (fun t -> if t then Ok ccd else Error "MEDICARE is the required insurance type")
+    
+
+let validateCCD (record:CCDRecord) : Result<CCDRecord, string> =
+    record
+    |> ``Validate Last Encounter within the last 12 months`` 
+    |> Result.bind ``Validate First Name and Last Name are present``
+    |> Result.bind ``Validate Date of Birth, or MRN number or Patient Id``
+    |> Result.bind ``Validate Medicare is Primary or Secondary Insurance``
+    |> Result.bind ``Validate at least one phone number``
+
 [<STAThread>]
 [<EntryPoint>]
 let main _ =
-    let ccds : Result<CCDRecord, string> array =
+    let files : string [] = 
+        //[| """R:\IT\CCDS\DELORAS_G_EASON_06212018120821_COMPLETE_CCDA.xml""" |]
         System.IO.Directory.GetFiles("R:\IT\CCDS")
-        |> Array.filter (fun t -> t <> sampleProvider)
-        |> Array.map (fun t -> findCCD t)
 
-    // todo - filter duplicates
-    // todo - check for existing enrollment
-    // •	Visit within the last 12 months (see <title>ENCOUNTER DIAGNOSIS</title>)
-    // •	Medicare as primary insurance
-    // •	At least 2 qualifying diagnoses
-    //      This auto qualifies them
+    let ccds : Result<CCDRecord, string> array =
+        files
+        |> Array.map findCCD
+        |> Array.map (Result.bind validateCCD)
+
+    let ctx = Sql.GetDataContext()
+
+    let facilityName = 
+        ccds 
+        |> Array.choose Result.toOption
+        |> Array.map (fun t -> t.``Facility Name``.Value)
+        |> Array.head
+
+    let facilityId = 
+        ctx.Hco.Hcos 
+        |> Seq.where(fun t -> t.FacilityName.Contains(facilityName))
+        |> Seq.map(fun t -> t.Id) 
+        |> Seq.head
+
+    let insertEnrollmentIDs (ccd:CCDRecord) : Result<int,string> * string =
+        try
+            if ccd.``Facility Name``.Value <> facilityName then
+                failwith "invalid facility name"
+            let firstName = ccd.``First Name``.Value
+            let lastName = ccd.``Last Name``.Value
+            let existingRecord =
+                query {
+                    for e in ctx.Ptn.Enrollment do
+                    where (e.FirstName.Contains(firstName))
+                    where (e.LastName.Contains(lastName))
+                    where (e.FacilityId = facilityId)
+                    select e.Id
+                }
+                |> Seq.toList
+                |> List.tryHead
+
+            let row =
+                //match existingRecord with
+                //| Some id ->
+                //    ctx.Ptn.Enrollment |> Seq.find(fun t -> t.Id = id)
+                //| None ->
+                    ctx.Ptn.Enrollment.Create()
+            
+            row.SsnNumber <- ccd.``Last Four of Social Security Number`` |> Result.toOption
+            row.FirstName <- ccd.``First Name``.Value
+            row.MiddleName <- ccd.``Middle Initial``
+            row.LastName <- ccd.``Last Name``.Value
+            row.FacilityId <- facilityId
+            row.MiddleName <- ccd.``Middle Initial``
+            row.DoB <- ccd.``8 digit Date of Birth`` |> Result.toOption
+            row.HomeAddress <- ccd.Address
+            row.HomeCity <- ccd.City
+            row.State <- ccd.State
+            row.HomeZip <- ccd.``Zip Code`` |> Result.toOption
+            row.MedicalRecordNumber <- ccd.``Medical Record Number`` |> Result.toOption
+            row.HomePhone <- ccd.``Home Phone``
+            row.WorkPhone <- ccd.``Work Phone``
+            row.CellPhone <- ccd.``Cell Phone``
+            row.PrimaryPhoneNumberTypeId <- ccd.``Preferred Phone Type Id``
+            row.MaritalStatus <- ccd.``Marital Status``
+            row.PrimaryInsurance <- ccd.``Primary Insurance`` |> Result.toOption
+            row.SecondaryInsurance <- ccd.``Secondary Insurance`` |> Result.toOption
+            // Additional fields
+            row.Gender <- ccd.Gender
+            row.PreferredLanguage <- ccd.``Preferred Language``
+            row.OptIn <- false //TODO, this can be true if 'At least 2 qualifying diagnoses'
+            row.AdmitDate <- ccd.``Last Encounter Date`` |> Result.toOption
+            row.ImportDate <- System.DateTime.UtcNow
+
+            // todo, follow up, 
+            // StateId
+            // secondary phone type id, weird inferance at play
+            // SexTypeId
+            //ctx.SubmitUpdates()
+                
+            ((Ok row.Id), writeRecordRow ccd)
+
+        with ex ->
+            ((Error ex.Message), (sprintf "error: %s" ex.Message))
+
+    let insertedEnrollmentIDs =
+        ccds 
+        |> Array.choose Result.toOption
+        //|> Array.distinct //TODO, this is a thing yah?
+        |> Array.map insertEnrollmentIDs
     
+    let erroredEnrollments =
+       ccds
+       |> Array.choose(fun t -> match t with | Ok _ -> None | Error err -> Some err)
+       
+    erroredEnrollments |> Array.map(fun t -> printf "Error: %s\n" t) |> ignore
+    printf "\n\n"
+    printf "%d total files available\n" (Array.length files)
+    printf "%d files processed\n" (Array.length insertedEnrollmentIDs)
+    printf "%d files errored\n" (Array.length erroredEnrollments)
+
+    let x = 
+        insertedEnrollmentIDs 
+        |> Array.map snd
+        |> Array.reduce(fun t y -> t + "\n" + y)
+    
+    (writeRecordHeader + x) |> System.Windows.Forms.Clipboard.SetText
+
+    printf "\nPress any key to continue"
+    System.Console.ReadLine() |> ignore
+
     0
